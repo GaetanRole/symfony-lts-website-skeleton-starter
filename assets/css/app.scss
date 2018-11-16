@@ -1,0 +1,47 @@
+// Import Bootstrap SASS from NPM
+@import "~bootstrap/scss/bootstrap";
+// Import fonts.scss with some font-faces in it
+@import "fonts";
+// Import font-awesome 5 SCSS files
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+$main-background-color: #f5f5f5;
+
+// Example using var, nested properties and mixins
+body {
+  background-color: $main-background-color;
+  font: {
+    family: $main-typo;
+    size: 18px;
+  }
+}
+
+h1 {
+  font: {
+    family: $title-typo;
+    weight: 800;
+  }
+}
+
+.ul-subtitle-text {
+  ul {
+    font: {
+      family: $light-typo;
+      size: 16px;
+    }
+    text-decoration: none;
+    color: grey;
+  }
+}
+
+// Example using font-awesome in SCSS Class
+.php {
+  @extend %fa-icon;
+  @extend .fab;
+
+  &:before {
+    content: fa-content($fa-var-php);
+  }
+}

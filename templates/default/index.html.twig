@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{ 'Simple starter page after connection'|trans|raw }}{% endblock %}
+
+{% block title %}{{ 'Home'|trans|raw }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row mb-5 mt-5">
+                <div class="col">
+                    <img class="img-thumbnail" src="{{ asset('build/assets/images/symfony-4-logo.png') }}" alt="Symfony logo">
+                </div>
+            </div>
+            <div class="row mb-5 mt-5">
+                <div class="col text-center">
+                    <h1>{{ 'Starter page with the following features'|trans|raw|upper }}</h1>
+                </div>
+            </div>
+            <div class="row ul-subtitle-text">
+                <div class="col">
+                    <u>{{ 'On the project'|trans|raw }}</u> :
+                    <ul>
+                        <li>
+                            <p>
+                                {{ 'Webpack Encore'|trans|raw }} :
+                                <br>
+                                <i class="fab fa-github"></i>
+                                <i class="fab fa-html5"></i>
+                                <i class="fab fa-css3-alt"></i>
+                                <i class="fab fa-js-square"></i>
+                                <i class="fab fa-sass"></i>
+                                <i class="fab fa-php"></i>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

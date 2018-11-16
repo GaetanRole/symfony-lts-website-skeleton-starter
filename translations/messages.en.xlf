@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="L6FKsqA" resname="Simple starter page after connection">
+        <source>Simple starter page after connection</source>
+        <target>__Simple starter page after connection</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>__Home</target>
+      </trans-unit>
+      <trans-unit id="4nL08uM" resname="Starter page with the following features">
+        <source>Starter page with the following features</source>
+        <target>__Starter page with the following features</target>
+      </trans-unit>
+      <trans-unit id="8i_Oqgs" resname="On the project">
+        <source>On the project</source>
+        <target>__On the project</target>
+      </trans-unit>
+      <trans-unit id="nLkNAIS" resname="Webpack Encore">
+        <source>Webpack Encore</source>
+        <target>__Webpack Encore</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
