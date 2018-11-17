@@ -1,3 +1,7 @@
+<p align="center"><a href="https://symfony.com" target="_blank">
+    <img src="https://symfony.com/logos/symfony_black_02.svg">
+</a></p>
+
 Symfony 4 starter kit
 =====================
 
@@ -37,9 +41,16 @@ For translation to XLIFF files :
 $ bin/console translation:update --output-format xlf --dump-messages --force en
 ```
 
+To use [PHP CodeSniffer][5] :
+```bash
+$ ./vendor/bin/phpcbf src/[FILE]
+$ ./vendor/bin/phpcs src/[FILE]
+```
+
 [1]: https://symfony.com/doc/current/frontend.html
 [2]: https://github.com/Innmind/TimeContinuum
 [3]: https://symfony.com/doc/current/security/form_login_setup.html
 [4]: https://symfony.com/doc/current/reference/requirements.html
+[5]: https://github.com/squizlabs/PHP_CodeSniffer
 
 16/11/2018 gaetan@wildcodeschool.fr

@@ -83,6 +83,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "innmind/time-continuum": {
+        "version": "1.2.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -91,6 +94,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.1.0"
+    },
+    "ocramius/package-versions": {
+        "version": "1.3.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
@@ -126,6 +132,15 @@
             "branch": "master",
             "version": "5.2",
             "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
+        }
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "0dc9cceda799fd3a08b96987e176a261028a3709"
         }
     },
     "swiftmailer/swiftmailer": {

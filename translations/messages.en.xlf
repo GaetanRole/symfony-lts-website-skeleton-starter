@@ -13,9 +13,9 @@
         <source>Home</source>
         <target>__Home</target>
       </trans-unit>
-      <trans-unit id="4nL08uM" resname="Starter page with the following features">
-        <source>Starter page with the following features</source>
-        <target>__Starter page with the following features</target>
+      <trans-unit id="evGmPHR" resname="Starter kit with the following features">
+        <source>Starter kit with the following features</source>
+        <target>__Starter kit with the following features</target>
       </trans-unit>
       <trans-unit id="8i_Oqgs" resname="On the project">
         <source>On the project</source>
@@ -24,6 +24,58 @@
       <trans-unit id="nLkNAIS" resname="Webpack Encore">
         <source>Webpack Encore</source>
         <target>__Webpack Encore</target>
+      </trans-unit>
+      <trans-unit id="uXuGzAf" resname="TimeContinuum">
+        <source>TimeContinuum</source>
+        <target>__TimeContinuum</target>
+      </trans-unit>
+      <trans-unit id="rz9ifMd" resname="Usefull links">
+        <source>Usefull links</source>
+        <target>__Usefull links</target>
+      </trans-unit>
+      <trans-unit id="47F2f8K" resname="Sample page using TimeContinuum">
+        <source>Sample page using TimeContinuum</source>
+        <target>__Sample page using TimeContinuum</target>
+      </trans-unit>
+      <trans-unit id="0.xG8Ig" resname="Simple page with time continuum examples">
+        <source>Simple page with time continuum examples</source>
+        <target>__Simple page with time continuum examples</target>
+      </trans-unit>
+      <trans-unit id="TyjLMWv" resname="Time Continuum">
+        <source>Time Continuum</source>
+        <target>__Time Continuum</target>
+      </trans-unit>
+      <trans-unit id="673L_DQ" resname="Time Continuum examples">
+        <source>Time Continuum examples</source>
+        <target>__Time Continuum examples</target>
+      </trans-unit>
+      <trans-unit id="kmfhZ8s" resname="From the Global Clock Service">
+        <source>From the Global Clock Service</source>
+        <target>__From the Global Clock Service</target>
+      </trans-unit>
+      <trans-unit id="_7sSeJ_" resname="Get global project clock with default timeZone">
+        <source>Get global project clock with default timeZone</source>
+        <target>__Get global project clock with default timeZone</target>
+      </trans-unit>
+      <trans-unit id="u8PYfTD" resname="Go back (1 year, 2 months, 24 minutes, 500ms)">
+        <source>Go back (1 year, 2 months, 24 minutes, 500ms)</source>
+        <target>__Go back (1 year, 2 months, 24 minutes, 500ms)</target>
+      </trans-unit>
+      <trans-unit id="bWl_t01" resname="Get Paris's clock">
+        <source>Get Paris's clock</source>
+        <target>__Get Paris's clock</target>
+      </trans-unit>
+      <trans-unit id="LYMntkP" resname="Get New-York's clock">
+        <source>Get New-York's clock</source>
+        <target>__Get New-York's clock</target>
+      </trans-unit>
+      <trans-unit id=".zESCxh" resname="Get Paris's clock with Twig filter">
+        <source>Get Paris's clock with Twig filter</source>
+        <target>__Get Paris's clock with Twig filter</target>
+      </trans-unit>
+      <trans-unit id="yzX3MyE" resname="Back to homepage">
+        <source>Back to homepage</source>
+        <target>__Back to homepage</target>
       </trans-unit>
     </body>
   </file>
