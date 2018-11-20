@@ -19,7 +19,7 @@ Requirements
   * and the [usual Symfony application requirements][4].
 
 Installation
-------------`
+------------
 
 1 . Clone the current repository.
 
