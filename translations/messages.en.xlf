@@ -109,6 +109,18 @@
         <source>Webpack Encore</source>
         <target>__Webpack Encore</target>
       </trans-unit>
+      <trans-unit id="uXuGzAf" resname="TimeContinuum">
+        <source>TimeContinuum</source>
+        <target>__TimeContinuum</target>
+      </trans-unit>
+      <trans-unit id="rz9ifMd" resname="Usefull links">
+        <source>Usefull links</source>
+        <target>__Usefull links</target>
+      </trans-unit>
+      <trans-unit id="47F2f8K" resname="Sample page using TimeContinuum">
+        <source>Sample page using TimeContinuum</source>
+        <target>__Sample page using TimeContinuum</target>
+      </trans-unit>
       <trans-unit id="NYSPSNe" resname="User Auth without FOSUser">
         <source>User Auth without FOSUser</source>
         <target>__User Auth without FOSUser</target>
@@ -136,17 +148,6 @@
       <trans-unit id="tZcJgdC" resname="See a single entry for Webpack on this page (open console to see user.js's message)">
         <source>See a single entry for Webpack on this page (open console to see user.js's message)</source>
         <target>__See a single entry for Webpack on this page (open console to see user.js's message)</target>
-      <trans-unit id="uXuGzAf" resname="TimeContinuum">
-        <source>TimeContinuum</source>
-        <target>__TimeContinuum</target>
-      </trans-unit>
-      <trans-unit id="rz9ifMd" resname="Usefull links">
-        <source>Usefull links</source>
-        <target>__Usefull links</target>
-      </trans-unit>
-      <trans-unit id="47F2f8K" resname="Sample page using TimeContinuum">
-        <source>Sample page using TimeContinuum</source>
-        <target>__Sample page using TimeContinuum</target>
       </trans-unit>
       <trans-unit id="0.xG8Ig" resname="Simple page with time continuum examples">
         <source>Simple page with time continuum examples</source>

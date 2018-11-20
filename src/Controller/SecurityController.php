@@ -5,8 +5,8 @@
  *
  * PHP Version 7.2
  *
- * @category Controller
- * @package  Security
+ * @category Security
+ * @package  App\Controller
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -20,8 +20,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 /**
  * Security Controller
  *
- * @category Controller
- * @package  Security
+ * @category Security
+ * @package  App\Controller
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 final class SecurityController extends AbstractController

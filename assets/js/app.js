@@ -1,6 +1,6 @@
 // The better option is to use addEntry() to point to a JavaScript file,
 // then require the CSS needed from inside of that.
-import '../css/app.scss';
+import '../scss/app.scss';
 
 // Import Jquery.js, Bootstrap.js and font-awesome.js from NPM modules
 import $ from 'jquery';

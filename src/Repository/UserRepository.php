@@ -5,8 +5,8 @@
  *
  * PHP Version 7.2
  *
- * @category Repository
- * @package  User
+ * @category User
+ * @package  App\Repository
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -19,8 +19,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 /**
  * User Repository
  *
- * @category Repository
- * @package  User
+ * @category User
+ * @package  App\Repository
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
 
  * @method User|null find($id, $lockMode = null, $lockVersion = null)

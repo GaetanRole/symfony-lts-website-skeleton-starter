@@ -5,8 +5,8 @@
  *
  * PHP Version 7.2
  *
- * @category Entity
- * @package  User
+ * @category User
+ * @package  App\Entity
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 

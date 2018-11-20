@@ -5,8 +5,8 @@
  *
  * PHP Version 7.2
  *
- * @category Form
- * @package  Registration
+ * @category User
+ * @package  App\Form
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -26,8 +26,8 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 /**
  * Registration class UserType
  *
- * @category Form
- * @package  Registration
+ * @category User
+ * @package  App\Form
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 class UserType extends AbstractType
@@ -39,7 +39,9 @@ class UserType extends AbstractType
     {
         $builder
             ->add(
-                'firstName', TextType::class, [
+                'firstName',
+                TextType::class,
+                [
                     'label' => 'First name',
                     'translation_domain' => 'messages',
                     'attr' => [
@@ -49,7 +51,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'lastName', TextType::class, [
+                'lastName',
+                TextType::class,
+                [
                     'label' => 'Last name',
                     'translation_domain' => 'messages',
                     'attr' => [
@@ -60,14 +64,18 @@ class UserType extends AbstractType
             )
             ->add('email', EmailType::class)
             ->add(
-                'plainPassword', RepeatedType::class, [
+                'plainPassword',
+                RepeatedType::class,
+                [
                     'type' => PasswordType::class,
                     'first_options'  => ['label' => 'Password'],
                     'second_options' => ['label' => 'Repeat Password'],
                 ]
             )
             ->add(
-                'termsAccepted', CheckboxType::class, [
+                'termsAccepted',
+                CheckboxType::class,
+                [
                     'mapped' => false,
                     'label' => 'Check accepted terms',
                     'translation_domain' => 'messages',

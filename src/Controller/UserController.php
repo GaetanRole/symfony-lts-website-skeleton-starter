@@ -5,8 +5,8 @@
  *
  * PHP Version 7.2
  *
- * @category Controller
- * @package  User
+ * @category User
+ * @package  App\Controller
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -23,8 +23,8 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/profile")
  * @IsGranted("ROLE_USER")
  *
- * @category Controller
- * @package  User
+ * @category User
+ * @package  App\Controller
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 final class UserController extends AbstractController
@@ -35,7 +35,7 @@ final class UserController extends AbstractController
      * @Route("/", name="user_index")
      * @return     Response A Response instance
      */
-    public function index()
+    public function index(): Response
     {
         /**
          * Getting current user object
@@ -45,7 +45,8 @@ final class UserController extends AbstractController
         $user = $this->getUser();
 
         return $this->render(
-            'user/index.html.twig', [
+            'user/index.html.twig',
+            [
             'user' => $user,
             ]
         );

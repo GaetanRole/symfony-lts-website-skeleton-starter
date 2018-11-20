@@ -5,8 +5,8 @@
  *
  * PHP Version 7.2
  *
- * @category Service
- * @package  Clock
+ * @category Clock
+ * @package  App\Service
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -24,8 +24,8 @@ use Innmind\TimeContinuum\Timezone\Earth\Europe\Paris;
 /**
  * GlobalClock service class.
  *
- * @category Service
- * @package  Clock
+ * @category Clock
+ * @package  App\Service
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 final class GlobalClock
@@ -35,14 +35,14 @@ final class GlobalClock
      *
      * @var Earth
      */
-    private $_clock;
+    private $clock;
 
     /**
      * Default clock format
      *
      * @var ISO8601
      */
-    private $_format;
+    private $format;
 
     /**
      * GlobalClock constructor.
@@ -52,8 +52,8 @@ final class GlobalClock
      */
     public function __construct(Earth $clock, ISO8601 $format)
     {
-        $this->_clock = $clock;
-        $this->_format = $format;
+        $this->clock = $clock;
+        $this->format = $format;
     }
 
     /**
@@ -63,7 +63,20 @@ final class GlobalClock
      */
     public function getClock()
     {
-        return $this->_clock;
+        return $this->clock;
+    }
+
+    /**
+     * Returning a DateTime obj based on timeZone
+     *
+     * @return \DateTime DateTime at now
+     */
+    public function getNowInDateTime()
+    {
+        // Get a PointInTime obj with Paris TimeZone
+        // And casting into a string for creating DateTime
+        $now = $this->clock->now()->changeTimezone(new Paris())->format($this->format);
+        return new \DateTime((string)$now);
     }
 
     /**
@@ -73,7 +86,7 @@ final class GlobalClock
      */
     public function getGoBackSample()
     {
-        return $this->_clock->now()->goBack(
+        return $this->clock->now()->goBack(
             (new Year(1))
                 ->add(new Month(2))
                 ->add(new Minute(24))
@@ -88,10 +101,10 @@ final class GlobalClock
      */
     public function getNowParisSample()
     {
-        return $this->_clock
+        return $this->clock
             ->now()
             ->changeTimezone(new Paris())
-            ->format($this->_format);
+            ->format($this->format);
     }
 
     /**
@@ -101,9 +114,9 @@ final class GlobalClock
      */
     public function getNowNewYorkSample()
     {
-        return $this->_clock
+        return $this->clock
             ->now()
             ->changeTimezone(new NewYork())
-            ->format($this->_format);
+            ->format($this->format);
     }
 }

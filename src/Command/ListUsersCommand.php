@@ -5,8 +5,8 @@
  *
  * PHP Version 7.2
  *
- * @category Command
- * @package  User
+ * @category User
+ * @package  App\Command
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -32,8 +32,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  * For more advanced uses, commands can be defined as services too. See
  * https://symfony.com/doc/current/console/commands_as_services.html
  *
- * @category Command
- * @package  User
+ * @category User
+ * @package  App\Command
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 class ListUsersCommand extends Command
@@ -52,7 +52,7 @@ class ListUsersCommand extends Command
      *
      * @var UserRepository
      */
-    private $_users;
+    private $users;
 
     /**
      * ListUsersCommand constructor.
@@ -63,7 +63,7 @@ class ListUsersCommand extends Command
     {
         parent::__construct();
 
-        $this->_users = $users;
+        $this->users = $users;
     }
 
     /**
@@ -111,7 +111,7 @@ class ListUsersCommand extends Command
     {
         $maxResults = $input->getOption('max-results');
         // Use ->findBy() instead of ->findAll() to allow result sorting and limiting
-        $allUsers = $this->_users->findBy([], ['id' => 'DESC'], $maxResults);
+        $allUsers = $this->users->findBy([], ['id' => 'DESC'], $maxResults);
 
         // Doctrine query returns an array of objects
         // and we need an array of plain arrays
@@ -123,7 +123,8 @@ class ListUsersCommand extends Command
                     $user->getEmail(),
                     implode(', ', $user->getRoles()),
                 ];
-            }, $allUsers
+            },
+            $allUsers
         );
 
         // In your console commands you should always use the regular output type,
@@ -137,7 +138,7 @@ class ListUsersCommand extends Command
             $usersAsPlainArrays
         );
 
-        // instead of just displaying the table of users,
+        // Instead of just displaying the table of users,
         // store its contents in a variable
         $usersAsATable = $bufferedOutput->fetch();
         $output->write($usersAsATable);

@@ -6,7 +6,7 @@
  * PHP Version 7.2
  *
  * @category Authenticator
- * @package  Security
+ * @package  App\Security
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -33,7 +33,7 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
  * Login Form Authenticator class
  *
  * @category Authenticator
- * @package  Security
+ * @package  App\Security
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
@@ -43,22 +43,22 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     /**
      * @var EntityManagerInterface
      */
-    private $_entityManager;
+    private $entityManager;
 
     /**
      * @var RouterInterface
      */
-    private $_router;
+    private $router;
 
     /**
      * @var CsrfTokenManagerInterface
      */
-    private $_csrfTokenManager;
+    private $csrfTokenManager;
 
     /**
      * @var UserPasswordEncoderInterface
      */
-    private $_passwordEncoder;
+    private $passwordEncoder;
 
     /**
      * LoginFormAuthenticator constructor.
@@ -70,10 +70,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function __construct(EntityManagerInterface $entityManager, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
-        $this->_entityManager = $entityManager;
-        $this->_router = $router;
-        $this->_csrfTokenManager = $csrfTokenManager;
-        $this->_passwordEncoder = $passwordEncoder;
+        $this->entityManager = $entityManager;
+        $this->router = $router;
+        $this->csrfTokenManager = $csrfTokenManager;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     /**
@@ -120,11 +120,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
-        if (!$this->_csrfTokenManager->isTokenValid($token)) {
+        if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->_entityManager->getRepository(User::class)
+        $user = $this->entityManager->getRepository(User::class)
             ->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
@@ -145,7 +145,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function checkCredentials($credentials, UserInterface $user)
     {
-        return $this->_passwordEncoder->isPasswordValid($user, $credentials['password']);
+        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
     /**
@@ -163,7 +163,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->_router->generate('user_index'));
+        return new RedirectResponse($this->router->generate('user_index'));
     }
 
     /**
@@ -172,6 +172,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     protected function getLoginUrl()
     {
-        return $this->_router->generate('app_login');
+        return $this->router->generate('app_login');
     }
 }

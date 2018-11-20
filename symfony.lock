@@ -114,7 +114,7 @@
         "version": "1.3.0"
     },
     "ocramius/proxy-manager": {
-        "version": "2.1.1"
+        "version": "2.2.2"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -156,6 +156,8 @@
             "branch": "master",
             "version": "4.0",
             "ref": "421933bf8f0e75546ac8e00cb3eb12904fa2ac1a"
+        }
+    },
     "squizlabs/php_codesniffer": {
         "version": "3.0",
         "recipe": {
@@ -249,7 +251,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "3.3",
-            "ref": "cfaca55cab772a0c11bf899ddbd21eecb708c8ae"
+            "ref": "9ec493d6f3575c54671493d635fa4b68658022ab"
         }
     },
     "symfony/http-foundation": {
@@ -300,7 +302,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "4.1",
-            "ref": "f427a3ef197d370364c33123873a1e14f9b51c7f"
+            "ref": "b4c7d939cac9a67e02366fa7971746e9cbf1dad0"
         }
     },
     "symfony/polyfill-intl-icu": {
@@ -426,7 +428,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.0",
-            "ref": "4c97a884bc54a4e66bb2d0785ca855141880b6a8"
+            "ref": "dd76e869a5d10fac29f4c0c02f8feaac613471ff"
         }
     },
     "symfony/yaml": {

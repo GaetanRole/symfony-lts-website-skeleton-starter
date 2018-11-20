@@ -5,14 +5,15 @@
  *
  * PHP Version 7.2
  *
- * @category Fixtures
- * @package  User
+ * @category User
+ * @package  App\DataFixtures
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Service\GlobalClock;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -20,8 +21,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
  * User Fixture class
  *
- * @category Fixtures
- * @package  User
+ * @category User
+ * @package  App\DataFixtures
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 final class UserFixture extends Fixture
@@ -31,16 +32,25 @@ final class UserFixture extends Fixture
      *
      * @var UserPasswordEncoderInterface
      */
-    private $_passwordEncoder;
+    private $passwordEncoder;
+
+    /**
+     * Global project's clock
+     *
+     * @var GlobalClock
+     */
+    private $clock;
 
     /**
      * UserFixture constructor.
      *
      * @param UserPasswordEncoderInterface $passwordEncoder Var to encode password
+     * @param GlobalClock $clock Global project's clock
      */
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, GlobalClock $clock)
     {
-        $this->_passwordEncoder = $passwordEncoder;
+        $this->passwordEncoder = $passwordEncoder;
+        $this->clock = $clock;
     }
 
     /**
@@ -52,19 +62,21 @@ final class UserFixture extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
+        // Loading ten users with different information by concat
+        // Enter a DateTime now by TimeContinuum service
         for ($i = 0; $i < 10; $i++) {
             $user = new User();
             $user
                 ->setEmail('user' . $i . '@userfixtures.fixtures')
                 ->setPassword(
-                    $this->_passwordEncoder->encodePassword(
+                    $this->passwordEncoder->encodePassword(
                         $user,
                         'password' . $i
                     )
                 )
                 ->setFirstName('userFirstName' . $i)
                 ->setLastName('userLastName' . $i)
-                ->setCreationDate(new \DateTime('now'));
+                ->setCreationDate($this->clock->getNowInDateTime());
             $manager->persist($user);
         }
         $manager->flush();

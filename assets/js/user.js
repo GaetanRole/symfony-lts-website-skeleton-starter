@@ -1,7 +1,7 @@
 // The better option is to use addEntry() to point to a JavaScript file,
 // then require the CSS needed from inside of that.
 import $ from 'jquery';
-import '../css/user.scss';
+import '../scss/user.scss';
 
 $(document).ready(function() {
     // Bootstrap JS

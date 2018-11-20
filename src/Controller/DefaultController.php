@@ -7,7 +7,7 @@
  * PHP Version 7.2
  *
  * @category Controller
- * @package  Default
+ * @package  App\Controller
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 
@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Default Controller
  *
  * @category Controller
- * @package  Default
+ * @package  App\Controller
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 final class DefaultController extends AbstractController
@@ -33,7 +33,7 @@ final class DefaultController extends AbstractController
      * @Route("/", name="index", methods={"GET", "HEAD"})
      * @return     Response A Response instance
      */
-    public function index()
+    public function index(): Response
     {
         return $this->render('default/index.html.twig');
     }
@@ -46,8 +46,9 @@ final class DefaultController extends AbstractController
      * @Route("/time-continuum", name="show_time_continuum", methods={"GET", "HEAD"})
      * @return                   Response A Response instance
      */
-    public function showTimeContinuumSample(GlobalClock $clock)
+    public function showTimeContinuumSample(GlobalClock $clock): Response
     {
+        // Getting GlobalClock injection service
         return $this->render(
             'samples/time_continuum.html.twig',
             ['clock' => $clock]
