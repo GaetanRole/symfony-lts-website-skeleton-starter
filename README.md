@@ -15,11 +15,11 @@ Requirements
 
   * Php ^7.2    http://php.net/manual/fr/install.php;
   * Composer    https://getcomposer.org/download/;
-  * NPM         https://www.npmjs.com/get-npm;
+  * NPM         https://www.npmjs.com/get-npm (or `sudo apt install nodejs npm`);
   * and the [usual Symfony application requirements][4].
 
 Installation
-------------
+------------`
 
 1 . Clone the current repository.
 
@@ -36,8 +36,7 @@ $ composer update
 $ npm install
 $ npm run-script dev
 $ bin/console d:d:c (create the project's DB)
-$ bin/console m:m (make migration)
-$ bin/console d:m:m (run the migration)
+$ bin/console d:m:m (run the migration, always commit)
 $ bin/console d:m:s (check if everything is updated)
 ```
 
@@ -46,7 +45,7 @@ Usage
 
 ```bash
 $ bin/console s:r
-$ bin/console c:c
+$ bin/console c:c --env=dev
 ```
 
 For loading User's [fixture][6] :
