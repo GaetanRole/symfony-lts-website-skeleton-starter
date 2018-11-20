@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{ 'Simple page with time continuum examples'|trans|raw }}{% endblock %}
+
+{% block title %}{{ 'Time Continuum'|trans|raw }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row mb-5 mt-5">
+                <div class="col text-center">
+                    <h1>{{ 'Time Continuum examples'|trans|raw|upper }}</h1>
+                </div>
+            </div>
+            <div class="row ul-subtitle-text">
+                <div class="col">
+                    <u>{{ 'From the Global Clock Service'|trans|raw }}</u> :
+                    <ul>
+                        <li>
+                            {{ 'Get global project clock with default timeZone'|trans|raw }} : {{ clock.clock.now }}
+                        </li>
+                        <li>
+                            {{ 'Go back (1 year, 2 months, 24 minutes, 500ms)'|trans|raw }} : {{ clock.getGoBackSample }}
+                        </li>
+                        <li>
+                            {{ 'Get Paris\'s clock'|trans|raw }} : {{ clock.getNowParisSample }}
+                        </li>
+                        <li>
+                            {{ 'Get New-York\'s clock'|trans|raw }} : {{ clock.getNowNewYorkSample }}
+                        </li>
+                        <li>
+                            {{ 'Get Paris\'s clock with Twig filter'|trans|raw }} : {{ clock.getNowParisSample|date('d-m-Y H:i', "Europe/Paris") }}
+                        </li>
+                    </ul>
+
+                    <u>{{ 'Usefull links'|trans|raw }}</u> :
+                    <ul>
+                        <li><a href="{{ path('index') }}">{{ 'Back to homepage'|trans|raw }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

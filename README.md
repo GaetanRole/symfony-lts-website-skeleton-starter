@@ -60,6 +60,7 @@ $ bin/console translation:update --output-format xlf --dump-messages --force en
 ```
 
 To use [PHP CodeSniffer][8] :
+
 ```bash
 $ ./vendor/bin/phpcbf src/[FILE]
 $ ./vendor/bin/phpcs src/[FILE]
