@@ -1,0 +1,17 @@
+/*
+ * Just a single entry CSS file for an example
+ * Import from user.js file
+ */
+
+$user-title: #0b800e;
+$title-typo: 'Open Sans 800';
+
+#user-profile {
+  h2 {
+    font: {
+      family: $title-typo;
+      weight: 800;
+    }
+    color: $user-title;
+  }
+}

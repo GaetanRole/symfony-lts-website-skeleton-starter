@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block description %}{{ 'Simple starter page after connection'|trans|raw }}{% endblock %}
+{% block description %}{{ 'Simple starter page before connection'|trans|raw }}{% endblock %}
 
 {% block title %}{{ 'Home'|trans|raw }}{% endblock %}
 
@@ -43,17 +43,18 @@
 
                     <u>{{ 'User Auth without FOSUser'|trans|raw }}</u> :
                     <ul>
-                        <li><a href="">{{ 'Connection form'|trans|raw }}</a></li>
-                        <li><a href="">{{ 'Inscription form'|trans|raw }}</a></li>
-                        <li><a href="">{{ 'Edit form'|trans|raw }}</a></li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li><a href="{{ path('app_logout') }}">{{ 'Logout'|trans|raw }}</a></li>
+                        {% else %}
+                            <li><a href="{{ path('app_login') }}">{{ 'Login form'|trans|raw }}</a></li>
+                        {% endif %}
+                        <li><a href="{{ path('user_registration') }}">{{ 'Register form'|trans|raw }}</a></li>
+                        <li><a href="{{ path('user_index') }}">{{ 'View user\'s profile'|trans|raw }}</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-{% endblock %}
-
-{% block footer %}
 {% endblock %}
 
 {% block javascripts %}

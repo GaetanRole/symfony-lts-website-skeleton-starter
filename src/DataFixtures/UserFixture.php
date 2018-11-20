@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * User Fixture file
+ *
+ * PHP Version 7.2
+ *
+ * @category Fixtures
+ * @package  User
+ * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ */
+
 namespace App\DataFixtures;
 
 use App\Entity\User;
@@ -7,29 +17,56 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
-class UserFixture extends Fixture
+/**
+ * User Fixture class
+ *
+ * @category Fixtures
+ * @package  User
+ * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ */
+final class UserFixture extends Fixture
 {
-    private $passwordEncoder;
+    /**
+     * To encode password with injected service
+     *
+     * @var UserPasswordEncoderInterface
+     */
+    private $_passwordEncoder;
 
+    /**
+     * UserFixture constructor.
+     *
+     * @param UserPasswordEncoderInterface $passwordEncoder Var to encode password
+     */
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
-        $this->passwordEncoder = $passwordEncoder;
+        $this->_passwordEncoder = $passwordEncoder;
     }
 
-    public function load(ObjectManager $manager)
+    /**
+     * Load ten users to DB
+     *
+     * @param ObjectManager $manager Doctrine Manager
+     *
+     * @return void
+     */
+    public function load(ObjectManager $manager): void
     {
-        /*
-         * $user = new User();
-         *  $user->setPassword($this->passwordEncoder->encodePassword(
-         *  $user,
-         *  'the_new_password'
-         * ));
-
-           -> Add all necessary fields.
-
-         * $manager->flush();
-         *
-         */
+        for ($i = 0; $i < 10; $i++) {
+            $user = new User();
+            $user
+                ->setEmail('user' . $i . '@userfixtures.fixtures')
+                ->setPassword(
+                    $this->_passwordEncoder->encodePassword(
+                        $user,
+                        'password' . $i
+                    )
+                )
+                ->setFirstName('userFirstName' . $i)
+                ->setLastName('userLastName' . $i)
+                ->setCreationDate(new \DateTime('now'));
+            $manager->persist($user);
+        }
+        $manager->flush();
     }
 }
