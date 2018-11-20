@@ -58,7 +58,7 @@ For [translation][7] to XLIFF files :
 $ bin/console translation:update --output-format xlf --dump-messages --force en
 ```
 
-To use [PHP CodeSniffer][8] (for more PHPDocumentor usage, see official [https://docs.phpdoc.org/]:
+To use [PHP CodeSniffer][8] (for more PHPDocumentor usage, see official [https://docs.phpdoc.org/]):
 
 ```bash
 $ ./vendor/bin/phpcbf src/[FILE]
