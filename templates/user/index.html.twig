@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{ 'Simple starter page before connection'|trans|raw }}{% endblock %}
+
+{% block title %}{{ 'My account'|trans|raw }}{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('user') }}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <section id="user-profile">
+        <div class="container">
+            <div class="row mb-5 mt-5">
+                <div class="col">
+                    <img class="img-thumbnail" src="{{ asset('build/assets/images/symfony-4-logo.png') }}" alt="Symfony logo">
+                </div>
+            </div>
+            <div class="row mb-5 mt-5">
+                <div class="col text-center">
+                    <h1><i class="fas fa-user"></i> {{ 'User\'s profile'|trans|raw|upper }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-5">
+                    <div class="jumbotron">
+                        <h2>{{ 'Hello %firstname% - %lastname%'|trans({'%firstname%':user.firstName, '%lastname%':user.lastName})|raw }} ! ✅</h2>
+
+                        {{ 'See a single entry for Webpack on this page (open console to see user.js\'s message)'|trans|raw }}
+                        <ul>
+                            <li><a href="{{ path('app_logout') }}">{{ 'Logout'|trans|raw }}</a></li>
+                            <li><a href="{{ path('index') }}">{{ 'Back on homepage'|trans|raw }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('user') }}
+{% endblock %}

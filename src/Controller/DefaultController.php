@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * Default Controller File
  * Default/Index controller file
  *
  * PHP Version 7.2
@@ -18,13 +19,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Default controller.
+ * Default Controller
  *
  * @category Controller
  * @package  Default
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
-class DefaultController extends AbstractController
+final class DefaultController extends AbstractController
 {
     /**
      * Home page

@@ -5,9 +5,93 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="L6FKsqA" resname="Simple starter page after connection">
-        <source>Simple starter page after connection</source>
-        <target>__Simple starter page after connection</target>
+      <trans-unit id="z7GsDIB" resname="Inscription">
+        <source>Inscription</source>
+        <target>__Inscription</target>
+      </trans-unit>
+      <trans-unit id="cjdBkBI" resname="Registration form">
+        <source>Registration form</source>
+        <target>__Registration form</target>
+      </trans-unit>
+      <trans-unit id="ZHz6kbI" resname="Firstname">
+        <source>Firstname</source>
+        <target>__Firstname</target>
+      </trans-unit>
+      <trans-unit id="htiPHRy" resname="Lastname">
+        <source>Lastname</source>
+        <target>__Lastname</target>
+      </trans-unit>
+      <trans-unit id="JVDZYuU" resname="E-mail">
+        <source>E-mail</source>
+        <target>__E-mail</target>
+      </trans-unit>
+      <trans-unit id="zcitNFe" resname="Password (min 8 and one number)">
+        <source>Password (min 8 and one number)</source>
+        <target>__Password (min 8 and one number)</target>
+      </trans-unit>
+      <trans-unit id="HWYC7T6" resname="Confirm your entered password">
+        <source>Confirm your entered password</source>
+        <target>__Confirm your entered password</target>
+      </trans-unit>
+      <trans-unit id="5Oq9f3t" resname="Check terms to register">
+        <source>Check terms to register</source>
+        <target>__Check terms to register</target>
+      </trans-unit>
+      <trans-unit id="8hqzju_" resname="Let's register">
+        <source>Let's register</source>
+        <target>__Let's register</target>
+      </trans-unit>
+      <trans-unit id="rBtZhYw" resname="Back on homepage">
+        <source>Back on homepage</source>
+        <target>__Back on homepage</target>
+      </trans-unit>
+      <trans-unit id="HaMs__y" resname="Login form">
+        <source>Login form</source>
+        <target>__Login form</target>
+      </trans-unit>
+      <trans-unit id="DLtJVyd" resname="Place sticky footer content here">
+        <source>Place sticky footer content here</source>
+        <target>__Place sticky footer content here</target>
+      </trans-unit>
+      <trans-unit id="Y5pA6Cu" resname="Connection">
+        <source>Connection</source>
+        <target>__Connection</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>__Email</target>
+      </trans-unit>
+      <trans-unit id="4OEpCAo" resname="Enter an email from User's fixture">
+        <source>Enter an email from User's fixture</source>
+        <target>__Enter an email from User's fixture</target>
+      </trans-unit>
+      <trans-unit id="UlgnSMR" resname="We'll never share your email with anyone else">
+        <source>We'll never share your email with anyone else</source>
+        <target>__We'll never share your email with anyone else</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>__Password</target>
+      </trans-unit>
+      <trans-unit id="Z5LOJPH" resname="Enter a password from User's fixture">
+        <source>Enter a password from User's fixture</source>
+        <target>__Enter a password from User's fixture</target>
+      </trans-unit>
+      <trans-unit id="1HlgHHO" resname="Check me out">
+        <source>Check me out</source>
+        <target>__Check me out</target>
+      </trans-unit>
+      <trans-unit id="wYmEDPf" resname="Log in">
+        <source>Log in</source>
+        <target>__Log in</target>
+      </trans-unit>
+      <trans-unit id="Vp5Cy7Q" resname="Register form">
+        <source>Register form</source>
+        <target>__Register form</target>
+      </trans-unit>
+      <trans-unit id="W2kr3zR" resname="Simple starter page before connection">
+        <source>Simple starter page before connection</source>
+        <target>__Simple starter page before connection</target>
       </trans-unit>
       <trans-unit id="OnhpU4i" resname="Home">
         <source>Home</source>
@@ -25,6 +109,33 @@
         <source>Webpack Encore</source>
         <target>__Webpack Encore</target>
       </trans-unit>
+      <trans-unit id="NYSPSNe" resname="User Auth without FOSUser">
+        <source>User Auth without FOSUser</source>
+        <target>__User Auth without FOSUser</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>__Logout</target>
+      </trans-unit>
+      <trans-unit id="CfY5Mj6" resname="View user's profile">
+        <source>View user's profile</source>
+        <target>__View user's profile</target>
+      </trans-unit>
+      <trans-unit id="tTGBpNh" resname="My account">
+        <source>My account</source>
+        <target>__My account</target>
+      </trans-unit>
+      <trans-unit id="Cco5lD5" resname="User's profile">
+        <source>User's profile</source>
+        <target>__User's profile</target>
+      </trans-unit>
+      <trans-unit id="TuhwwmP" resname="Hello %firstname% - %lastname%">
+        <source>Hello %firstname% - %lastname%</source>
+        <target>__Hello %firstname% - %lastname%</target>
+      </trans-unit>
+      <trans-unit id="tZcJgdC" resname="See a single entry for Webpack on this page (open console to see user.js's message)">
+        <source>See a single entry for Webpack on this page (open console to see user.js's message)</source>
+        <target>__See a single entry for Webpack on this page (open console to see user.js's message)</target>
       <trans-unit id="uXuGzAf" resname="TimeContinuum">
         <source>TimeContinuum</source>
         <target>__TimeContinuum</target>
