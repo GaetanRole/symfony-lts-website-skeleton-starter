@@ -47,8 +47,10 @@ final class UserFixture extends Fixture
      * @param UserPasswordEncoderInterface $passwordEncoder Var to encode password
      * @param GlobalClock $clock Global project's clock
      */
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder, GlobalClock $clock)
-    {
+    public function __construct(
+        UserPasswordEncoderInterface $passwordEncoder,
+        GlobalClock $clock
+    ) {
         $this->passwordEncoder = $passwordEncoder;
         $this->clock = $clock;
     }
@@ -64,6 +66,8 @@ final class UserFixture extends Fixture
     {
         // Loading ten users with different information by concat
         // Enter a DateTime now by TimeContinuum service
+        // E.g : Login : user0@userfixtures.fixtures
+        //     : Password : password0
         for ($i = 0; $i < 10; $i++) {
             $user = new User();
             $user

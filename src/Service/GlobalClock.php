@@ -75,7 +75,8 @@ final class GlobalClock
     {
         // Get a PointInTime obj with Paris TimeZone
         // And casting into a string for creating DateTime
-        $now = $this->clock->now()->changeTimezone(new Paris())->format($this->format);
+        $now
+            = $this->clock->now()->changeTimezone(new Paris())->format($this->format);
         return new \DateTime((string)$now);
     }
 

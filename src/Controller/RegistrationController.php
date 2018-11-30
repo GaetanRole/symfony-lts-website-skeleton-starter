@@ -19,6 +19,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -29,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @package  App\Controller
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
-class RegistrationController extends AbstractController
+final class RegistrationController extends AbstractController
 {
     /**
      * Register an user
@@ -37,13 +39,29 @@ class RegistrationController extends AbstractController
      * @param Request                      $request         POST'ed data
      * @param UserPasswordEncoderInterface $passwordEncoder Encoder
      * @param GlobalClock $clock Given project's clock to handle all DateTime objects
+     * @param Security $security Security injection
+     * @param TranslatorInterface $translator Translator injection
      *
-     * @Route("/register", name="user_registration")
+     * @Route("/register.{_locale}", defaults={"_locale"="en"},
+     *     name="user_registration")
      *
      * @return RedirectResponse|Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GlobalClock $clock)
-    {
+    public function register(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        GlobalClock $clock,
+        Security $security,
+        TranslatorInterface $translator
+    ) {
+        if ($security->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $this->addFlash(
+                'danger',
+                $translator->trans('isauthenticatedfully.flash.redirection')
+            );
+            return $this->redirectToRoute('index');
+        }
+
         // Build the form
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -67,7 +85,7 @@ class RegistrationController extends AbstractController
             // Add a notification on security/login.html.twig
             $this->addFlash(
                 'registration-success',
-                'Your account is well registered dude !'
+                $translator->trans('account.registered')
             );
 
             return $this->redirectToRoute('app_login');

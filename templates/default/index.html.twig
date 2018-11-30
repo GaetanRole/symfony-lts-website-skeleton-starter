@@ -1,67 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block description %}{{ 'Simple starter page before connection'|trans|raw }}{% endblock %}
+{% block description %}{{ 'index.header.description'|trans }}{% endblock %}
 
-{% block title %}{{ 'Home'|trans|raw }}{% endblock %}
-
-{% block stylesheets %}
-{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% block title %}{{ 'index.header.title'|trans }}{% endblock %}
 
 {% block body %}
     <section>
+        {% include 'default/_flash_messages.html.twig' %}
         <div class="container">
-            <div class="row mb-5 mt-5">
+            <div class="row mb-4">
                 <div class="col">
-                    <img class="img-thumbnail" src="{{ asset('build/assets/images/symfony-4-logo.png') }}" alt="Symfony logo">
-                </div>
-            </div>
-            <div class="row mb-5 mt-5">
-                <div class="col text-center">
-                    <h1>{{ 'Starter kit with the following features'|trans|raw|upper }}</h1>
+                    <h1><i class="fab fa-galactic-republic"></i> {{ 'index.body.firsttitle'|trans|upper }}</h1>
                 </div>
             </div>
             <div class="row ul-subtitle-text">
                 <div class="col">
-                    <u>{{ 'On the project'|trans|raw }}</u> :
+                    <u>{{ 'index.body.ul.first'|trans }}</u>
                     <ul>
                         <li>
                             <p>
-                                {{ 'Webpack Encore'|trans|raw }} :
+                                {{ 'index.body.ul.first.li.first'|trans }} - <a href="https://symfony.com/doc/4.1/frontend.html">https://symfony.com/doc/4.1/frontend.html</a>
                                 <br>
                                 <i class="fab fa-github"></i>
                                 <i class="fab fa-html5"></i>
                                 <i class="fab fa-css3-alt"></i>
                                 <i class="fab fa-js-square"></i>
                                 <i class="fab fa-sass"></i>
-                                <i class="fab fa-php"></i>
                             </p>
                         </li>
-                        <li>{{ 'TimeContinuum'|trans|raw }}.</li>
+                        <li>{{ 'index.body.ul.first.li.second'|trans }} - <a href="https://github.com/Innmind/TimeContinuum">https://github.com/Innmind/TimeContinuum</a></li>
                     </ul>
 
-                    <u>{{ 'Usefull links'|trans|raw }}</u> :
+                    <u>{{ 'index.body.ul.second'|trans }}</u>
                     <ul>
-                        <li><a href="{{ path('show_time_continuum') }}">{{ 'Sample page using TimeContinuum'|trans|raw }}</a></li>
+                        <li><a href="{{ path('show_time_continuum') }}">{{ 'index.body.ul.second.li.first'|trans }}</a></li>
+                        <li><a href="{{ path('index', {'_locale': 'fr'}) }}">{{ 'index.body.ul.second.li.second'|trans }}</a></li>
+                        <li><a href="{{ path('index', {'_locale': 'en'}) }}">{{ 'index.body.ul.second.li.third'|trans }}</a></li>
                     </ul>
 
-                    <u>{{ 'User Auth without FOSUser'|trans|raw }}</u> :
+                    <u>{{ 'index.body.ul.third'|trans }}</u>
                     <ul>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <li><a href="{{ path('app_logout') }}">{{ 'Logout'|trans|raw }}</a></li>
+                            <li><a href="{{ path('app_logout') }}">{{ 'button.logout'|trans }}</a></li>
                         {% else %}
-                            <li><a href="{{ path('app_login') }}">{{ 'Login form'|trans|raw }}</a></li>
+                            <li><a href="{{ path('app_login') }}">{{ 'button.login'|trans }}</a></li>
                         {% endif %}
-                        <li><a href="{{ path('user_registration') }}">{{ 'Register form'|trans|raw }}</a></li>
-                        <li><a href="{{ path('user_index') }}">{{ 'View user\'s profile'|trans|raw }}</a></li>
+                        <li><a href="{{ path('user_registration') }}">{{ 'button.register'|trans }}</a></li>
+                        <li><a href="{{ path('user_index') }}">{{ 'button.user'|trans }}</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-{% endblock %}
-
-{% block javascripts %}
 {% endblock %}

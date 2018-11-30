@@ -30,7 +30,8 @@ final class DefaultController extends AbstractController
     /**
      * Home page
      *
-     * @Route("/", name="index", methods={"GET", "HEAD"})
+     * @Route("/.{_locale}", defaults={"_locale"="en"},
+     *     name="index", methods={"GET", "HEAD"})
      * @return     Response A Response instance
      */
     public function index(): Response
@@ -43,7 +44,8 @@ final class DefaultController extends AbstractController
      *
      * @param GlobalClock $clock Given project's clock to handle all DateTime objects
      *
-     * @Route("/time-continuum", name="show_time_continuum", methods={"GET", "HEAD"})
+     * @Route("/time-continuum.{_locale}", defaults={"_locale"="en"},
+     *     name="show_time_continuum", methods={"GET", "HEAD"})
      * @return                   Response A Response instance
      */
     public function showTimeContinuumSample(GlobalClock $clock): Response

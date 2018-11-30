@@ -15,7 +15,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Security Controller
@@ -30,12 +33,27 @@ final class SecurityController extends AbstractController
      * Login method
      *
      * @param AuthenticationUtils $authenticationUtils get last Auth
+     * @param Security $security Security injection
+     * @param TranslatorInterface $translator Translator injection
      *
-     * @Route("/login", name="app_login")
-     * @return          Response A Response instance
+     * @Route("/login.{_locale}", defaults={"_locale"="en"},
+     *     name="app_login")
+     *
+     * @return          RedirectResponse|Response A Response instance
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
+    public function login(
+        AuthenticationUtils $authenticationUtils,
+        Security $security,
+        TranslatorInterface $translator
+    ): Response {
+        if ($security->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $this->addFlash(
+                'danger',
+                $translator->trans('isauthenticatedfully.flash.redirection')
+            );
+            return $this->redirectToRoute('index');
+        }
+
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 

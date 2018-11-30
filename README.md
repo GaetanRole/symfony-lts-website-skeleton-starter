@@ -53,9 +53,10 @@ For loading User's [fixture][6] :
 $ bin/console d:f:l
 ```
 
-For [translation][7] to XLIFF files :
+For [translation][7] to XLIFF files (`app_locales: en|fr`) :
 ```bash
 $ bin/console translation:update --output-format xlf --dump-messages --force en
+$ bin/console translation:update --output-format xlf --dump-messages --force fr
 ```
 
 To use [PHP CodeSniffer][8] (for more PHPDocumentor usage, see official [https://docs.phpdoc.org/]):
@@ -117,4 +118,4 @@ Personal routes
 [9]: https://symfony.com/doc/current/security.html
 [10]: https://symfony.com/doc/current/console.html
 
-19/11/2018 gaetan@wildcodeschool.fr
+01/12/2018 gaetan@wildcodeschool.fr

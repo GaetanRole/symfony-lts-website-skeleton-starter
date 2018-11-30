@@ -1,53 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block description %}{{ 'Simple page with time continuum examples'|trans|raw }}{% endblock %}
+{% block description %}{{ 'timecontinuum.header.description'|trans }}{% endblock %}
 
-{% block title %}{{ 'Time Continuum'|trans|raw }}{% endblock %}
-
-{% block stylesheets %}
-{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% block title %}{{ 'timecontinuum.header.title'|trans }}{% endblock %}
 
 {% block body %}
     <section>
         <div class="container">
-            <div class="row mb-5 mt-5">
-                <div class="col text-center">
-                    <h1>{{ 'Time Continuum examples'|trans|raw|upper }}</h1>
+            <div class="row mb-4">
+                <div class="col">
+                    <h1><i class="fas fa-clock"></i> {{ 'timecontinuum.body.firsttitle'|trans|upper }}</h1>
                 </div>
             </div>
             <div class="row ul-subtitle-text">
                 <div class="col">
-                    <u>{{ 'From the Global Clock Service'|trans|raw }}</u> :
+                    <u>{{ 'timecontinuum.body.ul.first'|trans }}</u>
                     <ul>
                         <li>
-                            {{ 'Get global project clock with default timeZone'|trans|raw }} : {{ clock.clock.now }}
+                            {{ 'timecontinuum.body.ul.first.li.first'|trans }} <b>{{ clock.clock.now }}</b>
                         </li>
                         <li>
-                            {{ 'Go back (1 year, 2 months, 24 minutes, 500ms)'|trans|raw }} : {{ clock.getGoBackSample }}
+                            {{ 'timecontinuum.body.ul.first.li.second'|trans }} <b>{{ clock.getGoBackSample }}</b>
                         </li>
                         <li>
-                            {{ 'Get Paris\'s clock'|trans|raw }} : {{ clock.getNowParisSample }}
+                            {{ 'timecontinuum.body.ul.first.li.third'|trans }} <b>{{ clock.getNowParisSample }}</b>
                         </li>
                         <li>
-                            {{ 'Get New-York\'s clock'|trans|raw }} : {{ clock.getNowNewYorkSample }}
+                            {{ 'timecontinuum.body.ul.first.li.fourth'|trans }} <b>{{ clock.getNowNewYorkSample }}</b>
                         </li>
                         <li>
-                            {{ 'Get Paris\'s clock with Twig filter'|trans|raw }} : {{ clock.getNowParisSample|date('d-m-Y H:i', "Europe/Paris") }}
+                            {{ 'timecontinuum.body.ul.first.li.fifth'|trans }} <b>{{ clock.getNowParisSample|date('d-m-Y H:i', "Europe/Paris") }}</b>
                         </li>
                     </ul>
 
-                    <u>{{ 'Usefull links'|trans|raw }}</u> :
+                    <u>{{ 'timecontinuum.body.ul.second'|trans }}</u>
                     <ul>
-                        <li><a href="{{ path('index') }}">{{ 'Back to homepage'|trans|raw }}</a></li>
+                        <li><a href="{{ path('index') }}">{{ 'button.homepage'|trans }}</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-{% endblock %}
-
-{% block javascripts %}
 {% endblock %}

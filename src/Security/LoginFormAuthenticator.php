@@ -36,7 +36,7 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
  * @package  App\Security
  * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
-class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
+final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
     use TargetPathTrait;
 
@@ -68,8 +68,12 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      * @param CsrfTokenManagerInterface    $csrfTokenManager
      * @param UserPasswordEncoderInterface $passwordEncoder
      */
-    public function __construct(EntityManagerInterface $entityManager, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        RouterInterface $router,
+        CsrfTokenManagerInterface $csrfTokenManager,
+        UserPasswordEncoderInterface $passwordEncoder
+    ) {
         $this->entityManager = $entityManager;
         $this->router = $router;
         $this->csrfTokenManager = $csrfTokenManager;
@@ -129,7 +133,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Your credentials are invalid. Please verify your email and password.');
+            throw new CustomUserMessageAuthenticationException(
+                'Your credentials are invalid. Please verify your email and password.'
+            );
         }
 
         return $user;

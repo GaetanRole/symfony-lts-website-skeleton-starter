@@ -1,59 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'Inscription'|trans|raw }}{% endblock %}
+{% block description %}{{ 'register.header.description'|trans }}{% endblock %}
 
-{% block stylesheets %}
-{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% block title %}{{ 'register.header.title'|trans }}{% endblock %}
 
 {% block body %}
     <section>
-        <div class="container">
-            <div class="row mb-5 mt-5">
+        <div class="container text-center">
+            <div class="row mb-4">
                 <div class="col">
-                    <img class="img-thumbnail" src="{{ asset('build/assets/images/symfony-4-logo.png') }}" alt="Symfony logo">
+                    <h1><i class="fas fa-user-plus"></i> {{ 'register.body.firsttitle'|trans|upper }}</h1>
                 </div>
             </div>
-            <div class="row mb-5 mt-5">
-                <div class="col text-center">
-                    <h1><i class="fas fa-user-plus"></i> {{ 'Registration form'|trans|raw|upper }}</h1>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col mb-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
                     {{ form_start(form) }}
 
                     <div class="row">
                         <div class="col-md">
                             <div class="form-group form-error">
-                                {% set firstNamePlaceholder = 'Firstname'|trans|raw %}
+                                {% set firstNamePlaceholder = 'register.body.placeholder.firstname'|trans %}
                                 {% if form.firstName.vars.errors|length %}
                                     {{ form_widget(form.firstName,
-                                        form.firstName.vars|merge({'attr': {'autofocus': null, 'class': 'form-control', 'placeholder': firstNamePlaceholder} }) ) }}
+                                        form.firstName.vars|merge({'attr': {'autofocus': true, 'class': 'form-control', 'placeholder': firstNamePlaceholder} }) ) }}
                                     {{ form_errors(form.firstName) }}
                                 {% else %}
-                                    {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': firstNamePlaceholder} }) }}
+                                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': firstNamePlaceholder} }) }}
                                 {% endif %}
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group form-error">
-                                {% set lastNamePlaceholder = 'Lastname'|trans|raw %}
+                                {% set lastNamePlaceholder = 'register.body.placeholder.lastname'|trans %}
                                 {% if form.lastName.vars.errors|length %}
                                     {{ form_widget(form.lastName,
                                         form.lastName.vars|merge({'attr': {'autofocus': null, 'class': 'form-control', 'placeholder': lastNamePlaceholder} }) ) }}
                                     {{ form_errors(form.lastName) }}
                                 {% else %}
-                                    {{ form_widget(form.lastName, { 'attr': {'class': 'form-control', 'placeholder': lastNamePlaceholder} }) }}
+                                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': lastNamePlaceholder} }) }}
                                 {% endif %}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group form-error">
-                        {% set emailPlaceholder = 'E-mail'|trans|raw %}
+                        {% set emailPlaceholder = 'register.body.placeholder.email'|trans %}
                         {% if form.email.vars.errors|length %}
                             {{ form_widget(form.email,
                                 form.email.vars|merge({'type':'email', 'attr': {'autofocus': null, 'class': 'form-control', 'placeholder': emailPlaceholder} }) ) }}
@@ -64,7 +55,7 @@
                     </div>
 
                     <div class="form-group form-error">
-                        {% set passwordPlaceholder = 'Password (min 8 and one number)'|trans|raw %}
+                        {% set passwordPlaceholder = 'register.body.placeholder.password'|trans %}
                         {% if form.plainPassword.first.vars.errors|length %}
                             {{ form_widget(form.plainPassword.first,
                                 form.plainPassword.first.vars|merge({'type':'password', 'attr': {'autofocus': null, 'class': 'form-control', 'placeholder': passwordPlaceholder} }) ) }}
@@ -75,7 +66,7 @@
                     </div>
 
                     <div class="form-group form-error">
-                        {% set plainPasswordPlaceholder = 'Confirm your entered password'|trans|raw %}
+                        {% set plainPasswordPlaceholder = 'register.body.placeholder.plainpassword'|trans %}
                         {% if form.plainPassword.second.vars.errors|length %}
                             {{ form_widget(form.plainPassword.second,
                                 form.plainPassword.second.vars|merge({'type':'password', 'attr': {'autofocus': null, 'class': 'form-control', 'placeholder': plainPasswordPlaceholder } }) ) }}
@@ -85,27 +76,25 @@
                         {% endif %}
                     </div>
 
-                    <div class="mt-5 mb-5">
-                        <label for="user_termsAccepted">{{'Check terms to register'|trans|raw}}</label>
+                    <div class="mb-2">
+                        <label for="user_termsAccepted">{{ 'register.body.label.terms'|trans }}</label>
                         {{ form_widget(form.termsAccepted) }}
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{ 'Let\'s register'|trans|raw }} !</button>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle"></i> {{ 'register.body.submit'|trans }}</button>
 
                     {{ form_end(form) }}
                 </div>
             </div>
-            <div class="row mb-5 mt-5 text-center">
-                <div class="col-md">
-                    <p><a href="{{ path('index') }}">{{ 'Back on homepage'|trans|raw }}</a></p>
-                </div>
-                <div class="col-md">
-                    <p><a href="{{ path('app_login') }}">{{ 'Login form'|trans|raw }}</a></p>
+            <div class="row text-left ul-subtitle-text">
+                <div class="col">
+                    <u>{{ 'index.body.ul.second'|trans }}</u>
+                    <ul>
+                        <li><a href="{{ path('index') }}">{{ 'button.homepage'|trans }}</a></li>
+                        <li><a href="{{ path('app_login') }}">{{ 'button.login'|trans }}</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-{% endblock %}
-
-{% block javascripts %}
 {% endblock %}

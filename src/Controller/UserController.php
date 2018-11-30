@@ -32,7 +32,9 @@ final class UserController extends AbstractController
     /**
      * Profile index page
      *
-     * @Route("/", name="user_index")
+     * @Route("/.{_locale}", defaults={"_locale"="en"},
+     *     name="user_index")
+     *
      * @return     Response A Response instance
      */
     public function index(): Response

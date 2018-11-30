@@ -84,7 +84,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string",                                                                                                          length=32, nullable=true)
      * @Assert\Regex(pattern="/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/",
-     *     message="Your phone number should be written like : 06 00 00 00 00 ou +33 6.")
+     *     message="Your phone number should be written like : 06 00 00 00 00 or +33 6.")
      */
     private $phoneNumber;
 
