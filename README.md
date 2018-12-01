@@ -28,7 +28,7 @@ or only one global `.env.local`. **This one is not committed to the shared repos
  
 > `.env` equals to the last `.env.dist` file before [november 2018][5].
 
-3 . Execute commands below into your working folder to install the project:
+3 .a. Execute commands below into your working folder to install the project :
 
 ```bash
 $ composer install
@@ -38,6 +38,11 @@ $ npm run-script dev
 $ bin/console d:d:c (create the project's DB)
 $ bin/console d:m:m (run the migration, always commit)
 $ bin/console d:m:s (check if everything is updated)
+```
+3 .b. Or execute a simple shell script if your DB is already set up :
+
+```bash
+$ ./install-dependencies.sh
 ```
 
 Usage
@@ -54,6 +59,7 @@ $ bin/console d:f:l
 ```
 
 For [translation][7] to XLIFF files (`app_locales: en|fr`) :
+
 ```bash
 $ bin/console translation:update --output-format xlf --dump-messages --force en
 $ bin/console translation:update --output-format xlf --dump-messages --force fr
@@ -94,10 +100,12 @@ $ bin/console d:f:l
 Personal commands
 -----
 To use a personal sample [command][10] (displaying all users from DB) :
+
 ```bash
 $ bin/console app:list-users --help
 $ bin/console app:list-users
 ```
+
 Do not hesitate to create other commands such as a promotion command or a user creation ...
 
 Personal routes
@@ -106,6 +114,10 @@ Personal routes
 - `{SERVER_HOST}/login`
 - `{SERVER_HOST}/logout`
 - `{SERVER_HOST}/profile` (granted for [ROLE_USER])
+
+Screenshot
+-----
+![Alt text](symfony_starter_kit_readme_screenshot.png?raw=true "Default page")
 
 [1]: https://symfony.com/doc/current/frontend.html
 [2]: https://github.com/Innmind/TimeContinuum
