@@ -81,6 +81,23 @@ final class GlobalClock
     }
 
     /**
+     * Returning a birthDate sample
+     *
+     * @return \DateTime DateTime Object
+     */
+    public function getBirthDateSample()
+    {
+        // Get a PointInTime obj with Paris TimeZone
+        // And casting into a string for creating DateTime birthDate
+        $now
+            = $this->clock->now()->changeTimezone(new Paris());
+        $birthDate
+            = $now->goBack((new Year(18))
+            ->add(new Month(rand(1, 12))));
+        return new \DateTime((string)$birthDate);
+    }
+
+    /**
      * A "go back" example with TimeContinuum
      *
      * @return \Innmind\TimeContinuum\PointInTimeInterface

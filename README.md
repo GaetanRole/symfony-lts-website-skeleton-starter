@@ -6,7 +6,7 @@ Symfony 4 starter kit
 =====================
 
 I created a starter kit for Symfony 4 to show how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3]
-and so on (such as Fixtures, GuardAuthenticator, Security:checker, RememberIn, Translations, Commands ...),
+and so on (such as Fixtures (Faker), GuardAuthenticator, Security:checker, RememberIn, Translations, Commands ...),
 following the recommended best practices.
 User auth is based on Symfony form login authentication.
 

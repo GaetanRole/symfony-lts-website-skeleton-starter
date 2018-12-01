@@ -18,8 +18,10 @@
                 <div class="col">
                     <div class="jumbotron">
                         <h2>{{ 'user.jumbotron.title'|trans({'%firstname%':user.firstName, '%lastname%':user.lastName}) }} ✅</h2>
-
-                        {{ 'user.jumbotron.description'|trans }}
+                        <h3>{{ user.phoneNumber }} - {{ user.birthDate|date('d/m/Y') }}</h3>
+                        <p>
+                            {{ 'user.jumbotron.description'|trans }}
+                        </p>
                     </div>
                 </div>
             </div>

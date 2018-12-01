@@ -98,6 +98,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "fzaninotto/faker": {
+        "version": "v1.8.0"
+    },
     "innmind/time-continuum": {
         "version": "1.2.1"
     },

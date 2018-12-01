@@ -13,6 +13,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use Faker;
 use App\Service\GlobalClock;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -68,6 +69,9 @@ final class UserFixture extends Fixture
         // Enter a DateTime now by TimeContinuum service
         // E.g : Login : user0@userfixtures.fixtures
         //     : Password : password0
+
+        $faker = Faker\Factory::create('fr_FR');
+
         for ($i = 0; $i < 10; $i++) {
             $user = new User();
             $user
@@ -78,8 +82,10 @@ final class UserFixture extends Fixture
                         'password' . $i
                     )
                 )
-                ->setFirstName('userFirstName' . $i)
-                ->setLastName('userLastName' . $i)
+                ->setFirstName($faker->firstName)
+                ->setLastName($faker->lastName)
+                ->setPhoneNumber($faker->phoneNumber)
+                ->setBirthDate($this->clock->getBirthDateSample())
                 ->setCreationDate($this->clock->getNowInDateTime());
             $manager->persist($user);
         }
