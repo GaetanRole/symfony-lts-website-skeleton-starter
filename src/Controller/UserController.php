@@ -20,7 +20,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class UserController
  *
- * @Route("/profile")
  * @IsGranted("ROLE_USER")
  *
  * @category User
@@ -32,7 +31,7 @@ final class UserController extends AbstractController
     /**
      * Profile index page
      *
-     * @Route("/.{_locale}", defaults={"_locale"="en"},
+     * @Route("/{_locale}/profile", defaults={"_locale"="%locale%"},
      *     name="user_index")
      *
      * @return     Response A Response instance

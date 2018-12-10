@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -36,7 +36,7 @@ final class SecurityController extends AbstractController
      * @param Security $security Security injection
      * @param TranslatorInterface $translator Translator injection
      *
-     * @Route("/login.{_locale}", defaults={"_locale"="en"},
+     * @Route("/{_locale}/login", defaults={"_locale"="%locale%"},
      *     name="app_login")
      *
      * @return          RedirectResponse|Response A Response instance
@@ -64,5 +64,15 @@ final class SecurityController extends AbstractController
                 'error' => $error
             ]
         );
+    }
+
+    /**
+     * Logout method
+     * @Route("/{_locale}/logout", defaults={"_locale"="%locale%"},
+     *     name="app_logout")
+     */
+    public function logout(): void
+    {
+        // controller can be blank: it will never be executed!
     }
 }

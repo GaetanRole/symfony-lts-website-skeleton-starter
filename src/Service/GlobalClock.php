@@ -20,6 +20,7 @@ use Innmind\TimeContinuum\Period\Earth\Millisecond;
 use Innmind\TimeContinuum\TimeContinuum\Earth;
 use Innmind\TimeContinuum\Timezone\Earth\America\NewYork;
 use Innmind\TimeContinuum\Timezone\Earth\Europe\Paris;
+use Innmind\TimeContinuum\PointInTimeInterface;
 
 /**
  * GlobalClock service class.
@@ -61,7 +62,7 @@ final class GlobalClock
      *
      * @return Earth
      */
-    public function getClock()
+    public function getClock(): Earth
     {
         return $this->clock;
     }
@@ -70,8 +71,9 @@ final class GlobalClock
      * Returning a DateTime obj based on timeZone
      *
      * @return \DateTime DateTime at now
+     * @throws \Exception Datetime Exception
      */
-    public function getNowInDateTime()
+    public function getNowInDateTime(): \DateTime
     {
         // Get a PointInTime obj with Paris TimeZone
         // And casting into a string for creating DateTime
@@ -84,8 +86,9 @@ final class GlobalClock
      * Returning a birthDate sample
      *
      * @return \DateTime DateTime Object
+     * @throws \Exception Datetime Exception
      */
-    public function getBirthDateSample()
+    public function getBirthDateSample(): \DateTime
     {
         // Get a PointInTime obj with Paris TimeZone
         // And casting into a string for creating DateTime birthDate
@@ -93,16 +96,16 @@ final class GlobalClock
             = $this->clock->now()->changeTimezone(new Paris());
         $birthDate
             = $now->goBack((new Year(18))
-            ->add(new Month(rand(1, 12))));
+            ->add(new Month(random_int(1, 12))));
         return new \DateTime((string)$birthDate);
     }
 
     /**
      * A "go back" example with TimeContinuum
      *
-     * @return \Innmind\TimeContinuum\PointInTimeInterface
+     * @return PointInTimeInterface
      */
-    public function getGoBackSample()
+    public function getGoBackSample(): PointInTimeInterface
     {
         return $this->clock->now()->goBack(
             (new Year(1))
@@ -117,7 +120,7 @@ final class GlobalClock
      *
      * @return string
      */
-    public function getNowParisSample()
+    public function getNowParisSample(): string
     {
         return $this->clock
             ->now()
@@ -130,7 +133,7 @@ final class GlobalClock
      *
      * @return string
      */
-    public function getNowNewYorkSample()
+    public function getNowNewYorkSample(): string
     {
         return $this->clock
             ->now()

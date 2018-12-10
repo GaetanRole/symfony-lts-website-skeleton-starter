@@ -30,7 +30,7 @@ final class DefaultController extends AbstractController
     /**
      * Home page
      *
-     * @Route("/.{_locale}", defaults={"_locale"="en"},
+     * @Route("/{_locale}", defaults={"_locale"="%locale%"},
      *     name="index", methods={"GET", "HEAD"})
      * @return     Response A Response instance
      */
@@ -44,7 +44,7 @@ final class DefaultController extends AbstractController
      *
      * @param GlobalClock $clock Given project's clock to handle all DateTime objects
      *
-     * @Route("/time-continuum.{_locale}", defaults={"_locale"="en"},
+     * @Route("/{_locale}/time-continuum", defaults={"_locale"="%locale%"},
      *     name="show_time_continuum", methods={"GET", "HEAD"})
      * @return                   Response A Response instance
      */
@@ -53,7 +53,9 @@ final class DefaultController extends AbstractController
         // Getting GlobalClock injection service
         return $this->render(
             'samples/time_continuum.html.twig',
-            ['clock' => $clock]
+            [
+                'clock' => $clock
+            ]
         );
     }
 }

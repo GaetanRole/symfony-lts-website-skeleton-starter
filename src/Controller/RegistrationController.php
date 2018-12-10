@@ -15,12 +15,13 @@ namespace App\Controller;
 use App\Form\UserType;
 use App\Entity\User;
 use App\Service\GlobalClock;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -41,8 +42,9 @@ final class RegistrationController extends AbstractController
      * @param GlobalClock $clock Given project's clock to handle all DateTime objects
      * @param Security $security Security injection
      * @param TranslatorInterface $translator Translator injection
+     * @param EntityManagerInterface $em Doctrine Manager
      *
-     * @Route("/register.{_locale}", defaults={"_locale"="en"},
+     * @Route("/{_locale}/register", defaults={"_locale"="%locale%"},
      *     name="user_registration")
      *
      * @return RedirectResponse|Response
@@ -52,7 +54,8 @@ final class RegistrationController extends AbstractController
         UserPasswordEncoderInterface $passwordEncoder,
         GlobalClock $clock,
         Security $security,
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
+        EntityManagerInterface $em
     ) {
         if ($security->isGranted('IS_AUTHENTICATED_FULLY')) {
             $this->addFlash(
@@ -78,9 +81,8 @@ final class RegistrationController extends AbstractController
             $user->setCreationDate($clock->getNowInDateTime());
 
             // Save the User object
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $em->persist($user);
+            $em->flush();
 
             // Add a notification on security/login.html.twig
             $this->addFlash(
@@ -93,7 +95,9 @@ final class RegistrationController extends AbstractController
 
         return $this->render(
             'registration/register.html.twig',
-            array('form' => $form->createView())
+            [
+                'form' => $form->createView()
+            ]
         );
     }
 }

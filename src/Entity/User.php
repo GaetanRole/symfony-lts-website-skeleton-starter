@@ -15,9 +15,20 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * User Entity Class
+ *
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="This email is already taken !"
+ * )
+ *
+ * @category User
+ * @package  App\Entity
+ * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 class User implements UserInterface
 {
@@ -53,26 +64,26 @@ class User implements UserInterface
     private $plainPassword;
 
     /**
-     * @var                       string The hashed password
+     * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string",                                      length=32)
+     * @ORM\Column(type="string", length=32)
      * @Assert\NotBlank
      * @Assert\Regex(pattern="/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i", message="Your first name must contain only letters.")
-     * @Assert\Length(min=2,                                           minMessage="A first name with 1 letter ? Really ?")
-     * @Assert\Length(max=32,                                          maxMessage="First name contains too many letters (32 max).")
+     * @Assert\Length(min=2, minMessage="A first name with 1 letter ? Really ?")
+     * @Assert\Length(max=32, maxMessage="First name contains too many letters (32 max).")
      */
     private $firstName;
 
     /**
-     * @ORM\Column(type="string",                                      length=32)
+     * @ORM\Column(type="string", length=32)
      * @Assert\NotBlank
      * @Assert\Regex(pattern="/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i", message="Your last name must contain only letters.")
-     * @Assert\Length(min=2,                                           minMessage="A last name with 1 letter ? Really ?")
-     * @Assert\Length(max=32,                                          maxMessage="Last name contains too many letters (32 max).")
+     * @Assert\Length(min=2, minMessage="A last name with 1 letter ? Really ?")
+     * @Assert\Length(max=32, maxMessage="Last name contains too many letters (32 max).")
      */
     private $lastName;
 
@@ -82,7 +93,7 @@ class User implements UserInterface
     private $birthDate;
 
     /**
-     * @ORM\Column(type="string",                                                                                                          length=32, nullable=true)
+     * @ORM\Column(type="string", length=32, nullable=true)
      * @Assert\Regex(pattern="/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/",
      *     message="Your phone number should be written like : 06 00 00 00 00 or +33 6.")
      */
@@ -186,7 +197,7 @@ class User implements UserInterface
     /**
      * @param $password
      */
-    public function setPlainPassword($password)
+    public function setPlainPassword($password): void
     {
         $this->plainPassword = $password;
     }
@@ -196,7 +207,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     /**
@@ -221,7 +232,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;

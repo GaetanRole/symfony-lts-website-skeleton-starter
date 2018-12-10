@@ -18,6 +18,7 @@ use App\Service\GlobalClock;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * User Fixture class
@@ -43,17 +44,27 @@ final class UserFixture extends Fixture
     private $clock;
 
     /**
+     * Injecting Container Interface
+     *
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
      * UserFixture constructor.
      *
      * @param UserPasswordEncoderInterface $passwordEncoder Var to encode password
      * @param GlobalClock $clock Global project's clock
+     * @param ContainerInterface $container Container Interface
      */
     public function __construct(
         UserPasswordEncoderInterface $passwordEncoder,
-        GlobalClock $clock
+        GlobalClock $clock,
+        ContainerInterface $container
     ) {
         $this->passwordEncoder = $passwordEncoder;
         $this->clock = $clock;
+        $this->container = $container;
     }
 
     /**
@@ -70,7 +81,8 @@ final class UserFixture extends Fixture
         // E.g : Login : user0@userfixtures.fixtures
         //     : Password : password0
 
-        $faker = Faker\Factory::create('fr_FR');
+        $faker
+            = Faker\Factory::create($this->container->getParameter('locale'));
 
         for ($i = 0; $i < 10; $i++) {
             $user = new User();

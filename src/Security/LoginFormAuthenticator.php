@@ -38,6 +38,9 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
  */
 final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
+    /**
+     * Three functions based on targetPath
+     */
     use TargetPathTrait;
 
     /**
@@ -85,7 +88,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      *
      * @return bool
      */
-    public function supports(Request $request)
+    public function supports(Request $request): bool
     {
         return 'app_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
@@ -125,7 +128,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
-            throw new InvalidCsrfTokenException();
+            throw new InvalidCsrfTokenException('Invalid CSRF Token.');
         }
 
         $user = $this->entityManager->getRepository(User::class)
@@ -149,7 +152,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      *
      * @return bool
      */
-    public function checkCredentials($credentials, UserInterface $user)
+    public function checkCredentials($credentials, UserInterface $user): bool
     {
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
@@ -176,7 +179,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      * Return login route
      * @return string
      */
-    protected function getLoginUrl()
+    protected function getLoginUrl(): string
     {
         return $this->router->generate('app_login');
     }

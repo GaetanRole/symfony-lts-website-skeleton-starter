@@ -1,7 +1,6 @@
 ###> General (MacOS, PHPStorm...) ###
 .idea/*
 npm-debug.log
-yarn-error.log
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -13,6 +12,7 @@ yarn-error.log
 /public/bundles/
 /var/
 /vendor/
+/src/DataFixtures/AppFixtures.php
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -27,7 +27,7 @@ yarn-error.log
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/
-npm-debug.log
+/assets/css
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 

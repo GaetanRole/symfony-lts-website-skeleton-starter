@@ -13,7 +13,7 @@ User auth is based on Symfony form login authentication.
 Requirements
 ------------
 
-  * Php ^7.2    http://php.net/manual/fr/install.php;
+  * Php ^7.1.3    http://php.net/manual/fr/install.php;
   * Composer    https://getcomposer.org/download/;
   * NPM         https://www.npmjs.com/get-npm (or `sudo apt install nodejs npm`);
   * and the [usual Symfony application requirements][4].
@@ -53,7 +53,7 @@ $ bin/console s:r
 $ bin/console c:c --env=dev
 ```
 
-For loading User's [fixture][6] :
+For loading User's [fixture][6] (fixture based on default locale) :
 ```bash
 $ bin/console d:f:l
 ```
@@ -130,4 +130,4 @@ Screenshot
 [9]: https://symfony.com/doc/current/security.html
 [10]: https://symfony.com/doc/current/console.html
 
-01/12/2018 gaetan@wildcodeschool.fr
+08/12/2018 gaetan@wildcodeschool.fr
