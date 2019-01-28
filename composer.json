@@ -8,8 +8,8 @@
     "ext-ctype": "*",
     "ext-iconv": "*",
     "innmind/time-continuum": "dev-master",
-    "sensio/framework-extra-bundle": "^5.1",
     "sensiolabs/security-checker": "^5.0",
+    "sensio/framework-extra-bundle": "^5.1",
     "symfony/asset": "4.2.*",
     "symfony/console": "4.2.*",
     "symfony/dotenv": "4.2.*",
@@ -18,10 +18,10 @@
     "symfony/form": "4.2.*",
     "symfony/framework-bundle": "4.2.*",
     "symfony/monolog-bundle": "^3.1",
-    "symfony/orm-pack": "1.*",
+    "symfony/orm-pack": "*",
     "symfony/process": "4.2.*",
     "symfony/security-bundle": "4.2.*",
-    "symfony/serializer-pack": "1.*",
+    "symfony/serializer-pack": "*",
     "symfony/swiftmailer-bundle": "^3.1",
     "symfony/translation": "4.2.*",
     "symfony/twig-bundle": "4.2.*",
@@ -31,15 +31,15 @@
     "symfony/yaml": "4.2.*"
   },
   "require-dev": {
+    "symfony/debug-pack": "*",
+    "symfony/maker-bundle": "^1.0",
+    "symfony/profiler-pack": "*",
+    "symfony/test-pack": "*",
+    "symfony/web-server-bundle": "4.2.*",
     "doctrine/doctrine-fixtures-bundle": "3.*",
     "fzaninotto/faker": "dev-master",
     "roave/security-advisories": "dev-master",
-    "squizlabs/php_codesniffer": "3.*",
-    "symfony/debug-pack": "1.*",
-    "symfony/maker-bundle": "^1.0",
-    "symfony/profiler-pack": "1.*",
-    "symfony/test-pack": "1.*",
-    "symfony/web-server-bundle": "4.2.*"
+    "squizlabs/php_codesniffer": "3.*"
   },
   "config": {
     "preferred-install": {
@@ -84,7 +84,7 @@
   },
   "extra": {
     "symfony": {
-      "allow-contrib": true,
+      "allow-contrib": false,
       "require": "4.2.*"
     }
   }
