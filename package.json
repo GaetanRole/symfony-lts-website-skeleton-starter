@@ -1,7 +1,7 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.21.1",
-        "webpack-notifier": "^1.6.0"
+        "@symfony/webpack-encore": "^0.24.0",
+        "webpack-notifier": "^1.7.0"
     },
     "license": "UNLICENSED",
     "private": true,
@@ -12,11 +12,11 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.6.3",
-        "bootstrap": "^4.2.1",
+        "@fortawesome/fontawesome-free": "^5.7.2",
+        "bootstrap": "^4.3.1",
         "jquery": "^3.3.1",
         "node-sass": "^4.11.0",
-        "popper.js": "^1.14.6",
+        "popper.js": "^1.14.7",
         "sass-loader": "^7.1.0"
     }
 }
