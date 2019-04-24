@@ -5,221 +5,193 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="Nlm9tjS" resname="register.header.description">
-        <source>register.header.description</source>
-        <target>Mettez ici une description pour l'inscription.</target>
-      </trans-unit>
-      <trans-unit id="rGwd2xV" resname="register.header.title">
-        <source>register.header.title</source>
-        <target>Inscription</target>
-      </trans-unit>
-      <trans-unit id="BLvnNs0" resname="register.body.firsttitle">
-        <source>register.body.firsttitle</source>
-        <target>S'inscrire !</target>
-      </trans-unit>
-      <trans-unit id="im069TB" resname="register.body.placeholder.firstname">
-        <source>register.body.placeholder.firstname</source>
-        <target>Entrez votre prénom</target>
-      </trans-unit>
-      <trans-unit id="TdEgUF8" resname="register.body.placeholder.lastname">
-        <source>register.body.placeholder.lastname</source>
-        <target>Entrez votre nom</target>
-      </trans-unit>
-      <trans-unit id="9VxLNxr" resname="register.body.placeholder.email">
-        <source>register.body.placeholder.email</source>
-        <target>Entrez votre email</target>
-      </trans-unit>
-      <trans-unit id="oWpBUB6" resname="register.body.placeholder.password">
-        <source>register.body.placeholder.password</source>
-        <target>Entrez votre mot de passe (8 min et 1 chiffre)</target>
-      </trans-unit>
-      <trans-unit id="8NVH8Wz" resname="register.body.placeholder.plainpassword">
-        <source>register.body.placeholder.plainpassword</source>
-        <target>Confirmez votre mot de passe</target>
-      </trans-unit>
-      <trans-unit id="k.B8luI" resname="register.body.label.terms">
-        <source>register.body.label.terms</source>
-        <target>Acceptez les conditions</target>
-      </trans-unit>
-      <trans-unit id="22IZqqN" resname="register.body.submit">
-        <source>register.body.submit</source>
-        <target>Envoyer</target>
-      </trans-unit>
-      <trans-unit id="jZ3ROm7" resname="index.body.ul.second">
-        <source>index.body.ul.second</source>
-        <target>Liens utiles : </target>
-      </trans-unit>
-      <trans-unit id="dKpPQTd" resname="button.homepage">
-        <source>button.homepage</source>
-        <target>Accès à la page d'accueil.</target>
-      </trans-unit>
-      <trans-unit id="XT06o0z" resname="button.login">
-        <source>button.login</source>
-        <target>Accès à la page login</target>
-      </trans-unit>
-      <trans-unit id="WHCFg9r" resname="default.header.description">
-        <source>default.header.description</source>
-        <target>Ce projet est un repo de départ avec tous les éléments nécessaires pour bien commencer, Webpack, Time Continuum et autres.</target>
-      </trans-unit>
-      <trans-unit id="qE9Vgyb" resname="default.footer.text">
-        <source>default.footer.text</source>
-        <target>Mettez un footer ici !</target>
-      </trans-unit>
-      <trans-unit id="8M05knO" resname="login.header.description">
-        <source>login.header.description</source>
-        <target>Mettez ici une description pour la connexion.</target>
-      </trans-unit>
-      <trans-unit id="6IMrVUV" resname="login.header.title">
-        <source>login.header.title</source>
-        <target>Connexion</target>
-      </trans-unit>
-      <trans-unit id="LjnIZzV" resname="login.body.firsttitle">
-        <source>login.body.firsttitle</source>
-        <target>Se connecter !</target>
-      </trans-unit>
-      <trans-unit id="UoYroRW" resname="login.body.label.email">
-        <source>login.body.label.email</source>
-        <target>Email</target>
-      </trans-unit>
-      <trans-unit id="CvYFkv4" resname="login.body.placeholder.email">
-        <source>login.body.placeholder.email</source>
-        <target>Entrez un email en rapport avec la fixture User</target>
-      </trans-unit>
-      <trans-unit id="30Lx45." resname="login.body.help.email">
-        <source>login.body.help.email</source>
-        <target>E.g: Nous ne partagerons jamais votre email. Pour la connexion regardez UserFixture.</target>
-      </trans-unit>
-      <trans-unit id="P1zidLW" resname="login.body.label.password">
-        <source>login.body.label.password</source>
-        <target>Mot de passe</target>
-      </trans-unit>
-      <trans-unit id="xwNyEfY" resname="login.body.placeholder.password">
-        <source>login.body.placeholder.password</source>
-        <target>Entrez votre mot de passe basé sur la fixture User</target>
-      </trans-unit>
-      <trans-unit id="qhthQUl" resname="login.body.label.rememberme">
-        <source>login.body.label.rememberme</source>
-        <target>Se souvenir de moi</target>
-      </trans-unit>
-      <trans-unit id="ZDeUpBb" resname="login.body.submit">
-        <source>login.body.submit</source>
-        <target>Se connecter</target>
-      </trans-unit>
-      <trans-unit id="yKuTQ_i" resname="button.register">
-        <source>button.register</source>
-        <target>Accès à la page d'inscription.</target>
-      </trans-unit>
-      <trans-unit id="xbEZUI3" resname="index.header.description">
-        <source>index.header.description</source>
-        <target>Mettez ici une description pour la page d'accueil.</target>
-      </trans-unit>
-      <trans-unit id="usHgcv1" resname="index.header.title">
-        <source>index.header.title</source>
-        <target>Accueil</target>
-      </trans-unit>
-      <trans-unit id="xINyVzN" resname="index.body.firsttitle">
-        <source>index.body.firsttitle</source>
-        <target>Symfony 4 repo de départ</target>
-      </trans-unit>
-      <trans-unit id=".301nTx" resname="index.body.ul.first">
-        <source>index.body.ul.first</source>
-        <target>Sur le projet :</target>
-      </trans-unit>
-      <trans-unit id="q2Mzo_g" resname="index.body.ul.first.li.first">
-        <source>index.body.ul.first.li.first</source>
-        <target>Webpack Encore.</target>
-      </trans-unit>
-      <trans-unit id="zCD3XLa" resname="index.body.ul.first.li.second">
-        <source>index.body.ul.first.li.second</source>
-        <target>La librairie Time Continuum implémentée par le service GlobalClock.php.</target>
-      </trans-unit>
-      <trans-unit id="AN2He2h" resname="index.body.ul.second.li.first">
-        <source>index.body.ul.second.li.first</source>
-        <target>Page exemple utilisant Time Continuum.</target>
-      </trans-unit>
-      <trans-unit id="bmb_Zqq" resname="index.body.ul.third">
-        <source>index.body.ul.third</source>
-        <target>Gestion utilisateur sans FOSUser :</target>
-      </trans-unit>
-      <trans-unit id="CxUhURY" resname="button.logout">
-        <source>button.logout</source>
-        <target>Se déconnecter.</target>
-      </trans-unit>
-      <trans-unit id="jL0J5GO" resname="button.user">
-        <source>button.user</source>
-        <target>Accès à la page profil de l'utilisateur.</target>
-      </trans-unit>
       <trans-unit id="sWrclnH" resname="user.header.title">
         <source>user.header.title</source>
-        <target>Mon compte</target>
+        <target>__user.header.title</target>
       </trans-unit>
       <trans-unit id="xQIzUks" resname="user.body.firsttitle">
         <source>user.body.firsttitle</source>
-        <target>Profil utilisateur</target>
+        <target>__user.body.firsttitle</target>
       </trans-unit>
       <trans-unit id="iPkWtfI" resname="user.jumbotron.title">
         <source>user.jumbotron.title</source>
-        <target>Bonjour %firstname% - %lastname%</target>
+        <target>__user.jumbotron.title</target>
       </trans-unit>
       <trans-unit id="J9nhJZ6" resname="user.jumbotron.description">
         <source>user.jumbotron.description</source>
-        <target>Une entrée Webpack unique est ajoutée sur cette page (ouvrir la console pour voir le message de user.js).</target>
+        <target>__user.jumbotron.description</target>
       </trans-unit>
-      <trans-unit id="rnIqzho" resname="timecontinuum.header.description">
-        <source>timecontinuum.header.description</source>
-        <target>Page d'exemples sur le composant Time Continuum</target>
+      <trans-unit id="CxUhURY" resname="button.logout">
+        <source>button.logout</source>
+        <target>__button.logout</target>
       </trans-unit>
-      <trans-unit id="EvgQjgw" resname="timecontinuum.header.title">
-        <source>timecontinuum.header.title</source>
-        <target>Time Continuum</target>
+      <trans-unit id="dKpPQTd" resname="button.homepage">
+        <source>button.homepage</source>
+        <target>__button.homepage</target>
       </trans-unit>
-      <trans-unit id="gUpKOXy" resname="timecontinuum.body.firsttitle">
-        <source>timecontinuum.body.firsttitle</source>
-        <target>Exemples Time Continuum</target>
+      <trans-unit id="xbEZUI3" resname="index.header.description">
+        <source>index.header.description</source>
+        <target>__index.header.description</target>
       </trans-unit>
-      <trans-unit id="ybM.XrN" resname="timecontinuum.body.ul.first">
-        <source>timecontinuum.body.ul.first</source>
-        <target>Provenant du service de l'horloge par défaut : </target>
+      <trans-unit id="usHgcv1" resname="index.header.title">
+        <source>index.header.title</source>
+        <target>__index.header.title</target>
       </trans-unit>
-      <trans-unit id="w0AatxQ" resname="timecontinuum.body.ul.first.li.first">
-        <source>timecontinuum.body.ul.first.li.first</source>
-        <target>L'horloge globale suivant le fuseau horaire : </target>
+      <trans-unit id="xINyVzN" resname="index.body.firsttitle">
+        <source>index.body.firsttitle</source>
+        <target>__index.body.firsttitle</target>
       </trans-unit>
-      <trans-unit id="sLH71cY" resname="timecontinuum.body.ul.first.li.second">
-        <source>timecontinuum.body.ul.first.li.second</source>
-        <target>Retour dans le temps (1 an, 2 mois, 24 minutes, 500 ms) : </target>
+      <trans-unit id=".301nTx" resname="index.body.ul.first">
+        <source>index.body.ul.first</source>
+        <target>__index.body.ul.first</target>
       </trans-unit>
-      <trans-unit id="xDjHvIN" resname="timecontinuum.body.ul.first.li.third">
-        <source>timecontinuum.body.ul.first.li.third</source>
-        <target>L'horloge de Paris : </target>
+      <trans-unit id="q2Mzo_g" resname="index.body.ul.first.li.first">
+        <source>index.body.ul.first.li.first</source>
+        <target>__index.body.ul.first.li.first</target>
       </trans-unit>
-      <trans-unit id="Gs_kOZU" resname="timecontinuum.body.ul.first.li.fourth">
-        <source>timecontinuum.body.ul.first.li.fourth</source>
-        <target>L'horloge de New York : </target>
+      <trans-unit id="zCD3XLa" resname="index.body.ul.first.li.second">
+        <source>index.body.ul.first.li.second</source>
+        <target>__index.body.ul.first.li.second</target>
       </trans-unit>
-      <trans-unit id="wCPP0Ec" resname="timecontinuum.body.ul.first.li.fifth">
-        <source>timecontinuum.body.ul.first.li.fifth</source>
-        <target>L'horloge de Paris avec des filtres Twig : </target>
+      <trans-unit id="jZ3ROm7" resname="index.body.ul.second">
+        <source>index.body.ul.second</source>
+        <target>__index.body.ul.second</target>
       </trans-unit>
-      <trans-unit id="umEq33D" resname="timecontinuum.body.ul.second">
-        <source>timecontinuum.body.ul.second</source>
-        <target>Retour à l'accueil.</target>
-      </trans-unit>
-      <trans-unit id="Ojt8kVR" resname="isauthenticatedfully.flash.redirection">
-        <source>isauthenticatedfully.flash.redirection</source>
-        <target>Vous ne pouvez pas accéder à cette page, étant déjà connecté !</target>
-      </trans-unit>
-      <trans-unit id="0WIHX8g" resname="account.registered">
-        <source>account.registered</source>
-        <target>Votre compte est bien enregistré !</target>
+      <trans-unit id="AN2He2h" resname="index.body.ul.second.li.first">
+        <source>index.body.ul.second.li.first</source>
+        <target>__index.body.ul.second.li.first</target>
       </trans-unit>
       <trans-unit id="B2l9iY4" resname="index.body.ul.second.li.second">
         <source>index.body.ul.second.li.second</source>
-        <target>Passer la locale en fr.</target>
+        <target>__index.body.ul.second.li.second</target>
       </trans-unit>
       <trans-unit id="jf6q_7z" resname="index.body.ul.second.li.third">
         <source>index.body.ul.second.li.third</source>
-        <target>Passer la locale en en.</target>
+        <target>__index.body.ul.second.li.third</target>
+      </trans-unit>
+      <trans-unit id="bmb_Zqq" resname="index.body.ul.third">
+        <source>index.body.ul.third</source>
+        <target>__index.body.ul.third</target>
+      </trans-unit>
+      <trans-unit id="XT06o0z" resname="button.login">
+        <source>button.login</source>
+        <target>__button.login</target>
+      </trans-unit>
+      <trans-unit id="yKuTQ_i" resname="button.register">
+        <source>button.register</source>
+        <target>__button.register</target>
+      </trans-unit>
+      <trans-unit id="jL0J5GO" resname="button.user">
+        <source>button.user</source>
+        <target>__button.user</target>
+      </trans-unit>
+      <trans-unit id="j7mtFaM" resname="base.head.meta.description">
+        <source>base.head.meta.description</source>
+        <target>__base.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="SNvq9F." resname="base.head.meta.title">
+        <source>base.head.meta.title</source>
+        <target>__base.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="qE9Vgyb" resname="default.footer.text">
+        <source>default.footer.text</source>
+        <target>__default.footer.text</target>
+      </trans-unit>
+      <trans-unit id="8M05knO" resname="login.header.description">
+        <source>login.header.description</source>
+        <target>__login.header.description</target>
+      </trans-unit>
+      <trans-unit id="6IMrVUV" resname="login.header.title">
+        <source>login.header.title</source>
+        <target>__login.header.title</target>
+      </trans-unit>
+      <trans-unit id="LjnIZzV" resname="login.body.firsttitle">
+        <source>login.body.firsttitle</source>
+        <target>__login.body.firsttitle</target>
+      </trans-unit>
+      <trans-unit id="gWHTIv8" resname="login.body.form.label.email">
+        <source>login.body.form.label.email</source>
+        <target>__login.body.form.label.email</target>
+      </trans-unit>
+      <trans-unit id="pICpDSq" resname="login.body.form.placeholder.email">
+        <source>login.body.form.placeholder.email</source>
+        <target>__login.body.form.placeholder.email</target>
+      </trans-unit>
+      <trans-unit id="mMrm2fY" resname="login.body.form.help.email">
+        <source>login.body.form.help.email</source>
+        <target>__login.body.form.help.email</target>
+      </trans-unit>
+      <trans-unit id="Pw0HiYK" resname="login.body.form.label.password">
+        <source>login.body.form.label.password</source>
+        <target>__login.body.form.label.password</target>
+      </trans-unit>
+      <trans-unit id="tgGJBF9" resname="login.body.form.placeholder.password">
+        <source>login.body.form.placeholder.password</source>
+        <target>__login.body.form.placeholder.password</target>
+      </trans-unit>
+      <trans-unit id="7hlQtgJ" resname="login.body.form.label.rememberme">
+        <source>login.body.form.label.rememberme</source>
+        <target>__login.body.form.label.rememberme</target>
+      </trans-unit>
+      <trans-unit id="j2BjBh_" resname="login.body.form.submit">
+        <source>login.body.form.submit</source>
+        <target>__login.body.form.submit</target>
+      </trans-unit>
+      <trans-unit id="Nlm9tjS" resname="register.header.description">
+        <source>register.header.description</source>
+        <target>__register.header.description</target>
+      </trans-unit>
+      <trans-unit id="rGwd2xV" resname="register.header.title">
+        <source>register.header.title</source>
+        <target>__register.header.title</target>
+      </trans-unit>
+      <trans-unit id="BLvnNs0" resname="register.body.firsttitle">
+        <source>register.body.firsttitle</source>
+        <target>__register.body.firsttitle</target>
+      </trans-unit>
+      <trans-unit id="bNX8iZb" resname="register.body.form.submit">
+        <source>register.body.form.submit</source>
+        <target>__register.body.form.submit</target>
+      </trans-unit>
+      <trans-unit id="rnIqzho" resname="timecontinuum.header.description">
+        <source>timecontinuum.header.description</source>
+        <target>__timecontinuum.header.description</target>
+      </trans-unit>
+      <trans-unit id="EvgQjgw" resname="timecontinuum.header.title">
+        <source>timecontinuum.header.title</source>
+        <target>__timecontinuum.header.title</target>
+      </trans-unit>
+      <trans-unit id="gUpKOXy" resname="timecontinuum.body.firsttitle">
+        <source>timecontinuum.body.firsttitle</source>
+        <target>__timecontinuum.body.firsttitle</target>
+      </trans-unit>
+      <trans-unit id="ybM.XrN" resname="timecontinuum.body.ul.first">
+        <source>timecontinuum.body.ul.first</source>
+        <target>__timecontinuum.body.ul.first</target>
+      </trans-unit>
+      <trans-unit id="w0AatxQ" resname="timecontinuum.body.ul.first.li.first">
+        <source>timecontinuum.body.ul.first.li.first</source>
+        <target>__timecontinuum.body.ul.first.li.first</target>
+      </trans-unit>
+      <trans-unit id="sLH71cY" resname="timecontinuum.body.ul.first.li.second">
+        <source>timecontinuum.body.ul.first.li.second</source>
+        <target>__timecontinuum.body.ul.first.li.second</target>
+      </trans-unit>
+      <trans-unit id="xDjHvIN" resname="timecontinuum.body.ul.first.li.third">
+        <source>timecontinuum.body.ul.first.li.third</source>
+        <target>__timecontinuum.body.ul.first.li.third</target>
+      </trans-unit>
+      <trans-unit id="Gs_kOZU" resname="timecontinuum.body.ul.first.li.fourth">
+        <source>timecontinuum.body.ul.first.li.fourth</source>
+        <target>__timecontinuum.body.ul.first.li.fourth</target>
+      </trans-unit>
+      <trans-unit id="wCPP0Ec" resname="timecontinuum.body.ul.first.li.fifth">
+        <source>timecontinuum.body.ul.first.li.fifth</source>
+        <target>__timecontinuum.body.ul.first.li.fifth</target>
+      </trans-unit>
+      <trans-unit id="umEq33D" resname="timecontinuum.body.ul.second">
+        <source>timecontinuum.body.ul.second</source>
+        <target>__timecontinuum.body.ul.second</target>
       </trans-unit>
     </body>
   </file>

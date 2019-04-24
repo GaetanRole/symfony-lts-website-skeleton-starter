@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block description %}{{ 'login.header.description'|trans }}{% endblock %}
+{% block description 'login.header.description'|trans %}
 
-{% block title %}{{ 'login.header.title'|trans }}{% endblock %}
+{% block title 'login.header.title'|trans %}
+
+{% block body_id 'login' %}
 
 {% block body %}
     <section>
         <div class="container text-center">
             <div class="row mb-4">
                 <div class="col">
-                    <h1><i class="fas fa-user-lock"></i> {{ 'login.body.firsttitle'|trans|upper }}</h1>
+                    <h1><span class="fas fa-user-lock"></span> {{ 'login.body.firsttitle'|trans|upper }}</h1>
                 </div>
             </div>
             <div class="row">
@@ -21,27 +23,27 @@
 
                         {% for message in app.flashes('registration-success') %}
                             <div class="alert alert-success">
-                                <i class="fas fa-info"></i> {{ message }}
+                                <span class="fas fa-info"></span> {{ message }}
                             </div>
                         {% endfor %}
 
                         <div class="form-group">
-                            <label for="inputEmail" class="sr-only">{{ 'login.body.label.email'|trans }}</label>
+                            <label for="inputEmail" class="sr-only">{{ 'login.body.form.label.email'|trans }}</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                                    <div class="input-group-text"><span class="fas fa-envelope"></span></div>
                                 </div>
-                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="{{ 'login.body.placeholder.email'|trans }}" required autofocus>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="{{ 'login.body.form.placeholder.email'|trans }}" required autofocus>
                             </div>
-                            <small id="emailHelp" class="form-text text-muted">{{ 'login.body.help.email'|trans }}</small>
+                            <small id="emailHelp" class="form-text text-muted">{{ 'login.body.form.help.email'|trans }}</small>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword" class="sr-only">{{ 'login.body.label.password'|trans }}</label>
+                            <label for="inputPassword" class="sr-only">{{ 'login.body.form.label.password'|trans }}</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                                    <div class="input-group-text"><span class="fas fa-lock"></span></div>
                                 </div>
-                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="{{ 'login.body.placeholder.password'|trans }}" required>
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="{{ 'login.body.form.placeholder.password'|trans }}" required>
                             </div>
                         </div>
 
@@ -49,10 +51,10 @@
 
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="remember_me" name="_remember_me">
-                            <label for="remember_me" class="form-check-label">{{ 'login.body.label.rememberme'|trans }}</label>
+                            <label for="remember_me" class="form-check-label">{{ 'login.body.form.label.rememberme'|trans }}</label>
                         </div>
 
-                        <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> {{ 'login.body.submit'|trans }}</button>
+                        <button type="submit" class="btn btn-success"><span class="fas fa-sign-in-alt"></span> {{ 'login.body.form.submit'|trans }}</button>
                     </form>
                 </div>
             </div>
@@ -60,8 +62,8 @@
                 <div class="col">
                     <u>{{ 'index.body.ul.second'|trans }}</u>
                     <ul>
-                        <li><a href="{{ path('index') }}">{{ 'button.homepage'|trans }}</a></li>
-                        <li><a href="{{ path('user_registration') }}">{{ 'button.register'|trans }}</a></li>
+                        <li><a href="{{ path('app_index') }}">{{ 'button.homepage'|trans }}</a></li>
+                        <li><a href="{{ path('app_user_registration') }}">{{ 'button.register'|trans }}</a></li>
                     </ul>
                 </div>
             </div>

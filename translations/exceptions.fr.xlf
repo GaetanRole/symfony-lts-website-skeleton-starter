@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="nkKf.nM" resname="security.authenticator.user.csrf_token.exception">
+        <source>security.authenticator.user.csrf_token.exception</source>
+        <target>_security.authenticator.user.csrf_token.exception</target>
+      </trans-unit>
+      <trans-unit id="BT9L16I" resname="security.authenticator.user.authentication.exception">
+        <source>security.authenticator.user.authentication.exception</source>
+        <target>__security.authenticator.user.authentication.exception</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

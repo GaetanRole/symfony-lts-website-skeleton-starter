@@ -22,9 +22,7 @@ Encore
     .autoProvidejQuery()
     .splitEntryChunks()
 
-    /*
-     * Copy all files from asset/ with path
-     */
+    // Copy all files from assets/ with path
     .configureFilenames({
         images: '[path][name].[hash:8].[ext]',
     })

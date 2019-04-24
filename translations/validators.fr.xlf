@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="fyQdvKq" resname="valitor.user.unique.message">
+        <source>valitor.user.unique.message</source>
+        <target>__valitor.user.unique.message</target>
+      </trans-unit>
+      <trans-unit id="GyJDrol" resname="validator.user.email.email">
+        <source>validator.user.email.email</source>
+        <target>__validator.user.email.email</target>
+      </trans-unit>
+      <trans-unit id="3saynfW" resname="validator.user.email.not_blank">
+        <source>validator.user.email.not_blank</source>
+        <target>__validator.user.email.not_blank.</target>
+      </trans-unit>
+      <trans-unit id="JKmqon_" resname="validator.user.email.max_length">
+        <source>validator.user.email.max_length</source>
+        <target>__validator.user.email.max_length</target>
+      </trans-unit>
+      <trans-unit id="BQ4RhbO" resname="validator.user.plain_password.regex">
+        <source>validator.user.plain_password.regex</source>
+        <target>__validator.user.plain_password.regex</target>
+      </trans-unit>
+      <trans-unit id="4ihSI17" resname="validator.user.firstname.not_blank">
+        <source>validator.user.firstname.not_blank</source>
+        <target>__validator.user.firstname.not_blank</target>
+      </trans-unit>
+      <trans-unit id="SeFtAbp" resname="validator.user.firstname.regex">
+        <source>validator.user.firstname.regex</source>
+        <target>__validator.user.firstname.regex</target>
+      </trans-unit>
+      <trans-unit id="BJSRYQi" resname="validator.user.firstname.min_length">
+        <source>validator.user.firstname.min_length</source>
+        <target>__validator.user.firstname.min_length</target>
+      </trans-unit>
+      <trans-unit id="2qGEC6E" resname="validator.user.firstname.max_length">
+        <source>validator.user.firstname.max_length</source>
+        <target>__validator.user.firstname.max_length</target>
+      </trans-unit>
+      <trans-unit id="5mcBNT9" resname="validator.user.lastname.not_blank">
+        <source>validator.user.lastname.not_blank</source>
+        <target>__validator.user.lastname.not_blank</target>
+      </trans-unit>
+      <trans-unit id="03gNIGR" resname="validator.user.lastname.regex">
+        <source>validator.user.lastname.regex</source>
+        <target>__validator.user.lastname.regex</target>
+      </trans-unit>
+      <trans-unit id="Q2uN6bR" resname="validator.user.lastname.min_length">
+        <source>validator.user.lastname.min_length</source>
+        <target>__validator.user.lastname.min_length</target>
+      </trans-unit>
+      <trans-unit id="VIIq5em" resname="validator.user.lastname.max_length">
+        <source>validator.user.lastname.max_length</source>
+        <target>__validator.user.lastname.max_length</target>
+      </trans-unit>
+      <trans-unit id="PUwyL22" resname="validator.user.phone_number.regex">
+        <source>validator.user.phone_number.regex</source>
+        <target>__validator.user.phone_number.regex</target>
+      </trans-unit>
+      <trans-unit id="78cyXgR" resname="form.user.password.invalid.message">
+        <source>form.user.password.invalid.message</source>
+        <target>__form.user.password.invalid.message</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

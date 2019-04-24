@@ -4,12 +4,25 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.5/phpunit.xsd"
          backupGlobals="false"
+         backupStaticAttributes="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="true"
          colors="true"
-         bootstrap="src/.bootstrap.php"
->
+         verbose="true"
+         bootstrap="config/bootstrap.php"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         beStrictAboutResourceUsageDuringSmallTests="true">
+
     <php>
         <ini name="error_reporting" value="-1" />
+        <env name="SHELL_VERBOSITY" value="-1" />
         <env name="APP_ENV" value="test" />
+        <env name="APP_DEBUG" value="1" />
     </php>
 
     <testsuites>
@@ -27,4 +40,5 @@
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
+
 </phpunit>

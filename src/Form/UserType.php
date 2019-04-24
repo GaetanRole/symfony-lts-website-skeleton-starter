@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Registration form File
- *
- * PHP Version 7.2
- *
- * @category User
- * @package  App\Form
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
- */
-
 namespace App\Form;
 
 use App\Entity\User;
@@ -24,28 +14,23 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
 /**
- * Registration class UserType
- *
- * @category User
- * @package  App\Form
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
-class UserType extends AbstractType
+final class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-        : void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add(
                 'firstName',
                 TextType::class,
                 [
-                    'label' => 'First name',
-                    'translation_domain' => 'messages',
+                    'label' => 'form.user.firstname.label',
                     'attr' => [
+                        'placeholder' => 'form.user.firstname.placeholder',
                         'minLength' => '2',
                         'maxLength' => '32'
                     ]
@@ -55,22 +40,33 @@ class UserType extends AbstractType
                 'lastName',
                 TextType::class,
                 [
-                    'label' => 'Last name',
-                    'translation_domain' => 'messages',
+                    'label' => 'form.user.lastname.label',
                     'attr' => [
+                        'placeholder' => 'form.user.lastname.placeholder',
                         'minLength' => '2',
                         'maxLength' => '32'
                     ]
                 ]
             )
-            ->add('email', EmailType::class)
+            ->add(
+                'email',
+                EmailType::class,
+                [
+                    'label' => 'form.user.email.label',
+                    'attr' => [
+                        'placeholder' => 'form.user.email.placeholder',
+                        'maxLength' => '64',
+                    ],
+                ]
+            )
             ->add(
                 'plainPassword',
                 RepeatedType::class,
                 [
                     'type' => PasswordType::class,
-                    'first_options'  => ['label' => 'Password'],
-                    'second_options' => ['label' => 'Repeat Password'],
+                    'invalid_message' => 'form.user.password.invalid.message',
+                    'first_options'  => ['attr' => ['placeholder' => 'form.user.password.first.placeholder']],
+                    'second_options' => ['attr' => ['placeholder' => 'form.user.password.second.placeholder']],
                 ]
             )
             ->add(
@@ -78,8 +74,8 @@ class UserType extends AbstractType
                 CheckboxType::class,
                 [
                     'mapped' => false,
-                    'label' => 'Check accepted terms',
-                    'translation_domain' => 'messages',
+                    'required' => true,
+                    'label' => 'form.user.terms.label',
                     'constraints' => new IsTrue(),
                 ]
             );
@@ -88,12 +84,12 @@ class UserType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-        : void
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(
             [
                 'data_class' => User::class,
+                'translation_domain' => 'forms',
             ]
         );
     }

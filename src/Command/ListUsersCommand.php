@@ -1,15 +1,5 @@
 <?php
 
-/**
- * User Command File
- *
- * PHP Version 7.2
- *
- * @category User
- * @package  App\Command
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
- */
-
 namespace App\Command;
 
 use App\Entity\User;
@@ -32,33 +22,25 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  * For more advanced uses, commands can be defined as services too. See
  * https://symfony.com/doc/current/console/commands_as_services.html
  *
- * @category User
- * @package  App\Command
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
-class ListUsersCommand extends Command
+final class ListUsersCommand extends Command
 {
-    // a good practice is to use the 'app:' prefix
-    // to group all your custom application commands
+    /* A good practice is to use the 'app:' prefix
+    to group all your custom application commands */
+
     /**
-     * Command used in console
-     *
+     * Command used in console.
      * @var string
      */
     protected static $defaultName = 'app:list-users';
 
     /**
-     * All given users
-     *
+     * All given users.
      * @var UserRepository
      */
     private $users;
 
-    /**
-     * ListUsersCommand constructor.
-     *
-     * @param UserRepository $users Given entity
-     */
     public function __construct(UserRepository $users)
     {
         parent::__construct();
@@ -68,8 +50,6 @@ class ListUsersCommand extends Command
 
     /**
      * {@inheritdoc}
-     *
-     * @return void
      */
     protected function configure(): void
     {
@@ -97,17 +77,11 @@ class ListUsersCommand extends Command
             );
     }
 
-
     /**
      * This method is executed after initialize(). It usually contains the logic
      * to execute to complete this command task.
-     *
-     * @param InputInterface  $input  Command option
-     * @param OutputInterface $output Standard print
-     *
-     * @return int|null|void
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $maxResults = $input->getOption('max-results');
         // Use ->findBy() instead of ->findAll() to allow result sorting and limiting
@@ -116,7 +90,7 @@ class ListUsersCommand extends Command
         // Doctrine query returns an array of objects
         // and we need an array of plain arrays
         $usersAsPlainArrays = array_map(
-            function (User $user) {
+            static function (User $user) {
                 return [
                     $user->getId(),
                     $user->getFirstName(),

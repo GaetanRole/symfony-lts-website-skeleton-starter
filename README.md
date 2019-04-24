@@ -2,28 +2,33 @@
     <img src="https://symfony.com/logos/symfony_black_02.svg">
 </a></p>
 
-Symfony 4 starter kit
-=====================
+# Symfony-website-skeleton-starter
 
-I created a starter kit for Symfony 4 to show how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3]
-and so on (such as Fixtures (Faker), GuardAuthenticator, Security:checker, RememberIn, Translations, Commands ...),
-following the recommended best practices.
+I created a starter kit for Symfony 4, based on the website-skeleton provided by Symfony itself, to show how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3]
+and so on (such as fixtures by Faker, guardAuthenticator, security:checker, rememberIn, translations, commands ...),
+**following the recommended SensioLabs best practices**.
 User auth is based on Symfony form login authentication.
 
-Requirements
-------------
+**This repository is useful for beginners.**
 
-  * Php ^7.1.3    http://php.net/manual/fr/install.php;
-  * Composer    https://getcomposer.org/download/;
-  * NPM         https://www.npmjs.com/get-npm (or `sudo apt install nodejs npm`);
-  * and the [usual Symfony application requirements][4].
+## Installation instructions
 
-Installation
-------------
+### Project requirements
+
+- [PHP ^7.1.3](http://php.net/manual/fr/install.php)
+- [Composer](https://getcomposer.org/download)
+- [Yarn](https://yarnpkg.com/lang/en/)
+- and the [usual Symfony application requirements][4].
+
+### Project view
+
+![Alt text](symfony_starter_kit_readme_screenshot.png?raw=true "Default page")
+
+### Installation
 
 1 . Clone the current repository.
 
-2 . Move in and create few `.env.{environment}.local` files according to your environments with your default configuration
+2 . Move in and create few `.env.{environment}.local` files, according to your environments with your default configuration
 or only one global `.env.local`. **This one is not committed to the shared repository.**
  
 > `.env` equals to the last `.env.dist` file before [november 2018][5].
@@ -33,32 +38,33 @@ or only one global `.env.local`. **This one is not committed to the shared repos
 ```bash
 $ composer install
 $ composer update
-$ npm install
-$ npm run-script dev
-$ bin/console d:d:c (create the project's DB)
-$ bin/console d:m:m (run the migration, always commit)
-$ bin/console d:m:s (check if everything is updated)
+$ yarn install
+$ yarn run dev
+$ bin/console doctrine:database:create
+$ bin/console doctrine:migration:migrate
+$ bin/console doctrine:migration:secure
 ```
-3 .b. Or execute a simple shell script if your DB is already set up :
+3 .b. Or just call the Makefile's install rule and set your DATABASE_URL :
 
 ```bash
-$ ./install-dependencies.sh
+$ make install
 ```
 
-Usage
------
+> The project's Makefile has few rules which could be very useful. Take a look on it !
+
+## Usage
 
 ```bash
-$ bin/console s:r
-$ bin/console c:c --env=dev
+$ bin/console server:run
 ```
 
 For loading User's [fixture][6] (fixture based on default locale) :
+
 ```bash
-$ bin/console d:f:l
+$ bin/console doctrine:fixture:load
 ```
 
-For [translation][7] to XLIFF files (`app_locales: en|fr`) :
+For [translation][7] to XLIFF files (app_locales: ['fr', '%locale%']) :
 
 ```bash
 $ bin/console translation:update --output-format xlf --dump-messages --force en
@@ -73,51 +79,43 @@ $ ./vendor/bin/phpcs src/[FILE]
 ```
 
 To see all available routes :
+
 ```bash
-$ bin/console d:r
+$ bin/console debug:router
 ```
 
-To see all services :
+To see all services 
+
 ```bash
-$ bin/console d:c
+$ bin/console debug:container
 ```
 
-User
------
+## User
 
 Current [User][9] entity has some fields that are required or not.
-Feel free to change it according to your logic, such as adding canonical fields, salt, plainPassword, lastLogin and others : 
+Feel free to change it according to your logic, such as adding canonical fields, salt, lastLogin and others : 
+
 ```bash
 $ bin/console make:entity
 $ User
 ```
 
 And do not forget to update your User's fixture :
+
 ```bash
-$ bin/console d:f:l
+$ bin/console doctrine:fixture:load
 ```
 
-Personal commands
------
-To use a personal sample [command][10] (displaying all users from DB) :
+## Personal commands
+
+To use a personal [command][10] (displaying all users from DB) :
 
 ```bash
 $ bin/console app:list-users --help
 $ bin/console app:list-users
 ```
 
-Do not hesitate to create other commands such as a promotion command or a user creation ...
-
-Personal routes
------
-- `{SERVER_HOST}/`
-- `{SERVER_HOST}/login`
-- `{SERVER_HOST}/logout`
-- `{SERVER_HOST}/profile` (granted for [ROLE_USER])
-
-Screenshot
------
-![Alt text](symfony_starter_kit_readme_screenshot.png?raw=true "Default page")
+Feel free to create other commands such as a promotion command or a user creation ...
 
 [1]: https://symfony.com/doc/current/frontend.html
 [2]: https://github.com/Innmind/TimeContinuum
@@ -130,4 +128,8 @@ Screenshot
 [9]: https://symfony.com/doc/current/security.html
 [10]: https://symfony.com/doc/current/console.html
 
-13/03/2018 gaetan.role@gmail.com
+## Contributing
+
+Do not hesitate to improve this repository, by creating your PR on GitHub with a description which explains it.
+
+Ask your question on `gaetan.role-dubruille@sensiolabs.com`.

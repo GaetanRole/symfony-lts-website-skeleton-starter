@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="EZL8s50" resname="form.user.firstname.label">
+        <source>form.user.firstname.label</source>
+        <target>__form.user.firstname.label</target>
+      </trans-unit>
+      <trans-unit id="pBzFd7q" resname="form.user.firstname.placeholder">
+        <source>form.user.firstname.placeholder</source>
+        <target>__form.user.firstname.placeholder</target>
+      </trans-unit>
+      <trans-unit id="KmGo6VI" resname="form.user.lastname.label">
+        <source>form.user.lastname.label</source>
+        <target>__form.user.lastname.label</target>
+      </trans-unit>
+      <trans-unit id="mHWsqxP" resname="form.user.lastname.placeholder">
+        <source>form.user.lastname.placeholder</source>
+        <target>__form.user.lastname.placeholder</target>
+      </trans-unit>
+      <trans-unit id="kI7zk9E" resname="form.user.email.label">
+        <source>form.user.email.label</source>
+        <target>__form.user.email.label</target>
+      </trans-unit>
+      <trans-unit id="ew9RAAp" resname="form.user.email.placeholder">
+        <source>form.user.email.placeholder</source>
+        <target>__form.user.email.placeholder</target>
+      </trans-unit>
+      <trans-unit id="jiYpfUY" resname="form.user.password.first.placeholder">
+        <source>form.user.password.first.placeholder</source>
+        <target>__form.user.password.first.placeholder</target>
+      </trans-unit>
+      <trans-unit id="NEXhUqv" resname="form.user.password.second.placeholder">
+        <source>form.user.password.second.placeholder</source>
+        <target>__form.user.password.second.placeholder</target>
+      </trans-unit>
+      <trans-unit id="64iiOmJ" resname="form.user.terms.label">
+        <source>form.user.terms.label</source>
+        <target>__form.user.terms.label</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,21 +1,12 @@
 <?php
 
-/**
- * Login form with guard authenticator file
- *
- * PHP Version 7.2
- *
- * @category Authenticator
- * @package  App\Security
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
- */
-
 namespace App\Security;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
@@ -28,13 +19,10 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Login Form Authenticator class
- *
- * @category Authenticator
- * @package  App\Security
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
 final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
@@ -47,6 +35,11 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      * @var EntityManagerInterface
      */
     private $entityManager;
+
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
 
     /**
      * @var RouterInterface
@@ -63,45 +56,27 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     private $passwordEncoder;
 
-    /**
-     * LoginFormAuthenticator constructor.
-     *
-     * @param EntityManagerInterface       $entityManager
-     * @param RouterInterface              $router
-     * @param CsrfTokenManagerInterface    $csrfTokenManager
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     */
     public function __construct(
         EntityManagerInterface $entityManager,
+        TranslatorInterface $translator,
         RouterInterface $router,
         CsrfTokenManagerInterface $csrfTokenManager,
         UserPasswordEncoderInterface $passwordEncoder
     ) {
         $this->entityManager = $entityManager;
+        $this->translator = $translator;
         $this->router = $router;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return bool
-     */
     public function supports(Request $request): bool
     {
         return 'app_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
-    /**
-     * Get credentials from request
-     *
-     * @param Request $request
-     *
-     * @return array|mixed
-     */
-    public function getCredentials(Request $request)
+    public function getCredentials(Request $request): array
     {
         $credentials = [
             'email' => $request->request->get('email'),
@@ -117,54 +92,43 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     }
 
     /**
-     * Get current User by token
-     *
-     * @param mixed                 $credentials
-     * @param UserProviderInterface $userProvider
-     *
-     * @return null|object|UserInterface
+     * @return object|UserInterface|null
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
-            throw new InvalidCsrfTokenException('Invalid CSRF Token.');
+            throw new InvalidCsrfTokenException(
+                $this->translator->trans('security.authenticator.user.csrf_token.exception', [], 'exceptions')
+            );
         }
 
         $user = $this->entityManager->getRepository(User::class)
             ->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
-            // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException(
-                'Your credentials are invalid. Please verify your email and password.'
+                $this->translator->trans('security.authenticator.user.authentication.exception', [], 'exceptions')
             );
         }
 
         return $user;
     }
 
-    /**
-     * Check if password is valid
-     *
-     * @param mixed         $credentials
-     * @param UserInterface $user
-     *
-     * @return bool
-     */
     public function checkCredentials($credentials, UserInterface $user): bool
     {
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        $state = $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        if (false === $state) {
+            throw new CustomUserMessageAuthenticationException(
+                $this->translator->trans('security.authenticator.user.authentication.exception', [], 'exceptions')
+            );
+        }
+        return $state;
     }
 
     /**
-     * On authentication sucess return to user profile page
-     *
-     * @param Request        $request
-     * @param TokenInterface $token
-     * @param string         $providerKey
-     *
-     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * On authentication success return to user profile page
+     * @return null|Response|RedirectResponse
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
@@ -172,13 +136,9 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->router->generate('user_index'));
+        return new RedirectResponse($this->router->generate('app_user_index'));
     }
 
-    /**
-     * Return login route
-     * @return string
-     */
     protected function getLoginUrl(): string
     {
         return $this->router->generate('app_login');

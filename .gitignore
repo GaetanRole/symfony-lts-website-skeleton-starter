@@ -1,10 +1,23 @@
-###> General (MacOS, PHPStorm...) ###
+### Personnal
+/phpmd.xml
 .idea/*
 npm-debug.log
-.DS_Store
 .AppleDouble
 .LSOverride
-###< General (MacOS, PHPStorm...) ###
+
+###> behat/symfony2-extension ###
+/behat.yml
+###< behat/symfony2-extension ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -12,7 +25,7 @@ npm-debug.log
 /public/bundles/
 /var/
 /vendor/
-/src/DataFixtures/AppFixtures.php
+builds
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -28,15 +41,4 @@ npm-debug.log
 /node_modules/
 /public/build/
 /assets/css
-yarn-error.log
 ###< symfony/webpack-encore-bundle ###
-
-###> friendsofphp/php-cs-fixer ###
-/.php_cs
-/.php_cs.cache
-###< friendsofphp/php-cs-fixer ###
-
-###> squizlabs/php_codesniffer ###
-/.phpcs-cache
-/phpcs.xml
-###< squizlabs/php_codesniffer ###

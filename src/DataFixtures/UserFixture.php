@@ -1,62 +1,44 @@
 <?php
 
-/**
- * User Fixture file
- *
- * PHP Version 7.2
- *
- * @category User
- * @package  App\DataFixtures
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
- */
-
 namespace App\DataFixtures;
 
-use App\Entity\User;
 use Faker;
+use Exception;
 use App\Service\GlobalClock;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * User Fixture class
- *
- * @category User
- * @package  App\DataFixtures
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
 final class UserFixture extends Fixture
 {
     /**
-     * To encode password with injected service
-     *
+     * @var int public CONST for Users number in DB
+     */
+    public const USER_NB_TUPLE = 20;
+
+    /**
+     * To encode password with injected service.
      * @var UserPasswordEncoderInterface
      */
     private $passwordEncoder;
 
     /**
-     * Global project's clock
-     *
+     * Global project's clock.
      * @var GlobalClock
      */
     private $clock;
 
     /**
-     * Injecting Container Interface
-     *
+     * Injecting Container Interface.
      * @var ContainerInterface
      */
     private $container;
 
-    /**
-     * UserFixture constructor.
-     *
-     * @param UserPasswordEncoderInterface $passwordEncoder Var to encode password
-     * @param GlobalClock $clock Global project's clock
-     * @param ContainerInterface $container Container Interface
-     */
     public function __construct(
         UserPasswordEncoderInterface $passwordEncoder,
         GlobalClock $clock,
@@ -68,23 +50,20 @@ final class UserFixture extends Fixture
     }
 
     /**
-     * Load ten users to DB
-     *
-     * @param ObjectManager $manager Doctrine Manager
-     *
-     * @return void
+     * Load ten users to DB.
+     * @throws Exception From DateTimes
      */
     public function load(ObjectManager $manager): void
     {
-        // Loading ten users with different information by concat
+        // Loading USER_NB_TUPLE users with different information by concat
         // Enter a DateTime now by TimeContinuum service
         // E.g : Login : user0@userfixtures.fixtures
         //     : Password : password0
 
-        $faker
-            = Faker\Factory::create($this->container->getParameter('locale'));
+        $faker = Faker\Factory::create($this->container->getParameter('faker_locale'));
+        $roles = ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN'];
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < self::USER_NB_TUPLE; $i++) {
             $user = new User();
             $user
                 ->setEmail('user' . $i . '@userfixtures.fixtures')
@@ -99,6 +78,7 @@ final class UserFixture extends Fixture
                 ->setPhoneNumber($faker->phoneNumber)
                 ->setBirthDate($this->clock->getBirthDateSample())
                 ->setCreationDate($this->clock->getNowInDateTime());
+            $user->setRoles([$roles[array_rand($roles)]]);
             $manager->persist($user);
         }
         $manager->flush();

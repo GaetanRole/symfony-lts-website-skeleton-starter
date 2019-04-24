@@ -1,16 +1,5 @@
 <?php
 
-/**
- * Default Controller File
- * Default/Index controller file
- *
- * PHP Version 7.2
- *
- * @category Controller
- * @package  App\Controller
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
- */
-
 namespace App\Controller;
 
 use App\Service\GlobalClock;
@@ -19,20 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Default Controller
- *
- * @category Controller
- * @package  App\Controller
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
 final class DefaultController extends AbstractController
 {
     /**
-     * Home page
-     *
-     * @Route("/{_locale}", defaults={"_locale"="%locale%"},
-     *     name="index", methods={"GET", "HEAD"})
-     * @return     Response A Response instance
+     * @Route("/", name="app_index")
      */
     public function index(): Response
     {
@@ -40,13 +21,8 @@ final class DefaultController extends AbstractController
     }
 
     /**
-     * A sample method to use GlobalClock service based on TimeContinuum component
-     *
-     * @param GlobalClock $clock Given project's clock to handle all DateTime objects
-     *
-     * @Route("/{_locale}/time-continuum", defaults={"_locale"="%locale%"},
-     *     name="show_time_continuum", methods={"GET", "HEAD"})
-     * @return                   Response A Response instance
+     * A sample method to use GlobalClock service based on TimeContinuum component.
+     * @Route("/time-continuum", name="app_time_continuum")
      */
     public function showTimeContinuumSample(GlobalClock $clock): Response
     {

@@ -1,47 +1,27 @@
 <?php
 
-/**
- * User Controller File
- *
- * PHP Version 7.2
- *
- * @category User
- * @package  App\Controller
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
- */
-
 namespace App\Controller;
 
+use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class UserController
- *
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  * @IsGranted("ROLE_USER")
- *
- * @category User
- * @package  App\Controller
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
  */
 final class UserController extends AbstractController
 {
     /**
-     * Profile index page
-     *
-     * @Route("/{_locale}/profile", defaults={"_locale"="%locale%"},
-     *     name="user_index")
-     *
-     * @return     Response A Response instance
+     * @Route("/profile", name="app_user_index")
      */
     public function index(): Response
     {
         /**
          * Getting current user object
-         *
-         * @var \App\Entity\User $user
+         * @var User $user
          */
         $user = $this->getUser();
 

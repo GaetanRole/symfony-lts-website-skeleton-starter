@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Security Controller File
- *
- * PHP Version 7.2
- *
- * @category Security
- * @package  App\Controller
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
- */
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,28 +8,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Security Controller
- *
- * @category Security
- * @package  App\Controller
- * @author   Gaëtan Rolé-Dubruille <gaetan@wildcodeschool.fr>
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
 final class SecurityController extends AbstractController
 {
     /**
-     * Login method
-     *
-     * @param AuthenticationUtils $authenticationUtils get last Auth
-     * @param Security $security Security injection
-     * @param TranslatorInterface $translator Translator injection
-     *
-     * @Route("/{_locale}/login", defaults={"_locale"="%locale%"},
-     *     name="app_login")
-     *
-     * @return          RedirectResponse|Response A Response instance
+     * @Route("/login", name="app_login")
      */
     public function login(
         AuthenticationUtils $authenticationUtils,
@@ -49,9 +25,9 @@ final class SecurityController extends AbstractController
         if ($security->isGranted('IS_AUTHENTICATED_FULLY')) {
             $this->addFlash(
                 'danger',
-                $translator->trans('isauthenticatedfully.flash.redirection')
+                $translator->trans('is_authenticated_fully.flash.redirection', [], 'flashes')
             );
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_index');
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -67,9 +43,7 @@ final class SecurityController extends AbstractController
     }
 
     /**
-     * Logout method
-     * @Route("/{_locale}/logout", defaults={"_locale"="%locale%"},
-     *     name="app_logout")
+     * @Route("/logout", name="app_logout")
      */
     public function logout(): void
     {
