@@ -5,7 +5,7 @@
 # Symfony-website-skeleton-starter
 
 I created a starter kit for Symfony 4, based on the website-skeleton provided by Symfony itself, to show how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3]
-and so on (such as fixtures by Faker, guardAuthenticator, security:checker, rememberIn, translations, commands ...),
+and so on (such as fixtures by Faker, guardAuthenticator, security:checker, unit and functional tests, Q&A tools, translations, commands ...),
 **following the recommended SensioLabs best practices**.
 User auth is based on Symfony form login authentication.
 
@@ -44,18 +44,21 @@ $ bin/console doctrine:database:create
 $ bin/console doctrine:migration:migrate
 $ bin/console doctrine:migration:secure
 ```
-3 .b. Or just call the Makefile's install rule and set your DATABASE_URL :
+3 .b. Or just set your DATABASE_URL and call the Makefile's install rule :
 
 ```bash
 $ make install
 ```
 
-> The project's Makefile has few rules which could be very useful. Take a look on it !
+> The project's Makefile has few rules which could be very useful. 
+> In fact, you have some rules for Q&A tools and unit/functional tests.
+> Take a look on it !
 
 ## Usage
 
 ```bash
 $ bin/console server:run
+$ make start
 ```
 
 For loading User's [fixture][6] (fixture based on default locale) :

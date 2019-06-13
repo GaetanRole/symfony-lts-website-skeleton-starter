@@ -26,12 +26,7 @@ final class DefaultController extends AbstractController
      */
     public function showTimeContinuumSample(GlobalClock $clock): Response
     {
-        // Getting GlobalClock injection service
-        return $this->render(
-            'samples/time_continuum.html.twig',
-            [
-                'clock' => $clock
-            ]
-        );
+        // Getting GlobalClock Service injection
+        return $this->render('samples/time_continuum.html.twig', ['clock' => $clock]);
     }
 }

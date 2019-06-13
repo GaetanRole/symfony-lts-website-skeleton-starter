@@ -33,10 +33,7 @@ final class RegistrationController extends AbstractController
         EntityManagerInterface $em
     ) {
         if ($security->isGranted('IS_AUTHENTICATED_FULLY')) {
-            $this->addFlash(
-                'danger',
-                $translator->trans('is_authenticated_fully.flash.redirection', [], 'flashes')
-            );
+            $this->addFlash('danger', $translator->trans('is_authenticated_fully.flash.redirection', [], 'flashes'));
             return $this->redirectToRoute('app_index');
         }
 
@@ -67,11 +64,6 @@ final class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render(
-            'registration/register.html.twig',
-            [
-                'form' => $form->createView()
-            ]
-        );
+        return $this->render('registration/register.html.twig', ['form' => $form->createView()]);
     }
 }

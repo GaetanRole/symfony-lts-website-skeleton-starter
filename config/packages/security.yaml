@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-            algorithm: argon2i
+            algorithm: auto
 
     providers:
         app_user_provider:
