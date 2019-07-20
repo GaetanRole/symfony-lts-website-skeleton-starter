@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Service\GlobalClock;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>

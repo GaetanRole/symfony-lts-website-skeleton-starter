@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Form\UserType;
+use \Exception;
 use App\Entity\User;
+use App\Form\UserType;
 use App\Service\GlobalClock;
-use Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

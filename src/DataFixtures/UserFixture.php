@@ -3,9 +3,9 @@
 namespace App\DataFixtures;
 
 use Faker;
-use Exception;
-use App\Service\GlobalClock;
+use \Exception;
 use App\Entity\User;
+use App\Service\GlobalClock;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;

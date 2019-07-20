@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use Exception;
-use DateTimeInterface;
-use Ramsey\Uuid\Uuid;
+use \Exception;
 use Serializable;
+use Ramsey\Uuid\Uuid;
+use DateTimeInterface;
 use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

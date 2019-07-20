@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use Exception;
-use DateTime;
+use \Exception;
+use \DateTime;
 use Innmind\TimeContinuum\Format\ISO8601;
 use Innmind\TimeContinuum\Period\Earth\Year;
 use Innmind\TimeContinuum\Period\Earth\Month;
