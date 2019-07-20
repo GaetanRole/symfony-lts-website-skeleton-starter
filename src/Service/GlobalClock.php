@@ -19,7 +19,7 @@ use Innmind\TimeContinuum\PointInTimeInterface;
 /**
  * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
-final class GlobalClock
+class GlobalClock
 {
     /**
      * Global clock

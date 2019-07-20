@@ -3,12 +3,12 @@
         "@fortawesome/fontawesome-free": "^5.9",
         "@symfony/webpack-encore": "^0.27",
         "bootstrap": "^4.3",
-        "eslint": "^5.16",
+        "eslint": "^6.0",
         "jquery": "^3.4",
         "node-sass": "^4.12",
         "popper.js": "^1.15",
         "sass-loader": "^7.1",
-        "webpack-notifier": "^1.7"
+        "webpack-notifier": "^1.8"
     },
     "license": "UNLICENSED",
     "private": true,

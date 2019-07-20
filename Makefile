@@ -10,20 +10,20 @@ YARN				= yarn
 
 install:			.env.local vendor node_modules assets db-init start ## Launch project : copy the env and start the project with vendors, assets and DB
 
+install-prod:		.env.local
+					sed -i -E s/APP_ENV=[a-zA-Z]+/APP_ENV=prod/ .env.local
+					$(COMPOSER) install --no-dev --optimize-autoloader
+					$(YARN) install --production
+					$(YARN) run build
+					$(CONSOLE) cache:clear --env=prod
+
+sf-console\:%:		## Calling Symfony console
+					$(CONSOLE) $* $(ARGS)
+
 start:				## Start the server
 					$(CONSOLE) server:run
 
-clean:				qa-clean-conf ## Remove all generated files
-					rm -rvf ./vendor ./node_modules ./var
-					rm -rvf ./.env.local ./behat.yml
-
-clear:				db-destroy clear-assets clean ## Remove all generated files and db
-
-update:				node_modules ## Update dependencies
-					$(COMPOSER) update --lock --no-interaction
-					$(YARN) upgrade
-
-.PHONY:				install start clean clear update
+.PHONY:				install install-prod start
 
 ##
 ###-------------------------#
@@ -45,6 +45,7 @@ db-migrate:			## Execute doctrine:migrations:migrate
 
 db-fixtures: 		## Execute doctrine:fixtures:load
 					$(CONSOLE) doctrine:fixtures:load --no-interaction --purge-with-truncate
+					$(CONSOLE) app:list-users
 
 db-diff:			## Execute doctrine:migration:diff
 					$(CONSOLE) doctrine:migrations:diff --formatted
@@ -84,6 +85,9 @@ node_modules:		./package.json ## Yarn install
 cc:					## Clear cache
 					$(CONSOLE) cache:clear
 
+cc-prod:			## Clear cache for prod
+					$(CONSOLE) cache:clear --env=prod
+
 assets:				node_modules ## Install node_modules and compile with Yarn
 					$(YARN) run dev
 
@@ -93,7 +97,24 @@ watch:				node_modules ## Install node_modules and compile with Yarn with watch 
 clear-assets:		## Remove build directory
 					rm -rvf ./public/build
 
-.PHONY:				cc assets watch clear-assets
+clean:				qa-clean-conf ## Remove all generated files
+					rm -rvf ./vendor ./node_modules ./var
+					rm -rvf ./.env.local ./behat.yml
+
+clear:				db-destroy clear-assets clean ## Remove all generated files and db
+
+update:				node_modules ## Update dependencies
+					$(COMPOSER) update --lock --no-interaction
+					$(YARN) upgrade
+
+update-prod:		## Update dependencies for prod
+					$(COMPOSER) update --no-dev --optimize-autoloader
+					$(CONSOLE) cache:clear --env=prod
+					$(COMPOSER) dump-autoload --optimize --no-dev --classmap-authoritative
+					# sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx var/cache var/log
+                    # sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx var/cache var/log
+
+.PHONY:				cc cc-prod assets watch clear-assets clean clear update update-prod
 
 ##
 ###-------------------#
