@@ -4,19 +4,19 @@ declare(strict_types = 1);
 
 namespace App\Tests;
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpKernel\Client;
 
 /**
-     * @author  Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
+ * @author  Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
 abstract class AbstractWebTestCase extends WebTestCase
 {
-    /** @var Client A Client instance */
+    /** @var KernelBrowser A Web client */
     protected $webClient;
 
     /**
-     * Setting up $client var
+     * Setting up $webClient var
      */
     protected function setUp(): void
     {

@@ -8,7 +8,7 @@ YARN				= yarn
 ###---------------------------#
 ##
 
-install:			.env.local vendor node_modules assets db-init start ## Launch project : copy the env and start the project with vendors, assets and DB
+install:			.env.local vendor node_modules assets db-init ## Launch project : copy the env and start the project with vendors, assets and DB
 
 install-prod:		.env.local
 					sed -i -E s/APP_ENV=[a-zA-Z]+/APP_ENV=prod/ .env.local
@@ -20,10 +20,7 @@ install-prod:		.env.local
 sf-console\:%:		## Calling Symfony console
 					$(CONSOLE) $* $(ARGS)
 
-start:				## Start the server
-					$(CONSOLE) server:run
-
-.PHONY:				install install-prod start
+.PHONY:				install install-prod
 
 ##
 ###-------------------------#
@@ -66,14 +63,14 @@ db-update: 			vendor db-diff db-migrate ## Alias coupling db-diff and db-migrate
 ##
 
 vendor:				./composer.json ## Install dependencies (vendor) (might be slow)
-					echo 'Might be very slow for the first launch.'
+					@echo 'Might be very slow for the first launch.'
 					$(COMPOSER) install --prefer-dist --no-progress
 
 node_modules:		./package.json ## Yarn install
 					$(YARN) install
 
 .env.local:			./.env ## Create env.local
-					echo '\033[1;42m/\ The .env.local was just created. Feel free to put your config in it.\033[0m';
+					@echo '\033[1;42m/\ The .env.local was just created. Feel free to put your config in it.\033[0m';
 					cp ./.env ./.env.local;
 
 ##
@@ -167,12 +164,15 @@ lt:					vendor ## Lint twig templates
 ly:					vendor ## Lint yaml conf files
 					$(CONSOLE) lint:yaml ./config
 
-lint:				lt ly ## Lint twig and yaml files
+lc:					vendor ## Ensures that arguments injected into services match type declarations
+					$(CONSOLE) lint:container
+
+lint:				lt ly lc ## Lint twig and yaml files
 
 security:			vendor ## Check security of your dependencies (https://security.sensiolabs.org/)
 					./vendor/bin/security-checker security:check
 
-.PHONY:				lt ly lint security
+.PHONY:				lt ly lc lint security
 
 ##
 ###----------------------#
@@ -234,9 +234,9 @@ phpmd: 				phpmd.xml vendor ## PHPMD (https://github.com/phpmd/phpmd)
 ##
 
 qa-clean-conf:		## Erasing all quality assurance conf files
-					rm -rvf ./.php_cs ./phpcs.xml ./.phpcs-cache ./phpmd.xml
+					rm -rvf ./.php_cs ./phpcs.xml ./.phpcs-cache ./phpmd.xml ./.phpunit.result.cache
 
-qa: 				lt ly phpcs phpcbf phploc phpcpd phpmd ## Alias to run/apply Q&A tools
+qa: 				lt ly lc phpcs phpcbf phploc phpcpd phpmd ## Alias to run/apply Q&A tools
 
 tests: 				phpunit behat ## Alias coupling all PHPUnit tests and Behat
 
@@ -250,7 +250,7 @@ tests: 				phpunit behat ## Alias coupling all PHPUnit tests and Behat
 
 .DEFAULT_GOAL := 	help
 
-help:				## DEFAULT_GOAL : Display help messages for child Makefile
+help:				## Display all help messages
 					@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-20s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
 .PHONY: 			help

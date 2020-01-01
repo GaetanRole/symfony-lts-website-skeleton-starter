@@ -2,9 +2,9 @@
     <img src="https://symfony.com/logos/symfony_black_02.svg">
 </a></p>
 
-# Symfony-website-skeleton-starter
+# sf4.4-website-skeleton-starter
 
-I created a starter kit for Symfony 4, based on the website-skeleton provided by Symfony itself, to show how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3]
+I created a starter kit for Symfony 4.4 (LTS), based on the website-skeleton provided by Symfony itself, to show how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3]
 and so on (such as fixtures by Faker, guardAuthenticator, security:checker, unit and functional tests, Q&A tools, translations, commands ...),
 **following the recommended SensioLabs best practices**.
 User auth is based on Symfony form login authentication.
@@ -57,24 +57,26 @@ $ make install
 ## Usage
 
 ```bash
-$ bin/console server:run
-$ make start
+$ symfony serve --no-tls
 ```
 
-For loading User's [fixture][6] (fixture based on default locale) :
+> The web server bundle is no longer used anymore. Use the Symfony [binary][6] now.
+
+
+For loading User's [fixture][7] (fixture based on default locale) :
 
 ```bash
 $ bin/console doctrine:fixture:load
 ```
 
-For [translation][7] to XLIFF files (app_locales: ['fr', '%locale%']) :
+For [translation][8] to XLIFF files (app_locales: ['fr', '%locale%']) :
 
 ```bash
 $ bin/console translation:update --output-format xlf --dump-messages --force en
 $ bin/console translation:update --output-format xlf --dump-messages --force fr
 ```
 
-To use [PHP CodeSniffer][8] (for more PHPDocumentor usage, see official [https://docs.phpdoc.org/]):
+To use [PHP CodeSniffer][9] (for more PHPDocumentor usage, see official [https://docs.phpdoc.org/]):
 
 ```bash
 $ ./vendor/bin/phpcbf src/[FILE]
@@ -95,7 +97,7 @@ $ bin/console debug:container
 
 ## User
 
-Current [User][9] entity has some fields that are required or not.
+Current [User][10] entity has some fields that are required or not.
 Feel free to change it according to your logic, such as adding canonical fields, salt, lastLogin and others : 
 
 ```bash
@@ -111,7 +113,7 @@ $ bin/console doctrine:fixture:load
 
 ## Personal commands
 
-To use a personal [command][10] (displaying all users from DB) :
+To use a personal [command][11] (displaying all users from DB) :
 
 ```bash
 $ bin/console app:list-users --help
@@ -125,11 +127,12 @@ Feel free to create other commands such as a promotion command or a user creatio
 [3]: https://symfony.com/doc/current/security/form_login_setup.html
 [4]: https://symfony.com/doc/current/reference/requirements.html
 [5]: https://symfony.com/doc/current/configuration.html#the-env-file-environment-variables
-[6]: https://symfony.com/doc/current/doctrine.html#doctrine-fixtures
-[7]: https://symfony.com/doc/current/translation.html
-[8]: https://github.com/squizlabs/PHP_CodeSniffer
-[9]: https://symfony.com/doc/current/security.html
-[10]: https://symfony.com/doc/current/console.html
+[6]: https://symfony.com/doc/current/setup/symfony_server.html
+[7]: https://symfony.com/doc/current/doctrine.html#doctrine-fixtures
+[8]: https://symfony.com/doc/current/translation.html
+[9]: https://github.com/squizlabs/PHP_CodeSniffer
+[10]: https://symfony.com/doc/current/security.html
+[11]: https://symfony.com/doc/current/console.html
 
 ## Contributing
 
