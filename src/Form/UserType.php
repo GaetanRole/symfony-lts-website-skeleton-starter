@@ -46,7 +46,8 @@ final class UserType extends AbstractType
                 'mapped' => false,
                 'label' => 'form.user.terms.label',
                 'constraints' => new IsTrue(),
-            ]);
+            ])
+        ;
     }
 
     /**

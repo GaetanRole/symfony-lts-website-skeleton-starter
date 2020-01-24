@@ -11,6 +11,7 @@ import '@fortawesome/fontawesome-free'
 // (the .js extension is optional)
 import greet from './greet';
 
+// See https://symfonycasts.com/screencast/webpack-encore/copy-files#controlling-the-copy-destination for other methods and files
 const imagesContext = require.context('../images', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 imagesContext.keys().forEach(imagesContext);
 

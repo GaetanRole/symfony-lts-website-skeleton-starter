@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="author" content="Gaëtan Rolé-Dubruille">
     <meta name="description" content="{% block description 'base.head.meta.description'|trans %}">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -32,6 +32,7 @@
         </div>
     {% endblock %}
 </header>
+<!-- This could be replaced by a body_attributes -->
 <div id="{% block body_id 'base' %}">
     {% block body %}{% endblock %}
 </div>

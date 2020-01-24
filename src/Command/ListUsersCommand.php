@@ -44,7 +44,6 @@ final class ListUsersCommand extends Command
     public function __construct(UserRepository $users)
     {
         parent::__construct();
-
         $this->users = $users;
     }
 

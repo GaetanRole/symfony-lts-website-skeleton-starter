@@ -26,34 +26,22 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
-    /**
-     * Three functions based on targetPath
-     */
+    /** Three functions based on targetPath */
     use TargetPathTrait;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     private $entityManager;
 
-    /**
-     * @var TranslatorInterface
-     */
+    /** @var TranslatorInterface */
     private $translator;
 
-    /**
-     * @var RouterInterface
-     */
+    /** @var RouterInterface */
     private $router;
 
-    /**
-     * @var CsrfTokenManagerInterface
-     */
+    /** @var CsrfTokenManagerInterface */
     private $csrfTokenManager;
 
-    /**
-     * @var UserPasswordEncoderInterface
-     */
+    /** @var UserPasswordEncoderInterface */
     private $passwordEncoder;
 
     public function __construct(

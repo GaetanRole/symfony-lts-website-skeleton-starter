@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class UserController extends AbstractController
 {
     /**
-     * @Route("/profile", name="app_user_index")
+     * @Route("/profile", name="app_user_index", methods={"GET"})
      */
     public function index(): Response
     {

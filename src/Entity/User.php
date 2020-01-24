@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use \Exception;
+use \DateTime;
+use \DateTimeImmutable;
 use Serializable;
 use Ramsey\Uuid\Uuid;
 use DateTimeInterface;
@@ -92,14 +94,14 @@ final class User implements UserInterface, Serializable
     private $lastName;
 
     /**
-     * @var DateTimeInterface
+     * @var DateTimeInterface|null
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $birthDate;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=32, nullable=true)
      * @Assert\Regex(
@@ -109,7 +111,7 @@ final class User implements UserInterface, Serializable
     private $phoneNumber;
 
     /**
-     * @var DateTimeInterface
+     * @var DateTimeImmutable
      *
      * @ORM\Column(type="datetime")
      */
@@ -120,16 +122,15 @@ final class User implements UserInterface, Serializable
      *
      * @ORM\Column(type="boolean")
      */
-    private $isActive;
+    private $isActive = true;
 
     /**
      * @throws Exception From uuid4()
      */
     public function __construct()
     {
-        $this->isActive = true;
-        $this->roles[] = 'ROLE_USER';
         $this->uuid = Uuid::uuid4();
+        $this->roles[] = 'ROLE_USER';
     }
 
     public function __toString(): string
@@ -250,7 +251,12 @@ final class User implements UserInterface, Serializable
 
     public function setBirthDate(?DateTimeInterface $birthDate): self
     {
-        $this->birthDate = $birthDate;
+        if (null === $birthDate) {
+            return $this;
+        }
+
+        $this->birthDate
+            = $birthDate instanceof DateTime ? DateTimeImmutable::createFromMutable($birthDate) : $birthDate;
 
         return $this;
     }
@@ -274,7 +280,8 @@ final class User implements UserInterface, Serializable
 
     public function setCreationDate(DateTimeInterface $creationDate): self
     {
-        $this->creationDate = $creationDate;
+        $this->creationDate
+            = $creationDate instanceof DateTime ? DateTimeImmutable::createFromMutable($creationDate) : $creationDate;
 
         return $this;
     }

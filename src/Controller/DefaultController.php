@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="app_index")
+     * @Route("/", name="app_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -22,7 +22,7 @@ final class DefaultController extends AbstractController
 
     /**
      * A sample method to use GlobalClock service based on TimeContinuum component.
-     * @Route("/time-continuum", name="app_time_continuum")
+     * @Route("/time-continuum", name="app_time_continuum", methods={"GET"})
      */
     public function showTimeContinuumSample(GlobalClock $clock): Response
     {

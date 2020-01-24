@@ -16,9 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 final class UserFixture extends Fixture
 {
-    /**
-     * @var int public CONST for Users number in DB
-     */
+    /** @var int public CONST for Users number in DB */
     public const USER_NB_TUPLE = 20;
 
     /**
@@ -51,6 +49,7 @@ final class UserFixture extends Fixture
 
     /**
      * Load ten users to DB.
+     * @see  \Doctrine\Persistence\ObjectManager Real object needed by the load method() to avoid deprecation
      * @throws Exception From DateTimes
      */
     public function load(ObjectManager $manager): void
