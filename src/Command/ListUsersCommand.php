@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Command;
 
 use App\Entity\User;
@@ -19,8 +21,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  *     $ php bin/console app:list-users
  *
  * See https://symfony.com/doc/current/cookbook/console/console_command.html
- * For more advanced uses, commands can be defined as services too. See
- * https://symfony.com/doc/current/console/commands_as_services.html
  *
  * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
@@ -35,16 +35,20 @@ final class ListUsersCommand extends Command
      */
     protected static $defaultName = 'app:list-users';
 
+    /** @var int */
+    private const MAX_RESULT_DEFAULT_OPTION = 50;
+
     /**
      * All given users.
      * @var UserRepository
      */
-    private $users;
+    private $userRepository;
 
-    public function __construct(UserRepository $users)
+    public function __construct(UserRepository $userRepository)
     {
+        $this->userRepository = $userRepository;
+
         parent::__construct();
-        $this->users = $users;
     }
 
     /**
@@ -64,30 +68,27 @@ final class ListUsersCommand extends Command
                 <comment>--max-results=2000</comment>'
             )
 
-            // commands can optionally define arguments
-            // and/or options (mandatory and optional)
+            // commands can optionally define arguments and/or options (mandatory and optional)
             // see https://symfony.com/doc/current/components/console/console_arguments.html
             ->addOption(
                 'max-results',
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'Limits the number of users listed',
-                50
+                self::MAX_RESULT_DEFAULT_OPTION
             );
     }
 
     /**
-     * This method is executed after initialize(). It usually contains the logic
-     * to execute to complete this command task.
+     * This method is executed after initialize(). It contains the logic to execute.
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $maxResults = $input->getOption('max-results');
         // Use ->findBy() instead of ->findAll() to allow result sorting and limiting
-        $allUsers = $this->users->findBy([], ['id' => 'DESC'], $maxResults);
+        $allUsers = $this->userRepository->findBy([], ['id' => 'DESC'], $maxResults);
 
-        // Doctrine query returns an array of objects
-        // and we need an array of plain arrays
+        // Doctrine query returns an array of objects but we need an array of plain arrays
         $usersAsPlainArrays = array_map(
             static function (User $user) {
                 return [
@@ -115,5 +116,7 @@ final class ListUsersCommand extends Command
         // store its contents in a variable
         $usersAsATable = $bufferedOutput->fetch();
         $output->write($usersAsATable);
+
+        return 0;
     }
 }

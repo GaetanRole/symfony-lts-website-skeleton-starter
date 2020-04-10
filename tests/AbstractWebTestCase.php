@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Tests;
 
@@ -13,14 +13,26 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 abstract class AbstractWebTestCase extends WebTestCase
 {
     /** @var KernelBrowser A Web client */
-    protected $webClient;
+    protected static $client;
 
     /**
-     * Setting up $webClient var
+     * Setting up $client var
      */
     protected function setUp(): void
     {
-        $this->webClient = static::createClient();
-        $this->webClient->followRedirects();
+        parent::setUp();
+
+        self::$client = self::createClient();
+        self::$client->followRedirects(false);
+    }
+
+    /**
+     * Cleans up the environment after running a test.
+     */
+    protected function tearDown(): void
+    {
+        self::$client = null;
+
+        parent::tearDown();
     }
 }

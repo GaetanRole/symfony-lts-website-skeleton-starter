@@ -1,41 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block description 'timecontinuum.header.description'|trans %}
+{# You can replace other parent blocks @see '../base.html.twig' #}
+{% block description 'samples.timecontinuum.head.meta.description'|trans %}
+{% block title 'samples.timecontinuum.head.meta.title'|trans %}
 
-{% block title 'timecontinuum.header.title'|trans %}
+{% block og_title 'samples.timecontinuum.head.meta.title'|trans %}
+{% block og_description 'samples.timecontinuum.head.meta.description'|trans %}
 
-{% block body_id 'time-continuum' %}
+{% block content_tag_attributes 'id="time-continuum"' %}
 
-{% block body %}
+{% block content %}
     <section>
         <div class="container">
             <div class="row mb-4">
                 <div class="col">
-                    <h1><span class="fas fa-clock"></span> {{ 'timecontinuum.body.firsttitle'|trans|upper }}</h1>
+                    <h1><span class="fas fa-clock"></span> {{ 'samples.timecontinuum.body.h1'|trans|upper }}</h1>
                 </div>
             </div>
             <div class="row ul-subtitle-text">
                 <div class="col">
-                    <u>{{ 'timecontinuum.body.ul.first'|trans }}</u>
+                    <u>{{ 'samples.timecontinuum.body.ul.first'|trans }}</u>
                     <ul>
                         <li>
-                            {{ 'timecontinuum.body.ul.first.li.first'|trans }} <b>{{ clock.clock.now }}</b>
+                            {{ 'samples.timecontinuum.body.ul.first.li.first'|trans }} <b>{{ clock.clock.now }}</b>
                         </li>
                         <li>
-                            {{ 'timecontinuum.body.ul.first.li.second'|trans }} <b>{{ clock.getGoBackSample }}</b>
+                            {{ 'samples.timecontinuum.body.ul.first.li.second'|trans }} <b>{{ clock.getGoBackSample }}</b>
                         </li>
                         <li>
-                            {{ 'timecontinuum.body.ul.first.li.third'|trans }} <b>{{ clock.getNowParisSample }}</b>
+                            {{ 'samples.timecontinuum.body.ul.first.li.third'|trans }} <b>{{ clock.getNowParisSample }}</b>
                         </li>
                         <li>
-                            {{ 'timecontinuum.body.ul.first.li.fourth'|trans }} <b>{{ clock.getNowNewYorkSample }}</b>
+                            {{ 'samples.timecontinuum.body.ul.first.li.fourth'|trans }} <b>{{ clock.getNowNewYorkSample }}</b>
                         </li>
                         <li>
-                            {{ 'timecontinuum.body.ul.first.li.fifth'|trans }} <b>{{ clock.getNowParisSample|date('d-m-Y H:i', "Europe/Paris") }}</b>
+                            {{ 'samples.timecontinuum.body.ul.first.li.fifth'|trans }} <b>{{ clock.getNowParisSample|date('d-m-Y H:i', "Europe/Paris") }}</b>
                         </li>
                     </ul>
 
-                    <u>{{ 'timecontinuum.body.ul.second'|trans }}</u>
+                    <u>{{ 'default.index.body.ul.second'|trans }}</u>
                     <ul>
                         <li><a href="{{ path('app_index') }}">{{ 'button.homepage'|trans }}</a></li>
                     </ul>

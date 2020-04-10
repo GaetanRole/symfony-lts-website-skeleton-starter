@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use \Exception;
@@ -9,59 +11,24 @@ use Serializable;
 use Ramsey\Uuid\Uuid;
 use DateTimeInterface;
 use App\Entity\Traits\EntityIdTrait;
+use App\Entity\Traits\EntityTimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
  *     fields={"email"},
  *     message="valitor.user.unique.message"
  * )
+ * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
 final class User implements UserInterface, Serializable
 {
     use EntityIdTrait;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=64, unique=true)
-     * @Assert\Email(
-     *     message="validator.user.email.email"
-     * )
-     * @Assert\NotBlank(message="validator.user.email.not_blank")
-     * @Assert\Length(
-     *     max=64,
-     *     maxMessage="validator.user.email.max_length"
-     * )
-     */
-    private $email;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
-    /**
-     * @var string
-     *
-     * @Assert\Length(max=4096)
-     * @Assert\Regex(pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/",
-     *     message="validator.user.plain_password.regex")
-     */
-    private $plainPassword;
-
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
+    use EntityTimeTrait;
 
     /**
      * @var string
@@ -94,13 +61,6 @@ final class User implements UserInterface, Serializable
     private $lastName;
 
     /**
-     * @var DateTimeInterface|null
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $birthDate;
-
-    /**
      * @var string|null
      *
      * @ORM\Column(type="string", length=32, nullable=true)
@@ -113,9 +73,47 @@ final class User implements UserInterface, Serializable
     /**
      * @var DateTimeImmutable
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime_immutable", nullable=true)
      */
-    private $creationDate;
+    private $birthDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     *     message="validator.user.email.email"
+     * )
+     * @Assert\NotBlank(message="validator.user.email.not_blank")
+     * @Assert\Length(
+     *     max=180,
+     *     maxMessage="validator.user.email.max_length"
+     * )
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @Assert\Length(max=4096)
+     * @Assert\Regex(pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/",
+     *     message="validator.user.plain_password.regex")
+     */
+    private $plainPassword;
+
+    /**
+     * @var string The hashed password
+     *
+     * @ORM\Column(type="string")
+     */
+    private $password;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     /**
      * @var boolean
@@ -143,83 +141,6 @@ final class User implements UserInterface, Serializable
         return $this->email;
     }
 
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        if (empty($roles)) {
-            $roles[] = 'ROLE_USER';
-        }
-
-        return array_unique($roles);
-    }
-
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    public function getSalt(): ?string
-    {
-        // See "Do you need to use a Salt?" at https://symfony.com/doc/current/cookbook/security/entity_provider.html
-        // we're using bcrypt in security.yml to encode the password, so
-        // the salt value is built-in and you don't have to generate one
-        return null;
-    }
-
-    public function eraseCredentials(): void
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
-    public function serialize(): string
-    {
-        return serialize([$this->id, $this->email, $this->password]);
-    }
-
-    public function unserialize($serialized): void
-    {
-        [$this->id, $this->email, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(string $plainPassword): self
-    {
-        $this->plainPassword = $plainPassword;
-
-        return $this;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
     public function getFirstName(): ?string
     {
         return $this->firstName;
@@ -244,6 +165,25 @@ final class User implements UserInterface, Serializable
         return $this;
     }
 
+    public function getAge(): int
+    {
+        $now = new DateTime();
+
+        return $now->diff($this->birthDate)->y;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
     public function getBirthDate(): ?DateTimeInterface
     {
         return $this->birthDate;
@@ -261,27 +201,63 @@ final class User implements UserInterface, Serializable
         return $this;
     }
 
-    public function getPhoneNumber(): ?string
+    public function getEmail(): ?string
     {
-        return $this->phoneNumber;
+        return $this->email;
     }
 
-    public function setPhoneNumber(?string $phoneNumber): self
+    public function setEmail(string $email): self
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getCreationDate(): ?DateTimeInterface
+    public function getPassword(): string
     {
-        return $this->creationDate;
+        return $this->password;
     }
 
-    public function setCreationDate(DateTimeInterface $creationDate): self
+    public function setPassword(string $password): self
     {
-        $this->creationDate
-            = $creationDate instanceof DateTime ? DateTimeImmutable::createFromMutable($creationDate) : $creationDate;
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
+    }
+
+    public function hasRole(string $role): bool
+    {
+        if (in_array($role, $this->roles, true)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
@@ -296,5 +272,29 @@ final class User implements UserInterface, Serializable
         $this->isActive = $isActive;
 
         return $this;
+    }
+
+    public function getSalt(): ?string
+    {
+        // See "Do you need to use a Salt?" at https://symfony.com/doc/current/cookbook/security/entity_provider.html
+        // we're using bcrypt in security.yml to encode the password, so
+        // the salt value is built-in and you don't have to generate one
+        return null;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function serialize(): string
+    {
+        return serialize([$this->id, $this->email, $this->password]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [$this->id, $this->email, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 }

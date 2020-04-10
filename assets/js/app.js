@@ -11,13 +11,12 @@ import '@fortawesome/fontawesome-free'
 // (the .js extension is optional)
 import greet from './greet';
 
-// See https://symfonycasts.com/screencast/webpack-encore/copy-files#controlling-the-copy-destination for other methods and files
-const imagesContext = require.context('../images', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
-imagesContext.keys().forEach(imagesContext);
-
 $(document).ready(function () {
-    // Bootstrap JS
+    // Bootstrap JS dependency
     $('[data-toggle="popover"]').popover();
+
+    // Always show Bootstrap modal for flash messages
+    $('.modal').modal('show');
 
     // Using others into this one
     console.log(greet('Github User'));

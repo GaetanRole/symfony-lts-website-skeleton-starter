@@ -23,8 +23,14 @@ Encore
     .splitEntryChunks()
 
     // Copy all files from assets/ with path
-    .configureFilenames({
-        images: '[path][name].[hash:8].[ext]',
+    .copyFiles([
+        {from: './assets/images', to: 'images/[path][name].[hash:8].[ext]'},
+    ])
+
+    // Enables @babel/preset-env polyfills
+    .configureBabel(() => {}, {
+        useBuiltIns: 'usage',
+        corejs: 3
     })
 ;
 

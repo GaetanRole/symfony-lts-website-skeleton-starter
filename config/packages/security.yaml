@@ -8,15 +8,16 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|build)/
             security: false
         main:
-            anonymous: true
+            anonymous: lazy
             logout:
-                path: app_logout
-                target: index
+                path: app_security_logout
+                target: app_index
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
@@ -27,7 +28,7 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     access_control:
-          - { path: ^/profile, roles: ROLE_USER }
+          - { path: ^/user, roles: ROLE_USER }

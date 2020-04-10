@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Tests\Service;
 
@@ -14,6 +14,7 @@ use Innmind\TimeContinuum\TimeContinuum\Earth;
 /**
  * @group   Unit
  * @group   Service
+ *
  * @see     https://github.com/Innmind/TimeContinuum
  * @author  Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
@@ -40,6 +41,6 @@ final class GlobalClockTest extends TestCase
     public function testGetNowInDateTimeMethodReturningACurrentDateTime(): void
     {
         $this->assertInstanceOf('Datetime', $this->clock->getNowInDateTime());
-        $this->assertEquals(new DateTime('now'), $this->clock->getNowInDateTime(), '', 5);
+        $this->assertEqualsWithDelta(new DateTime('now'), $this->clock->getNowInDateTime(), 5, '');
     }
 }

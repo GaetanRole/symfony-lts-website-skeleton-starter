@@ -3,10 +3,10 @@
 # http://behat.org/en/latest/quick_start.html
 
 Feature:
-  In order to prove that the Behat Symfony extension is correctly installed
+  In order to navigate on the Symfony application
   As a user
-  I want to have a demo scenario
+  I want to access on the home page
 
-  Scenario: It receives a response from Symfony's kernel
-    When a demo scenario sends a request to "/"
-    Then the response should be received
+  Scenario: A user can access to the home page
+    When a user sends a request to "/en/"
+    Then the response status code should be "200"

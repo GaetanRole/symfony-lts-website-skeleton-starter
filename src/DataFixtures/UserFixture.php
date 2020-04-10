@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use Faker;
@@ -7,11 +9,13 @@ use \Exception;
 use App\Entity\User;
 use App\Service\GlobalClock;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
+ * @see     https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html
+ *
  * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
 final class UserFixture extends Fixture
@@ -64,22 +68,18 @@ final class UserFixture extends Fixture
 
         for ($i = 0; $i < self::USER_NB_TUPLE; $i++) {
             $user = new User();
-            $user
-                ->setEmail('user' . $i . '@userfixtures.fixtures')
-                ->setPassword(
-                    $this->passwordEncoder->encodePassword(
-                        $user,
-                        'password' . $i
-                    )
-                )
-                ->setFirstName($faker->firstName)
+            $user->setFirstName($faker->firstName)
                 ->setLastName($faker->lastName)
                 ->setPhoneNumber($faker->phoneNumber)
                 ->setBirthDate($this->clock->getBirthDateSample())
-                ->setCreationDate($this->clock->getNowInDateTime());
-            $user->setRoles([$roles[array_rand($roles)]]);
+                ->setEmail('user'.$i.'@userfixtures.fixtures')
+                ->setPassword($this->passwordEncoder->encodePassword($user, 'password'.$i))
+                ->setRoles([$roles[array_rand($roles)]])
+                ->setCreatedAt($this->clock->getNowInDateTime());
+
             $manager->persist($user);
         }
+
         $manager->flush();
     }
 }

@@ -1,27 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block description 'index.header.description'|trans %}
+{# You can replace other parent blocks @see '../base.html.twig' #}
+{% block description 'default.index.head.meta.description'|trans %}
+{% block title 'default.index.head.meta.title'|trans %}
 
-{% block title 'index.header.title'|trans %}
+{% block og_title 'default.index.head.meta.title'|trans %}
+{% block og_description 'default.index.head.meta.description'|trans %}
 
-{% block body_id 'default' %}
+{% block content_tag_attributes 'id="index"' %}
 
-{% block body %}
+{% block content %}
     <section>
-        {% include 'default/_flash_messages.html.twig' %}
         <div class="container">
             <div class="row mb-4">
                 <div class="col">
-                    <h1><span class="fab fa-galactic-republic"></span> {{ 'index.body.firsttitle'|trans|upper }}</h1>
+                    <h1><span class="fab fa-galactic-republic"></span> {{ 'default.index.body.h1'|trans|upper }}</h1>
                 </div>
             </div>
             <div class="row ul-subtitle-text">
                 <div class="col">
-                    <u>{{ 'index.body.ul.first'|trans }} :</u>
+                    <u>{{ 'default.index.body.ul.first'|trans }} :</u>
                     <ul>
                         <li>
                             <p>
-                                {{ 'index.body.ul.first.li.first'|trans }} - <a href="https://symfony.com/doc/master/frontend.html">https://symfony.com/doc/current/frontend.html</a>
+                                {{ 'default.index.body.ul.first.li.first'|trans }} - <a href="https://symfony.com/doc/master/frontend.html">https://symfony.com/doc/current/frontend.html</a>
                                 <br>
                                 <span class="fab fa-github"></span>
                                 <span class="fab fa-html5"></span>
@@ -30,25 +32,25 @@
                                 <span class="fab fa-sass"></span>
                             </p>
                         </li>
-                        <li>{{ 'index.body.ul.first.li.second'|trans }} - <a href="https://github.com/Innmind/TimeContinuum">https://github.com/Innmind/TimeContinuum</a></li>
+                        <li>{{ 'default.index.body.ul.first.li.second'|trans }} - <a href="https://github.com/Innmind/TimeContinuum">https://github.com/Innmind/TimeContinuum</a></li>
                     </ul>
 
-                    <u>{{ 'index.body.ul.second'|trans }} :</u>
+                    <u>{{ 'default.index.body.ul.second'|trans }} :</u>
                     <ul>
                         <li><a href="{{ path('app_time_continuum') }}">{{ 'index.body.ul.second.li.first'|trans }}</a></li>
                         <li><a href="{{ path('app_index', {'_locale': 'fr'}) }}"><span class="fas fa-flag"></span> {{ 'index.body.ul.second.li.second'|trans }}</a></li>
                         <li><a href="{{ path('app_index', {'_locale': 'en'}) }}"><span class="fas fa-flag-usa"></span> {{ 'index.body.ul.second.li.third'|trans }}</a></li>
                     </ul>
 
-                    <u>{{ 'index.body.ul.third'|trans }} :</u>
+                    <u>{{ 'default.index.body.ul.third'|trans }} :</u>
                     <ul>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <li><a href="{{ path('app_logout') }}">{{ 'button.logout'|trans }}</a></li>
+                            <li><a href="{{ path('app_security_logout') }}">{{ 'button.logout'|trans }}</a></li>
                         {% else %}
-                            <li><a href="{{ path('app_login') }}">{{ 'button.login'|trans }}</a></li>
+                            <li><a href="{{ path('app_security_login') }}">{{ 'button.login'|trans }}</a></li>
                         {% endif %}
                         <li><a href="{{ path('app_user_registration') }}">{{ 'button.register'|trans }}</a></li>
-                        <li><a href="{{ path('app_user_index') }}">{{ 'button.user'|trans }}</a></li>
+                        <li><a href="{{ path('app_user_profile') }}">{{ 'button.user'|trans }}</a></li>
                     </ul>
                 </div>
             </div>

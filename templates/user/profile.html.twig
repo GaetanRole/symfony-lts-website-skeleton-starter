@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{# You can replace other parent blocks @see '../base.html.twig' #}
+{% block description 'user.profile.head.meta.description'|trans %}
+{% block title 'user.profile.head.meta.title'|trans %}
+
+{% block og_title 'user.profile.head.meta.title'|trans %}
+{% block og_description 'user.profile.head.meta.description'|trans %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('user') }}
+{% endblock %}
+
+{% block content_tag_attributes 'id="user-profile"' %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col">
+                    <h1><span class="fas fa-user"></span> {{ 'user.profile.body.h1'|trans|upper }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="jumbotron">
+                        <h2>{{ 'user.profile.jumbotron.title'|trans({'firstname': user.firstName, 'lastname': user.lastName}) }} ✅</h2>
+                        <h3>{{ user.phoneNumber }} - {{ user.birthDate|date('d/m/Y') }}</h3>
+                        <p>
+                            {{ 'user.profile.jumbotron.description'|trans }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-left ul-subtitle-text">
+                <div class="col">
+                    <u>{{ 'default.index.body.ul.second'|trans }}</u>
+                    <ul>
+                        <li><a href="{{ path('app_security_logout') }}">{{ 'button.logout'|trans }}</a></li>
+                        <li><a href="{{ path('app_index') }}">{{ 'button.homepage'|trans }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('user') }}
+{% endblock %}

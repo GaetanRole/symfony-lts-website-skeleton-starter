@@ -4,18 +4,21 @@
 
 # sf4.4-website-skeleton-starter
 
-I created a starter kit for Symfony 4.4 (LTS), based on the website-skeleton provided by Symfony itself, to show how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3]
-and so on (such as fixtures by Faker, guardAuthenticator, security:checker, unit and functional tests, Q&A tools, translations, commands ...),
-**following the recommended SensioLabs best practices**.
-User auth is based on Symfony form login authentication.
-
 **This repository is useful for beginners.**
+I created a starter kit for Symfony 4.4 (LTS), based on the website-skeleton project provided by Symfony itself. This one is more complete to start a real project. 
+
+It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and other stuffs (such as a Makefile, fixtures with Faker, Unit and Functional tests, Behat, Guard, Events, Entity traits, Q&A tools, translations, commands...) **following the recommended SensioLabs best practices**.
+
+![Software License](https://img.shields.io/badge/php-7.4-brightgreen.svg)
+
+[![Author](https://img.shields.io/badge/author-gaetan.role%40gmail.com-blue.svg)](https://github.com/gaetanrole)
 
 ## Installation instructions
 
 ### Project requirements
 
-- [PHP ^7.1.3](http://php.net/manual/fr/install.php)
+- [PHP ^7.2.5 or higher](http://php.net/manual/fr/install.php)
+- [Symfony CLI](https://symfony.com/download)
 - [Composer](https://getcomposer.org/download)
 - [Yarn](https://yarnpkg.com/lang/en/)
 - and the [usual Symfony application requirements][4].
@@ -26,26 +29,27 @@ User auth is based on Symfony form login authentication.
 
 ### Installation
 
-1 . Clone the current repository.
+1 . Clone the current repository:
+```bash
+$ git clone 'https://github.com/GaetanRole/sf4.4-website-skeleton-starter'
+```
 
 2 . Move in and create few `.env.{environment}.local` files, according to your environments with your default configuration
 or only one global `.env.local`. **This one is not committed to the shared repository.**
- 
 > `.env` equals to the last `.env.dist` file before [november 2018][5].
 
-3 .a. Execute commands below into your working folder to install the project :
-
+3.a . Execute commands below into your working folder to install the project:
 ```bash
 $ composer install
-$ composer update
 $ yarn install
 $ yarn run dev
-$ bin/console doctrine:database:create
-$ bin/console doctrine:migration:migrate
-$ bin/console doctrine:migration:secure
+$ bin/console doctrine:database:create # (d:d:c)
+$ bin/console doctrine:migration:migrate # (d:m:m)
+$ bin/console doctrine:fixtures:load # (d:f:l)
+$ bin/console doctrine:migration:secure # (d:m:s)
 ```
-3 .b. Or just set your DATABASE_URL and call the Makefile's install rule :
 
+3.b . Or just set your DATABASE_URL and call the Makefile's install rule:
 ```bash
 $ make install
 ```
@@ -57,19 +61,19 @@ $ make install
 ## Usage
 
 ```bash
+$ cd sf4.4-website-skeleton-starter
 $ symfony serve --no-tls
 ```
 
 > The web server bundle is no longer used anymore. Use the Symfony [binary][6] now.
 
-
-For loading User's [fixture][7] (fixture based on default locale) :
+For loading User's [fixture][7] (fixture based on default locale):
 
 ```bash
 $ bin/console doctrine:fixture:load
 ```
 
-For [translation][8] to XLIFF files (app_locales: ['fr', '%locale%']) :
+For [translation][8] to XLIFF files (app_locales: ['fr', '%locale%']):
 
 ```bash
 $ bin/console translation:update --output-format xlf --dump-messages --force en
@@ -83,13 +87,13 @@ $ ./vendor/bin/phpcbf src/[FILE]
 $ ./vendor/bin/phpcs src/[FILE]
 ```
 
-To see all available routes :
+To see all available routes:
 
 ```bash
 $ bin/console debug:router
 ```
 
-To see all services 
+To see all services:
 
 ```bash
 $ bin/console debug:container
@@ -98,14 +102,13 @@ $ bin/console debug:container
 ## User
 
 Current [User][10] entity has some fields that are required or not.
-Feel free to change it according to your logic, such as adding canonical fields, salt, lastLogin and others : 
+Feel free to change it according to your logic, such as adding canonical fields, salt and others: 
 
 ```bash
-$ bin/console make:entity
-$ User
+$ bin/console make:entity User
 ```
 
-And do not forget to update your User's fixture :
+And do not forget to update your User's fixture:
 
 ```bash
 $ bin/console doctrine:fixture:load
@@ -113,14 +116,22 @@ $ bin/console doctrine:fixture:load
 
 ## Personal commands
 
-To use a personal [command][11] (displaying all users from DB) :
+To use a personal [command][11] (displaying all users from DB):
 
 ```bash
 $ bin/console app:list-users --help
 $ bin/console app:list-users
 ```
 
-Feel free to create other commands such as a promotion command or a user creation ...
+Feel free to create other commands such as a promotion command or a user creation...
+
+## Tests
+
+Execute this command to run PHPUnit and Behat tests:
+
+```bash
+$ make tests
+```
 
 [1]: https://symfony.com/doc/current/frontend.html
 [2]: https://github.com/Innmind/TimeContinuum
@@ -138,4 +149,4 @@ Feel free to create other commands such as a promotion command or a user creatio
 
 Do not hesitate to improve this repository, by creating your PR on GitHub with a description which explains it.
 
-Ask your question on `gaetan.role-dubruille@sensiolabs.com`.
+Ask your question on `gaetan.role@gmail.com`.

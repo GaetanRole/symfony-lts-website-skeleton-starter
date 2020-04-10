@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Security;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -35,8 +36,8 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     /** @var TranslatorInterface */
     private $translator;
 
-    /** @var RouterInterface */
-    private $router;
+    /** @var UrlGeneratorInterface */
+    private $urlGenerator;
 
     /** @var CsrfTokenManagerInterface */
     private $csrfTokenManager;
@@ -47,20 +48,20 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function __construct(
         EntityManagerInterface $entityManager,
         TranslatorInterface $translator,
-        RouterInterface $router,
+        UrlGeneratorInterface $urlGenerator,
         CsrfTokenManagerInterface $csrfTokenManager,
         UserPasswordEncoderInterface $passwordEncoder
     ) {
         $this->entityManager = $entityManager;
         $this->translator = $translator;
-        $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
     }
 
     public function supports(Request $request): bool
     {
-        return 'app_login' === $request->attributes->get('_route')
+        return 'app_security_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -71,10 +72,8 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
-        $request->getSession()->set(
-            Security::LAST_USERNAME,
-            $credentials['email']
-        );
+
+        $request->getSession()->set(Security::LAST_USERNAME, $credentials['email']);
 
         return $credentials;
     }
@@ -82,7 +81,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     /**
      * @return object|UserInterface|null
      */
-    public function getUser($credentials, UserProviderInterface $userProvider)
+    public function getUser($credentials, UserProviderInterface $userProvider): User
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
@@ -115,20 +114,28 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     }
 
     /**
-     * On authentication success return to user profile page
-     * @return null|Response|RedirectResponse
+     * Used to upgrade (rehash) the user's password automatically over time.
      */
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    public function getPassword($credentials): ?string
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+        return $credentials['password'];
+    }
+
+    /**
+     * On authentication success return to user profile page
+     */
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
+    {
+        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
+        if ($targetPath) {
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->router->generate('app_user_index'));
+        return new RedirectResponse($this->urlGenerator->generate('app_user_profile'));
     }
 
     protected function getLoginUrl(): string
     {
-        return $this->router->generate('app_login');
+        return $this->urlGenerator->generate('app_security_login');
     }
 }

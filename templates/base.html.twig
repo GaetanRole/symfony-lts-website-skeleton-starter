@@ -1,4 +1,3 @@
-{# templates/base.html.twig #}
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
 <head>
@@ -9,6 +8,10 @@
     <meta name="description" content="{% block description 'base.head.meta.description'|trans %}">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
+    <meta property="og:image" content="{% block og_image '' %}">
+    <meta property="og:title" content="Starter - {% block og_title 'base.head.meta.title'|trans %}">
+    <meta property="og:description" content="{% block og_description 'base.head.meta.description'|trans %}">
+
     <title>Starter - {% block title 'base.head.meta.title'|trans %}</title>
 
     {{ encore_entry_link_tags('app') }}
@@ -16,37 +19,30 @@
     {% block stylesheets %}
     {% endblock %}
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('build/assets/images/favicon.ico') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('build/assets/images/favicon.ico') }}">
-    <link rel="apple-touch-icon" type="image/x-icon" href="{{ asset('build/assets/images/favicon.ico') }}">
+    {{ include('_favicons.html.twig', with_context = false) }}
 </head>
 <body>
 <header>
-    {% block header %}
-        <div class="container text-center mb-3 mt-3">
-            <div class="row">
-                <div class="col">
-                    <img class="img-thumbnail" src="{{ asset('build/assets/images/symfony-4-logo.png') }}" alt="Symfony logo">
-                </div>
-            </div>
-        </div>
-    {% endblock %}
+    {% block header -%}
+        {{ include('_header.html.twig', with_context = false) }}
+    {%- endblock %}
 </header>
-<!-- This could be replaced by a body_attributes -->
-<div id="{% block body_id 'base' %}">
-    {% block body %}{% endblock %}
-</div>
+<main id="main">
+    {{ include('_flash_messages.html.twig', with_context = false) }}
+    <div {% block content_tag_attributes '' %}>
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
 <footer>
-    {% block footer %}
-        <div class="container">
-            <p class="text-muted">{{ 'default.footer.text'|trans }}</p>
-        </div>
-    {% endblock %}
+    {% block footer -%}
+        {{ include('_footer.html.twig', with_context = false) }}
+    {%- endblock -%}
 </footer>
 
 {{ encore_entry_script_tags('app') }}
 
-{% block javascripts %}
+{% block javascripts -%}
 {% endblock %}
 </body>
 </html>

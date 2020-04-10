@@ -1,5 +1,5 @@
-### Personnal
-/phpmd.xml
+### Personal
+phpmd.xml
 .idea
 npm-debug.log
 .DS_Store
@@ -15,11 +15,6 @@ npm-debug.log
 /.php_cs.cache
 ###< friendsofphp/php-cs-fixer ###
 
-###> squizlabs/php_codesniffer ###
-/.phpcs-cache
-/phpcs.xml
-###< squizlabs/php_codesniffer ###
-
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -28,7 +23,6 @@ npm-debug.log
 /public/bundles/
 /var/
 /vendor/
-builds
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -37,9 +31,10 @@ builds
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-###> symfony/web-server-bundle ###
-/.web-server-pid
-###< symfony/web-server-bundle ###
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/

@@ -21,6 +21,10 @@
         <source>form.user.lastname.placeholder</source>
         <target>Enter your lastname !</target>
       </trans-unit>
+      <trans-unit id="1JU.2M7" resname="form.user.birthDate.label">
+        <source>form.user.birthDate.label</source>
+        <target>Birth Date</target>
+      </trans-unit>
       <trans-unit id="kI7zk9E" resname="form.user.email.label">
         <source>form.user.email.label</source>
         <target>Email</target>
@@ -29,9 +33,17 @@
         <source>form.user.email.placeholder</source>
         <target>Enter a valid email. E.g : toto@toto.fr.</target>
       </trans-unit>
+      <trans-unit id="Wg49tP4" resname="form.user.password.first.label">
+        <source>form.user.password.first.label</source>
+        <target>Password</target>
+      </trans-unit>
       <trans-unit id="jiYpfUY" resname="form.user.password.first.placeholder">
         <source>form.user.password.first.placeholder</source>
         <target>Enter your password !</target>
+      </trans-unit>
+      <trans-unit id="grWAd2E" resname="form.user.password.second.label">
+        <source>form.user.password.second.label</source>
+        <target>Confirm Password</target>
       </trans-unit>
       <trans-unit id="NEXhUqv" resname="form.user.password.second.placeholder">
         <source>form.user.password.second.placeholder</source>

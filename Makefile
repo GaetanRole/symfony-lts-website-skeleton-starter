@@ -1,6 +1,22 @@
 CONSOLE				= bin/console
+# A little hack if you want increase Composer memory
+# COMPOSER			= php -d memory_limit=-1 /usr/local/bin/composer
 COMPOSER			= composer
+PHPUNIT				= SYMFONY_PHPUNIT_VERSION=9.1 bin/phpunit
 YARN				= yarn
+
+##
+###------------#
+###    Help    #
+###------------#
+##
+
+.DEFAULT_GOAL := 	help
+
+help:				## Display all help messages
+					@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-20s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
+
+.PHONY: 			help
 
 ##
 ###---------------------------#
@@ -33,6 +49,7 @@ db-wait: 			## Wait for database to be up. Looking DATABASE_URL
 
 db-destroy: 		## Execute doctrine:database:drop --force command
 					$(CONSOLE) doctrine:database:drop --force --if-exists
+					$(CONSOLE) doctrine:database:drop --force --env=test
 
 db-create:			## Execute doctrine:database:create
 					$(CONSOLE) doctrine:database:create --if-not-exists -vvv
@@ -44,17 +61,22 @@ db-fixtures: 		## Execute doctrine:fixtures:load
 					$(CONSOLE) doctrine:fixtures:load --no-interaction --purge-with-truncate
 					$(CONSOLE) app:list-users
 
+db-fixtures-test: 	## Execute doctrine:fixtures:load fo test env
+					$(CONSOLE) doctrine:database:create -vvv --env=test
+					$(CONSOLE) doctrine:migrations:migrate --allow-no-migration --no-interaction --all-or-nothing --env=test
+					$(CONSOLE) doctrine:fixtures:load --no-interaction --env=test
+
 db-diff:			## Execute doctrine:migration:diff
 					$(CONSOLE) doctrine:migrations:diff --formatted
 
 db-validate:		## Validate the doctrine ORM mapping
 					$(CONSOLE) doctrine:schema:validate
 
-db-init: 			vendor db-wait db-create db-migrate db-fixtures ## Initialize database e.g : wait, create database and migrations
+db-init:			vendor db-wait db-create db-migrate db-fixtures db-fixtures-test ## Initialize database e.g : wait, create database, migrations and load fixtures (dev and test env)
 
 db-update: 			vendor db-diff db-migrate ## Alias coupling db-diff and db-migrate
 
-.PHONY: 			db-wait db-destroy db-create db-migrate db-fixtures db-diff db-validate db-init db-update
+.PHONY: 			db-wait db-destroy db-create db-migrate db-fixtures db-fixtures-test db-diff db-validate db-init db-update
 
 ##
 ###----------------------------#
@@ -67,7 +89,7 @@ vendor:				./composer.json ## Install dependencies (vendor) (might be slow)
 					$(COMPOSER) install --prefer-dist --no-progress
 
 node_modules:		./package.json ## Yarn install
-					$(YARN) install
+					$(YARN) install --frozen-lockfile
 
 .env.local:			./.env ## Create env.local
 					@echo '\033[1;42m/\ The .env.local was just created. Feel free to put your config in it.\033[0m';
@@ -96,7 +118,7 @@ clear-assets:		## Remove build directory
 
 clean:				qa-clean-conf ## Remove all generated files
 					rm -rvf ./vendor ./node_modules ./var
-					rm -rvf ./.env.local ./behat.yml
+					rm -rvf ./bin/.phpunit ./behat.yml
 
 clear:				db-destroy clear-assets clean ## Remove all generated files and db
 
@@ -120,16 +142,16 @@ update-prod:		## Update dependencies for prod
 ##
 
 tu:					vendor ## Run unit tests (might be slow for the first time)
-					./bin/phpunit --exclude-group functional
+					$(PHPUNIT) --exclude-group functional
 
 tf:					vendor ## Run functional tests
-					./bin/phpunit --group functional
+					$(PHPUNIT) --group functional
 
 tw:					vendor ## Run wip tests
-					./bin/phpunit --group wip
+					$(PHPUNIT) --group wip
 
 coverage:			vendor ## Run code coverage of PHPunit suite
-					./bin/phpunit --coverage-html ./var/coverage
+					$(PHPUNIT) --coverage-html ./var/coverage
 
 phpunit: 			tu tf tw coverage ## Alias coupling all PHPUnit tests
 
@@ -241,16 +263,3 @@ qa: 				lt ly lc phpcs phpcbf phploc phpcpd phpmd ## Alias to run/apply Q&A tool
 tests: 				phpunit behat ## Alias coupling all PHPUnit tests and Behat
 
 .PHONY:				qa-clean-conf qa tests
-
-##
-###------------#
-###    Help    #
-###------------#
-##
-
-.DEFAULT_GOAL := 	help
-
-help:				## Display all help messages
-					@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-20s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
-
-.PHONY: 			help

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="0RGnMG0" resname="user.profile.head.meta.description">
+        <source>user.profile.head.meta.description</source>
+        <target>__user.profile.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="G78tYLN" resname="user.profile.head.meta.title">
+        <source>user.profile.head.meta.title</source>
+        <target>__user.profile.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="QcybdJq" resname="user.profile.body.h1">
+        <source>user.profile.body.h1</source>
+        <target>__user.profile.body.h1</target>
+      </trans-unit>
+      <trans-unit id="Gr8.7f5" resname="user.profile.jumbotron.title">
+        <source>user.profile.jumbotron.title</source>
+        <target>__user.profile.jumbotron.title</target>
+      </trans-unit>
+      <trans-unit id="y1ZasSS" resname="user.profile.jumbotron.description">
+        <source>user.profile.jumbotron.description</source>
+        <target>__user.profile.jumbotron.description</target>
+      </trans-unit>
+      <trans-unit id="a2UMDHa" resname="default.index.body.ul.second">
+        <source>default.index.body.ul.second</source>
+        <target>__default.index.body.ul.second</target>
+      </trans-unit>
+      <trans-unit id="CxUhURY" resname="button.logout">
+        <source>button.logout</source>
+        <target>__button.logout</target>
+      </trans-unit>
+      <trans-unit id="dKpPQTd" resname="button.homepage">
+        <source>button.homepage</source>
+        <target>__button.homepage</target>
+      </trans-unit>
+      <trans-unit id="OFLTApq" resname="user.registration.head.meta.description">
+        <source>user.registration.head.meta.description</source>
+        <target>__user.registration.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="W7bdYPM" resname="user.registration.head.meta.title">
+        <source>user.registration.head.meta.title</source>
+        <target>__user.registration.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="fU0WjCK" resname="user.registration.body.h1">
+        <source>user.registration.body.h1</source>
+        <target>__user.registration.body.h1</target>
+      </trans-unit>
+      <trans-unit id="SR8spiz" resname="user.registration.body.form.submit">
+        <source>user.registration.body.form.submit</source>
+        <target>__user.registration.body.form.submit</target>
+      </trans-unit>
+      <trans-unit id="XT06o0z" resname="button.login">
+        <source>button.login</source>
+        <target>__button.login</target>
+      </trans-unit>
+      <trans-unit id="bgJuWmx" resname="default.index.head.meta.description">
+        <source>default.index.head.meta.description</source>
+        <target>__default.index.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="xFsVqPD" resname="default.index.head.meta.title">
+        <source>default.index.head.meta.title</source>
+        <target>__default.index.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="TOYwMtR" resname="default.index.body.h1">
+        <source>default.index.body.h1</source>
+        <target>__default.index.body.h1</target>
+      </trans-unit>
+      <trans-unit id="6MFXyGB" resname="default.index.body.ul.first">
+        <source>default.index.body.ul.first</source>
+        <target>__default.index.body.ul.first</target>
+      </trans-unit>
+      <trans-unit id="q7gmFF4" resname="default.index.body.ul.first.li.first">
+        <source>default.index.body.ul.first.li.first</source>
+        <target>__default.index.body.ul.first.li.first</target>
+      </trans-unit>
+      <trans-unit id="whwTmD." resname="default.index.body.ul.first.li.second">
+        <source>default.index.body.ul.first.li.second</source>
+        <target>__default.index.body.ul.first.li.second</target>
+      </trans-unit>
+      <trans-unit id="AN2He2h" resname="index.body.ul.second.li.first">
+        <source>index.body.ul.second.li.first</source>
+        <target>__index.body.ul.second.li.first</target>
+      </trans-unit>
+      <trans-unit id="B2l9iY4" resname="index.body.ul.second.li.second">
+        <source>index.body.ul.second.li.second</source>
+        <target>__index.body.ul.second.li.second</target>
+      </trans-unit>
+      <trans-unit id="jf6q_7z" resname="index.body.ul.second.li.third">
+        <source>index.body.ul.second.li.third</source>
+        <target>__index.body.ul.second.li.third</target>
+      </trans-unit>
+      <trans-unit id="Gf47pz." resname="default.index.body.ul.third">
+        <source>default.index.body.ul.third</source>
+        <target>__default.index.body.ul.third</target>
+      </trans-unit>
+      <trans-unit id="yKuTQ_i" resname="button.register">
+        <source>button.register</source>
+        <target>__button.register</target>
+      </trans-unit>
+      <trans-unit id="jL0J5GO" resname="button.user">
+        <source>button.user</source>
+        <target>__button.user</target>
+      </trans-unit>
+      <trans-unit id="j7mtFaM" resname="base.head.meta.description">
+        <source>base.head.meta.description</source>
+        <target>__base.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="SNvq9F." resname="base.head.meta.title">
+        <source>base.head.meta.title</source>
+        <target>__base.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="qE9Vgyb" resname="default.footer.text">
+        <source>default.footer.text</source>
+        <target>__default.footer.text</target>
+      </trans-unit>
+      <trans-unit id="i4dtiqp" resname="security.login.head.meta.description">
+        <source>security.login.head.meta.description</source>
+        <target>__security.login.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="ITGDTfn" resname="security.login.head.meta.title">
+        <source>security.login.head.meta.title</source>
+        <target>__security.login.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="eECjroF" resname="security.login.body.h1">
+        <source>security.login.body.h1</source>
+        <target>__security.login.body.h1</target>
+      </trans-unit>
+      <trans-unit id="VILmxJQ" resname="security.login.body.form.label.email">
+        <source>security.login.body.form.label.email</source>
+        <target>__security.login.body.form.label.email</target>
+      </trans-unit>
+      <trans-unit id="q9CDZGw" resname="security.login.body.form.placeholder.email">
+        <source>security.login.body.form.placeholder.email</source>
+        <target>__security.login.body.form.placeholder.email</target>
+      </trans-unit>
+      <trans-unit id="YCoGc7K" resname="security.login.body.form.help.email">
+        <source>security.login.body.form.help.email</source>
+        <target>__security.login.body.form.help.email</target>
+      </trans-unit>
+      <trans-unit id="OBz_Opp" resname="security.login.body.form.label.password">
+        <source>security.login.body.form.label.password</source>
+        <target>__security.login.body.form.label.password</target>
+      </trans-unit>
+      <trans-unit id="0IqpGEv" resname="security.login.body.form.placeholder.password">
+        <source>security.login.body.form.placeholder.password</source>
+        <target>__security.login.body.form.placeholder.password</target>
+      </trans-unit>
+      <trans-unit id="AyaIcnQ" resname="security.login.body.form.label.rememberme">
+        <source>security.login.body.form.label.rememberme</source>
+        <target>__security.login.body.form.label.rememberme</target>
+      </trans-unit>
+      <trans-unit id="yVLXSvA" resname="security.login.body.form.submit">
+        <source>security.login.body.form.submit</source>
+        <target>__security.login.body.form.submit</target>
+      </trans-unit>
+      <trans-unit id="HI8jHsO" resname="samples.timecontinuum.head.meta.description">
+        <source>samples.timecontinuum.head.meta.description</source>
+        <target>__samples.timecontinuum.head.meta.description</target>
+      </trans-unit>
+      <trans-unit id="XNoLZDq" resname="samples.timecontinuum.head.meta.title">
+        <source>samples.timecontinuum.head.meta.title</source>
+        <target>__samples.timecontinuum.head.meta.title</target>
+      </trans-unit>
+      <trans-unit id="jW58oHu" resname="samples.timecontinuum.body.h1">
+        <source>samples.timecontinuum.body.h1</source>
+        <target>__samples.timecontinuum.body.h1</target>
+      </trans-unit>
+      <trans-unit id="lLTVvEL" resname="samples.timecontinuum.body.ul.first">
+        <source>samples.timecontinuum.body.ul.first</source>
+        <target>__samples.timecontinuum.body.ul.first</target>
+      </trans-unit>
+      <trans-unit id="6VZiSW4" resname="samples.timecontinuum.body.ul.first.li.first">
+        <source>samples.timecontinuum.body.ul.first.li.first</source>
+        <target>__samples.timecontinuum.body.ul.first.li.first</target>
+      </trans-unit>
+      <trans-unit id="ndnwtPi" resname="samples.timecontinuum.body.ul.first.li.second">
+        <source>samples.timecontinuum.body.ul.first.li.second</source>
+        <target>__samples.timecontinuum.body.ul.first.li.second</target>
+      </trans-unit>
+      <trans-unit id="MRlgH0Z" resname="samples.timecontinuum.body.ul.first.li.third">
+        <source>samples.timecontinuum.body.ul.first.li.third</source>
+        <target>__samples.timecontinuum.body.ul.first.li.third</target>
+      </trans-unit>
+      <trans-unit id="aoBjy2b" resname="samples.timecontinuum.body.ul.first.li.fourth">
+        <source>samples.timecontinuum.body.ul.first.li.fourth</source>
+        <target>__samples.timecontinuum.body.ul.first.li.fourth</target>
+      </trans-unit>
+      <trans-unit id="lXiIqTq" resname="samples.timecontinuum.body.ul.first.li.fifth">
+        <source>samples.timecontinuum.body.ul.first.li.fifth</source>
+        <target>__samples.timecontinuum.body.ul.first.li.fifth</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
