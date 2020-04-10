@@ -19,7 +19,7 @@
             </div>
             <div class="row ul-subtitle-text">
                 <div class="col">
-                    <u>{{ 'default.index.body.ul.first'|trans }} :</u>
+                    <u>{{ 'default.index.body.ul.first'|trans }}:</u>
                     <ul>
                         <li>
                             <p>
@@ -35,14 +35,14 @@
                         <li>{{ 'default.index.body.ul.first.li.second'|trans }} - <a href="https://github.com/Innmind/TimeContinuum">https://github.com/Innmind/TimeContinuum</a></li>
                     </ul>
 
-                    <u>{{ 'default.index.body.ul.second'|trans }} :</u>
+                    <u>{{ 'default.index.body.ul.second'|trans }}:</u>
                     <ul>
                         <li><a href="{{ path('app_time_continuum') }}">{{ 'index.body.ul.second.li.first'|trans }}</a></li>
                         <li><a href="{{ path('app_index', {'_locale': 'fr'}) }}"><span class="fas fa-flag"></span> {{ 'index.body.ul.second.li.second'|trans }}</a></li>
                         <li><a href="{{ path('app_index', {'_locale': 'en'}) }}"><span class="fas fa-flag-usa"></span> {{ 'index.body.ul.second.li.third'|trans }}</a></li>
                     </ul>
 
-                    <u>{{ 'default.index.body.ul.third'|trans }} :</u>
+                    <u>{{ 'default.index.body.ul.third'|trans }}:</u>
                     <ul>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <li><a href="{{ path('app_security_logout') }}">{{ 'button.logout'|trans }}</a></li>

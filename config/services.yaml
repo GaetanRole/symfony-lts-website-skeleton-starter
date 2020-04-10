@@ -28,3 +28,6 @@ services:
         arguments:
             $clock: '@app.earth'
             $format: '@app.format'
+
+    App\Listener\AuthenticationListener:
+        tags: ['kernel.event_listener']

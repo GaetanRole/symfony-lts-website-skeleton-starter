@@ -116,6 +116,13 @@ final class User implements UserInterface, Serializable
     private $roles = [];
 
     /**
+     * @var DateTimeImmutable
+     *
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $lastLogin;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -258,6 +265,19 @@ final class User implements UserInterface, Serializable
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getLastLogin(): ?DateTimeImmutable
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(DateTimeInterface $lastLogin): self
+    {
+        $this->lastLogin
+            = $lastLogin instanceof DateTime ? DateTimeImmutable::createFromMutable($lastLogin) : $lastLogin;
 
         return $this;
     }
