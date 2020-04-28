@@ -2,7 +2,7 @@ CONSOLE				= bin/console
 # A little hack if you want increase Composer memory
 # COMPOSER			= php -d memory_limit=-1 /usr/local/bin/composer
 COMPOSER			= composer
-PHPUNIT				= SYMFONY_PHPUNIT_VERSION=9.1 bin/phpunit
+PHPUNIT				= SYMFONY_PHPUNIT_VERSION=9.1.1 bin/phpunit
 YARN				= yarn
 
 ##
