@@ -3,20 +3,20 @@
     <img src="https://symfony.com/logos/symfony_black_02.svg">
 </a></p>
 
-# sf4.4-website-skeleton-starter
+# sf4.4-Website-Skeleton-Starter
 
 **This repository is useful for beginners.**
 I created a starter kit for Symfony 4.4 (LTS), based on the website-skeleton project provided by Symfony itself. This one is more complete to start a real project. 
 
-It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and other stuffs (such as a Makefile, fixtures with Faker, Unit and Functional tests, Behat, Guard, Events, Entity traits, Q&A tools, translations, commands...) **following the recommended SensioLabs best practices**.
+It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and other stuffs (such as a Makefile, fixtures with Faker, Unit and Functional tests, Behat, Guard, Events, Entity traits, Q&A tools, translations, commands...) **Following the recommended SensioLabs best practices**.
 
 ![Software License](https://img.shields.io/badge/php-7.4-brightgreen.svg)
 
 [![Author](https://img.shields.io/badge/author-gaetan.role%40gmail.com-blue.svg)](https://github.com/gaetanrole)
 
-## Installation instructions
+## Installation Instructions
 
-### Project requirements
+### Project Requirements
 
 - [PHP ^7.2.5 or higher](http://php.net/manual/fr/install.php)
 - [Symfony CLI](https://symfony.com/download)
@@ -24,7 +24,7 @@ It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and o
 - [Yarn](https://yarnpkg.com/lang/en/)
 - and the [usual Symfony application requirements][4].
 
-### Project view
+### Project View
 
 ![Alt text](symfony_starter_kit_readme_screenshot.png?raw=true "Default page")
 
