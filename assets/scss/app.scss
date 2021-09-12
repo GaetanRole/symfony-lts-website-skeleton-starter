@@ -11,72 +11,68 @@ $main-background-color: #f5f5f5;
 
 // Example using var, nested properties and mixins
 body {
-  background-color: $main-background-color;
-  font: {
-    family: $main-typo;
-    size: 1.1em;
-  }
+    background-color: $main-background-color;
+    font: {
+        family: $main-typo;
+        size: 1.1em;
+    }
 }
 
 section {
-  margin: 0 auto;
-  .container {
-    padding: 30px;
-    background: #FFF;
-  }
+    margin: 0 auto;
+    .container {
+        padding: 30px;
+        background: #FFF;
+    }
 }
 
 footer .container {
-  font-size: 0.8em;
-  text-align: center;
-  color: #777777;
-  background: #FEFFEA;
-  padding: 20px;
-  p {
-    margin-bottom: 0;
-  }
+    font-size: 0.8em;
+    text-align: center;
+    color: #777777;
+    background: #FEFFEA;
+    padding: 20px;
+    p {
+        margin-bottom: 0;
+    }
 }
 
 header .img-thumbnail {
-  width: 20vw;
-  min-width: 150px;
+    width: 20vw;
+    min-width: 150px;
 }
 
 h1 {
-  font: {
-    family: $title-typo;
-    weight: 800;
-  }
+    font: {
+        family: $title-typo;
+        weight: 800;
+    }
 }
 
 .ul-subtitle-text {
-  ul {
     font: {
-      family: $light-typo;
-      size: 0.9em;
+        family: $light-typo;
+        size: 0.9em;
     }
-    text-decoration: none;
-    color: grey;
-  }
 }
 
 .form-error ul {
-  list-style: none;
-  color: #a9090a;
-  background-color: #f2dede;
-  padding: 15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ebccd1;
-  border-radius: 10px;
+    list-style: none;
+    color: #a9090a;
+    background-color: #f2dede;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ebccd1;
+    border-radius: 10px;
 }
 
 // Example using font-awesome in SCSS Class
 .php {
-  @extend %fa-icon;
-  @extend .fab;
+    @extend %fa-icon;
+    @extend .fab;
 
-  &:before {
-    content: fa-content($fa-var-php);
-  }
+    &:before {
+        content: fa-content($fa-var-php);
+    }
 }

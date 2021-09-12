@@ -385,6 +385,14 @@
         <source>Each element of this collection should satisfy its own set of constraints.</source>
         <target>Each element of this collection should satisfy its own set of constraints.</target>
       </trans-unit>
+      <trans-unit id="lrbaa8g" resname="This value is not a valid International Securities Identification Number (ISIN).">
+        <source>This value is not a valid International Securities Identification Number (ISIN).</source>
+        <target>This value is not a valid International Securities Identification Number (ISIN).</target>
+      </trans-unit>
+      <trans-unit id="6akW5mb" resname="This value should be a valid expression.">
+        <source>This value should be a valid expression.</source>
+        <target>This value should be a valid expression.</target>
+      </trans-unit>
       <trans-unit id=".SEaaBa" resname="This form should not contain extra fields.">
         <source>This form should not contain extra fields.</source>
         <target>This form should not contain extra fields.</target>
@@ -396,6 +404,126 @@
       <trans-unit id="fvxWW3V" resname="The CSRF token is invalid. Please try to resubmit the form.">
         <source>The CSRF token is invalid. Please try to resubmit the form.</source>
         <target>The CSRF token is invalid. Please try to resubmit the form.</target>
+      </trans-unit>
+      <trans-unit id="eo1zeih" resname="This value is not a valid HTML5 color.">
+        <source>This value is not a valid HTML5 color.</source>
+        <target>This value is not a valid HTML5 color.</target>
+      </trans-unit>
+      <trans-unit id="dN.ZVc0" resname="Please enter a valid birthdate.">
+        <source>Please enter a valid birthdate.</source>
+        <target>Please enter a valid birthdate.</target>
+      </trans-unit>
+      <trans-unit id="OPymPfZ" resname="The selected choice is invalid.">
+        <source>The selected choice is invalid.</source>
+        <target>The selected choice is invalid.</target>
+      </trans-unit>
+      <trans-unit id="GUH6TYE" resname="The collection is invalid.">
+        <source>The collection is invalid.</source>
+        <target>The collection is invalid.</target>
+      </trans-unit>
+      <trans-unit id="14il0ha" resname="Please select a valid color.">
+        <source>Please select a valid color.</source>
+        <target>Please select a valid color.</target>
+      </trans-unit>
+      <trans-unit id="4AJRUCC" resname="Please select a valid country.">
+        <source>Please select a valid country.</source>
+        <target>Please select a valid country.</target>
+      </trans-unit>
+      <trans-unit id="xAI5mrh" resname="Please select a valid currency.">
+        <source>Please select a valid currency.</source>
+        <target>Please select a valid currency.</target>
+      </trans-unit>
+      <trans-unit id="c6v9ASZ" resname="Please choose a valid date interval.">
+        <source>Please choose a valid date interval.</source>
+        <target>Please choose a valid date interval.</target>
+      </trans-unit>
+      <trans-unit id="2BR60Jg" resname="Please enter a valid date and time.">
+        <source>Please enter a valid date and time.</source>
+        <target>Please enter a valid date and time.</target>
+      </trans-unit>
+      <trans-unit id="ofLBhv0" resname="Please enter a valid date.">
+        <source>Please enter a valid date.</source>
+        <target>Please enter a valid date.</target>
+      </trans-unit>
+      <trans-unit id="Xsmm6Mc" resname="Please select a valid file.">
+        <source>Please select a valid file.</source>
+        <target>Please select a valid file.</target>
+      </trans-unit>
+      <trans-unit id="Fka0cZD" resname="The hidden field is invalid.">
+        <source>The hidden field is invalid.</source>
+        <target>The hidden field is invalid.</target>
+      </trans-unit>
+      <trans-unit id="69ux5Ml" resname="Please enter an integer.">
+        <source>Please enter an integer.</source>
+        <target>Please enter an integer.</target>
+      </trans-unit>
+      <trans-unit id="TQbat_9" resname="Please select a valid language.">
+        <source>Please select a valid language.</source>
+        <target>Please select a valid language.</target>
+      </trans-unit>
+      <trans-unit id="vpa7l8w" resname="Please select a valid locale.">
+        <source>Please select a valid locale.</source>
+        <target>Please select a valid locale.</target>
+      </trans-unit>
+      <trans-unit id="Gz8pWER" resname="Please enter a valid money amount.">
+        <source>Please enter a valid money amount.</source>
+        <target>Please enter a valid money amount.</target>
+      </trans-unit>
+      <trans-unit id="PRxiOhB" resname="Please enter a number.">
+        <source>Please enter a number.</source>
+        <target>Please enter a number.</target>
+      </trans-unit>
+      <trans-unit id="seAdKJo" resname="The password is invalid.">
+        <source>The password is invalid.</source>
+        <target>The password is invalid.</target>
+      </trans-unit>
+      <trans-unit id="A5k0Q20" resname="Please enter a percentage value.">
+        <source>Please enter a percentage value.</source>
+        <target>Please enter a percentage value.</target>
+      </trans-unit>
+      <trans-unit id="rH6V.WA" resname="The values do not match.">
+        <source>The values do not match.</source>
+        <target>The values do not match.</target>
+      </trans-unit>
+      <trans-unit id="Eopl1Sm" resname="Please enter a valid time.">
+        <source>Please enter a valid time.</source>
+        <target>Please enter a valid time.</target>
+      </trans-unit>
+      <trans-unit id="ll14Sm9" resname="Please select a valid timezone.">
+        <source>Please select a valid timezone.</source>
+        <target>Please select a valid timezone.</target>
+      </trans-unit>
+      <trans-unit id="1xP1kmd" resname="Please enter a valid URL.">
+        <source>Please enter a valid URL.</source>
+        <target>Please enter a valid URL.</target>
+      </trans-unit>
+      <trans-unit id="iMmAsrC" resname="Please enter a valid search term.">
+        <source>Please enter a valid search term.</source>
+        <target>Please enter a valid search term.</target>
+      </trans-unit>
+      <trans-unit id="GRMTXRX" resname="Please provide a valid phone number.">
+        <source>Please provide a valid phone number.</source>
+        <target>Please provide a valid phone number.</target>
+      </trans-unit>
+      <trans-unit id="WkYuMDd" resname="The checkbox has an invalid value.">
+        <source>The checkbox has an invalid value.</source>
+        <target>The checkbox has an invalid value.</target>
+      </trans-unit>
+      <trans-unit id="lY5Mzyl" resname="Please enter a valid email address.">
+        <source>Please enter a valid email address.</source>
+        <target>Please enter a valid email address.</target>
+      </trans-unit>
+      <trans-unit id="TzSC4.o" resname="Please select a valid option.">
+        <source>Please select a valid option.</source>
+        <target>Please select a valid option.</target>
+      </trans-unit>
+      <trans-unit id="qGRcTk7" resname="Please select a valid range.">
+        <source>Please select a valid range.</source>
+        <target>Please select a valid range.</target>
+      </trans-unit>
+      <trans-unit id="PU.w6nC" resname="Please enter a valid week.">
+        <source>Please enter a valid week.</source>
+        <target>Please enter a valid week.</target>
       </trans-unit>
       <trans-unit id="fyQdvKq" resname="valitor.user.unique.message">
         <source>valitor.user.unique.message</source>

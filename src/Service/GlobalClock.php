@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use \Exception;
-use \DateTime;
-use Innmind\TimeContinuum\Format\ISO8601;
-use Innmind\TimeContinuum\Period\Earth\Year;
-use Innmind\TimeContinuum\Period\Earth\Month;
-use Innmind\TimeContinuum\Period\Earth\Minute;
-use Innmind\TimeContinuum\Period\Earth\Millisecond;
-use Innmind\TimeContinuum\TimeContinuum\Earth;
-use Innmind\TimeContinuum\Timezone\Earth\America\NewYork;
-use Innmind\TimeContinuum\Timezone\Earth\Europe\Paris;
-use Innmind\TimeContinuum\PointInTimeInterface;
+use Exception;
+use DateTime;
+use Innmind\TimeContinuum\Earth\Clock;
+use Innmind\TimeContinuum\Earth\Format\ISO8601;
+use Innmind\TimeContinuum\Earth\Period\Year;
+use Innmind\TimeContinuum\Earth\Period\Month;
+use Innmind\TimeContinuum\Earth\Period\Minute;
+use Innmind\TimeContinuum\Earth\Period\Millisecond;
+use Innmind\TimeContinuum\Earth\Timezone\America\NewYork;
+use Innmind\TimeContinuum\Earth\Timezone\Europe\Paris;
 
 /**
  * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
@@ -23,7 +22,7 @@ class GlobalClock
 {
     /**
      * Global clock
-     * @var Earth
+     * @var Clock
      */
     private $clock;
 
@@ -33,15 +32,20 @@ class GlobalClock
      */
     private $format;
 
-    public function __construct(Earth $clock, ISO8601 $format)
+    public function __construct(Clock $clock, ISO8601 $format)
     {
         $this->clock = $clock;
         $this->format = $format;
     }
 
-    public function getClock(): Earth
+    public function getClock(): Clock
     {
         return $this->clock;
+    }
+
+    public function getNow(): string
+    {
+        return $this->clock->now()->toString();
     }
 
     /**
@@ -71,20 +75,20 @@ class GlobalClock
         $birthDate
             = $now->goBack((new Year(18))
             ->add(new Month(random_int(1, 12))));
-        return new DateTime((string)$birthDate);
+        return new DateTime($birthDate->toString());
     }
 
     /**
      * A "go back" example with TimeContinuum
      */
-    public function getGoBackSample(): PointInTimeInterface
+    public function getGoBackSample(): string
     {
         return $this->clock->now()->goBack(
             (new Year(1))
                 ->add(new Month(2))
                 ->add(new Minute(24))
                 ->add(new Millisecond(500))
-        );
+        )->toString();
     }
 
     /**

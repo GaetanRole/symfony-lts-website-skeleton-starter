@@ -2,11 +2,7 @@ default:
     suites:
         default:
             contexts:
-                - FeatureContext:
-                    kernel: '@kernel'
+                - App\Tests\Behat\DemoContext
 
     extensions:
-        Behat\Symfony2Extension:
-            kernel:
-                bootstrap: features/bootstrap/bootstrap.php
-                class: App\Kernel
+        FriendsOfBehat\SymfonyExtension: null

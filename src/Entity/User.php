@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use \Exception;
-use \DateTime;
-use \DateTimeImmutable;
-use Serializable;
-use Ramsey\Uuid\Uuid;
+use Exception;
+use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
+use Serializable;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityTimeTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -294,14 +294,20 @@ final class User implements UserInterface, Serializable
         return $this;
     }
 
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
     public function getSalt(): ?string
     {
-        // See "Do you need to use a Salt?" at https://symfony.com/doc/current/cookbook/security/entity_provider.html
-        // we're using bcrypt in security.yml to encode the password, so
-        // the salt value is built-in and you don't have to generate one
         return null;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here

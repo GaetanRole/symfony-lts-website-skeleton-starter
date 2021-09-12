@@ -4,19 +4,28 @@ import '../scss/app.scss';
 
 // Import Jquery.js, Bootstrap.js and font-awesome.js from NPM modules
 import $ from 'jquery';
-import 'bootstrap'
-import '@fortawesome/fontawesome-free'
+import { Modal, Popover } from 'bootstrap';
+import '@fortawesome/fontawesome-free';
 
 // Example importing a function from greet.js
 // (the .js extension is optional)
 import greet from './greet';
 
-$(document).ready(function () {
-    // Bootstrap JS dependency
-    $('[data-toggle="popover"]').popover();
+// Import stimulus booting script
+import './stimulus/stimulus-boot.js';
 
-    // Always show Bootstrap modal for flash messages
-    $('.modal').modal('show');
+$(document).ready(function () {
+    // Use Modals from Bootstrap 5 with Webpack Encore. Enabled it everywhere.
+    if (document.getElementById('modal') != null) {
+        let myModal = new Modal(document.getElementById('modal'));
+        myModal.show();
+    }
+
+    // Use Popover from Bootstrap 5 with Webpack Encore. Enabled it everywhere.
+    let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new Popover(popoverTriggerEl);
+    });
 
     // Using others into this one
     console.log(greet('Github User'));

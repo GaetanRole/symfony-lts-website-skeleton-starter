@@ -1,14 +1,19 @@
 {
     "devDependencies": {
-        "@fortawesome/fontawesome-free": "^5.13",
-        "@symfony/webpack-encore": "^0.28",
-        "bootstrap": "^4.4",
-        "eslint": "^6.8",
-        "jquery": "^3.4",
-        "node-sass": "^4.13",
-        "popper.js": "^1.16",
-        "sass-loader": "^7.3",
-        "webpack-notifier": "^1.8"
+        "@fortawesome/fontawesome-free": "^5.15",
+        "@popperjs/core": "^2.10",
+        "@symfony/stimulus-bridge": "^2.1",
+        "@symfony/webpack-encore": "^1.6",
+        "bootstrap": "^5.1",
+        "core-js": "^3.0.0",
+        "eslint": "^7.32",
+        "file-loader": "^6.2",
+        "jquery": "^3.6.0",
+        "node-sass": "^6.0",
+        "regenerator-runtime": "^0.13",
+        "sass-loader": "^12.1",
+        "stimulus": "^2.0",
+        "webpack-notifier": "^1.13"
     },
     "license": "UNLICENSED",
     "private": true,

@@ -38,6 +38,9 @@ final class ListUsersCommand extends Command
     /** @var int */
     private const MAX_RESULT_DEFAULT_OPTION = 50;
 
+    /** @var int */
+    private const COMMAND_SUCCESS = 0;
+
     /**
      * All given users.
      * @var UserRepository
@@ -64,7 +67,7 @@ final class ListUsersCommand extends Command
                 By default the command only displays the 50 most recent users.
                 Set the number of
                 results to display with the <comment>--max-results</comment> option:
-                <info>php %command.full_name%</info> 
+                <info>php %command.full_name%</info>
                 <comment>--max-results=2000</comment>'
             )
 
@@ -117,6 +120,6 @@ final class ListUsersCommand extends Command
         $usersAsATable = $bufferedOutput->fetch();
         $output->write($usersAsATable);
 
-        return 0;
+        return self::COMMAND_SUCCESS;
     }
 }

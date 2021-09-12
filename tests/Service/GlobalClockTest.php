@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use \DateTime;
-use \Exception;
 use App\Service\GlobalClock;
+use Innmind\TimeContinuum\Earth\Format\ISO8601;
+use Innmind\TimeContinuum\Earth\Clock;
 use PHPUnit\Framework\TestCase;
-use Innmind\TimeContinuum\Format\ISO8601;
-use Innmind\TimeContinuum\TimeContinuum\Earth;
 
 /**
  * @group   Unit
@@ -25,19 +24,16 @@ final class GlobalClockTest extends TestCase
 
     protected function setUp(): void
     {
-        $earth = new Earth();
+        $clock = new Clock();
         $isoFormat = new ISO8601();
-        $this->clock = new GlobalClock($earth, $isoFormat);
+        $this->clock = new GlobalClock($clock, $isoFormat);
     }
 
     public function testGetClockMethodReturningAnEarthInstance(): void
     {
-        $this->assertInstanceOf(Earth::class, $this->clock->getClock());
+        $this->assertInstanceOf(Clock::class, $this->clock->getClock());
     }
 
-    /**
-     * @expectedException Exception DateTime Emits Exception in case of an error.
-     */
     public function testGetNowInDateTimeMethodReturningACurrentDateTime(): void
     {
         $this->assertInstanceOf('Datetime', $this->clock->getNowInDateTime());

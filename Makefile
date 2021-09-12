@@ -2,7 +2,7 @@ CONSOLE				= bin/console
 # A little hack if you want increase Composer memory
 # COMPOSER			= php -d memory_limit=-1 /usr/local/bin/composer
 COMPOSER			= composer
-PHPUNIT				= SYMFONY_PHPUNIT_VERSION=9.1.1 bin/phpunit
+PHPUNIT				= SYMFONY_PHPUNIT_VERSION=9.5.9 bin/phpunit
 YARN				= yarn
 
 ##
@@ -58,7 +58,7 @@ db-migrate:			## Execute doctrine:migrations:migrate
 					$(CONSOLE) doctrine:migrations:migrate --allow-no-migration --no-interaction --all-or-nothing
 
 db-fixtures: 		## Execute doctrine:fixtures:load
-					$(CONSOLE) doctrine:fixtures:load --no-interaction --purge-with-truncate
+					$(CONSOLE) doctrine:fixtures:load --no-interaction
 					$(CONSOLE) app:list-users
 
 db-fixtures-test: 	## Execute doctrine:fixtures:load fo test env
@@ -191,10 +191,7 @@ lc:					vendor ## Ensures that arguments injected into services match type decla
 
 lint:				lt ly lc ## Lint twig and yaml files
 
-security:			vendor ## Check security of your dependencies (https://security.sensiolabs.org/)
-					./vendor/bin/security-checker security:check
-
-.PHONY:				lt ly lc lint security
+.PHONY:				lt ly lc lint
 
 ##
 ###----------------------#

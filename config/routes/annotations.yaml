@@ -4,3 +4,7 @@ controllers:
     prefix: '/{_locale}'
     requirements:
         _locale: '%app_locales_regex%'
+
+kernel:
+    resource: '../../src/Kernel.php'
+    type: annotation

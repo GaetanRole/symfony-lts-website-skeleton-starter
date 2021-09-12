@@ -7,11 +7,11 @@ $user-title: #0b800e;
 $title-typo: 'Open Sans 800';
 
 #user-profile {
-  h2 {
-    font: {
-      family: $title-typo;
-      weight: 800;
+    h2 {
+        font: {
+            family: $title-typo;
+            weight: 800;
+        }
+        color: $user-title;
     }
-    color: $user-title;
-  }
 }

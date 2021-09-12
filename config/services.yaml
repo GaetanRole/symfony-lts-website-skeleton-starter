@@ -1,6 +1,5 @@
 parameters:
     locale: 'en'
-    faker_locale: 'en_GB'
     app_locales: ['fr', '%locale%']
     app_locales_regex: 'fr|%locale%'
 
@@ -10,23 +9,27 @@ services:
         autoconfigure: true
 
     App\:
-        resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
 
     App\Controller\:
-        resource: '../src/Controller'
+        resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
     # Aliases to TimeContinuum
-    app.earth:
-        class: Innmind\TimeContinuum\TimeContinuum\Earth
+    app.clock:
+        class: Innmind\TimeContinuum\Earth\Clock
     app.format:
-        class: Innmind\TimeContinuum\Format\ISO8601
+        class: Innmind\TimeContinuum\Earth\Format\ISO8601
 
     # Creating a service with TimeContinuum
     App\Service\GlobalClock:
         arguments:
-            $clock: '@app.earth'
+            $clock: '@app.clock'
             $format: '@app.format'
 
     App\Listener\AuthenticationListener:

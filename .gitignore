@@ -6,14 +6,14 @@ npm-debug.log
 .AppleDouble
 .LSOverride
 
-###> behat/symfony2-extension ###
-/behat.yml
-###< behat/symfony2-extension ###
-
 ###> friendsofphp/php-cs-fixer ###
 /.php_cs
 /.php_cs.cache
 ###< friendsofphp/php-cs-fixer ###
+
+###> friends-of-behat/symfony-extension ###
+/behat.yml
+###< friends-of-behat/symfony-extension ###
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -40,4 +40,5 @@ npm-debug.log
 /node_modules/
 /public/build/
 /assets/css
+yarn-error.log
 ###< symfony/webpack-encore-bundle ###

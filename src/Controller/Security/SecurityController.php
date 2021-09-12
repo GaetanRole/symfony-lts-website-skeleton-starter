@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller\Security;
 
-use Symfony\Component\Security\Core\Security;
+use LogicException;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
@@ -42,6 +43,6 @@ final class SecurityController extends AbstractController
      */
     public function logout(): void
     {
-        // controller can be blank: it will never be executed!
+        throw new LogicException('This should never be reached !');
     }
 }

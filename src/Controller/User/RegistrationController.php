@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
-use \Exception;
+use Exception;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use App\Service\GlobalClock;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -80,7 +80,7 @@ class RegistrationController extends AbstractController
 
             // Add a notification on security/login.html.twig
             $this->addFlash(
-                'registration-success',
+                'success',
                 $translator->trans('account_registered.flash.redirection', [], 'flashes')
             );
 

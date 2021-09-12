@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Listener;
 
-use \Exception;
+use Exception;
 use App\Entity\User;
 use App\Service\GlobalClock;
 use Doctrine\ORM\EntityManagerInterface;

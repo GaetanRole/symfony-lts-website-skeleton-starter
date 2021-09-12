@@ -65,6 +65,22 @@
         <source>Account is locked.</source>
         <target>Account is locked.</target>
       </trans-unit>
+      <trans-unit id="gd.MOnZ" resname="Too many failed login attempts, please try again later.">
+        <source>Too many failed login attempts, please try again later.</source>
+        <target>Too many failed login attempts, please try again later.</target>
+      </trans-unit>
+      <trans-unit id="l9VYRj0" resname="Invalid or expired login link.">
+        <source>Invalid or expired login link.</source>
+        <target>Invalid or expired login link.</target>
+      </trans-unit>
+      <trans-unit id="9qGC3hG" resname="Too many failed login attempts, please try again in %minutes% minute.">
+        <source>Too many failed login attempts, please try again in %minutes% minute.</source>
+        <target>Too many failed login attempts, please try again in %minutes% minute.</target>
+      </trans-unit>
+      <trans-unit id="AJR3lMs" resname="Too many failed login attempts, please try again in %minutes% minutes.">
+        <source>Too many failed login attempts, please try again in %minutes% minutes.</source>
+        <target>Too many failed login attempts, please try again in %minutes% minutes.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

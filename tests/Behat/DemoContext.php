@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace App\Tests\Behat;
+
+use \Exception;
+use \RuntimeException;
 use Behat\Behat\Context\Context;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +16,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author  Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
-class FeatureContext implements Context
+final class DemoContext implements Context
 {
     /** @var KernelInterface */
     private $kernel;

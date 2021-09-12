@@ -1,8 +1,9 @@
 {% if app.session.flashbag.peekAll|length > 0 %}
-    <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn btn-dark m-3" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Hi, I'm a PopOver !">Click Click !</button>
                     {% for type, messages in app.flashes %}
                         {% for message in messages %}
                             <div class="alert alert-dismissible alert-{{ type }}" role="alert">
@@ -10,9 +11,25 @@
                             </div>
                         {% endfor %}
                     {% endfor %}
-                    <button type="button" class="btn btn-sm btn-block btn-dark" data-dismiss="modal">X</button>
                 </div>
             </div>
         </div>
     </div>
 {% endif %}
+
+{#{% if app.request.hasPreviousSession %}#}
+{#    <div class="messages">#}
+{#        {% for type, messages in app.flashes %}#}
+{#            {% for message in messages %}#}
+{#                #}{# Bootstrap alert, see https://getbootstrap.com/docs/3.4/components/#alerts #}
+{#                <div class="alert alert-dismissible alert-{{ type }} fade in" role="alert">#}
+{#                    <button type="button" class="close" data-dismiss="alert" aria-label="{{ 'action.close'|trans }}">#}
+{#                        <span aria-hidden="true">&times;</span>#}
+{#                    </button>#}
+
+{#                    {{ message|trans }}#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endif %}#}

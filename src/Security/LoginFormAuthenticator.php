@@ -19,16 +19,19 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
+use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
-final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
+final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     /** Three functions based on targetPath */
     use TargetPathTrait;
+
+    public const LOGIN_ROUTE = 'app_security_login';
 
     /** @var EntityManagerInterface */
     private $entityManager;
@@ -61,7 +64,7 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function supports(Request $request): bool
     {
-        return 'app_security_login' === $request->attributes->get('_route')
+        return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -136,6 +139,6 @@ final class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getLoginUrl(): string
     {
-        return $this->urlGenerator->generate('app_security_login');
+        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }

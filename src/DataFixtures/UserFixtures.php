@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use Faker;
-use \Exception;
+use Exception;
 use App\Entity\User;
 use App\Service\GlobalClock;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @see     https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html
  *
  * @author   Gaëtan Rolé-Dubruille <gaetan.role@gmail.com>
  */
-final class UserFixture extends Fixture
+final class UserFixtures extends Fixture
 {
     /** @var int public CONST for Users number in DB */
     public const USER_NB_TUPLE = 20;
@@ -35,12 +34,6 @@ final class UserFixture extends Fixture
      */
     private $clock;
 
-    /**
-     * Injecting Container Interface.
-     * @var ContainerInterface
-     */
-    private $container;
-
     public function __construct(
         UserPasswordEncoderInterface $passwordEncoder,
         GlobalClock $clock,
@@ -48,7 +41,6 @@ final class UserFixture extends Fixture
     ) {
         $this->passwordEncoder = $passwordEncoder;
         $this->clock = $clock;
-        $this->container = $container;
     }
 
     /**
@@ -58,22 +50,29 @@ final class UserFixture extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
+        $this->loadUsers($manager);
+    }
+
+    /**
+     * @throws Exception From DateTimes
+     */
+    private function loadUsers(ObjectManager $manager): void
+    {
         // Loading USER_NB_TUPLE users with different information by concat
         // Enter a DateTime now by TimeContinuum service
         // E.g : Login : user0@userfixtures.fixtures
         //     : Password : password0
 
-        $faker = Faker\Factory::create($this->container->getParameter('faker_locale'));
         $roles = ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN'];
 
         for ($i = 0; $i < self::USER_NB_TUPLE; $i++) {
             $user = new User();
-            $user->setFirstName($faker->firstName)
-                ->setLastName($faker->lastName)
-                ->setPhoneNumber($faker->phoneNumber)
+            $user->setFirstName("FirstName" . $i)
+                ->setLastName("LastName" . $i)
+                ->setPhoneNumber("0600000000")
                 ->setBirthDate($this->clock->getBirthDateSample())
-                ->setEmail('user'.$i.'@userfixtures.fixtures')
-                ->setPassword($this->passwordEncoder->encodePassword($user, 'password'.$i))
+                ->setEmail('user' . $i . '@userfixtures.fixtures')
+                ->setPassword($this->passwordEncoder->encodePassword($user, 'password' . $i))
                 ->setRoles([$roles[array_rand($roles)]])
                 ->setCreatedAt($this->clock->getNowInDateTime());
 

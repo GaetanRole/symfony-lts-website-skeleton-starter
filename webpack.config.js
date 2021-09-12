@@ -1,4 +1,8 @@
-let Encore = require('@symfony/webpack-encore');
+const Encore = require('@symfony/webpack-encore');
+
+if (!Encore.isRuntimeEnvironmentConfigured()) {
+    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
+}
 
 Encore
     .setOutputPath('public/build/')
@@ -13,25 +17,33 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('user', './assets/js/user.js')
 
+    .enableStimulusBridge('./assets/js/stimulus/controllers.json')
+
+    .splitEntryChunks()
     .enableSingleRuntimeChunk()
+
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
+    .enableVersioning(Encore.isProduction())
     .enableVersioning()
     .enableSassLoader()
     .autoProvidejQuery()
-    .splitEntryChunks()
+
+    .configureBabel((config) => {
+        config.plugins.push('@babel/plugin-proposal-class-properties');
+    })
+
+    // enables @babel/preset-env polyfills
+    .configureBabelPresetEnv((config) => {
+        config.useBuiltIns = 'usage';
+        config.corejs = 3;
+    })
 
     // Copy all files from assets/ with path
     .copyFiles([
         {from: './assets/images', to: 'images/[path][name].[hash:8].[ext]'},
     ])
-
-    // Enables @babel/preset-env polyfills
-    .configureBabel(() => {}, {
-        useBuiltIns: 'usage',
-        corejs: 3
-    })
 ;
 
 module.exports = Encore.getWebpackConfig();

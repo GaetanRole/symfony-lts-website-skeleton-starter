@@ -1,15 +1,15 @@
-<p align="center"><a href="https://symfony.com" target="_blank">
-    <img src="https://symfony.com/logos/symfony_black_02.svg">
+<p style="text-align: center;"><a href="https://symfony.com" target="_blank">
+    <img src="https://symfony.com/logos/symfony_black_02.svg" alt="symfony logo">
 </a></p>
 
-# sf4.4-website-skeleton-starter
+# symfony-lts-website-skeleton-starter
 
 **This repository is useful for beginners.**
-I created a starter kit for Symfony 4.4 (LTS), based on the website-skeleton project provided by Symfony itself. This one is more complete to start a real project. 
+I created a starter kit for Symfony 4.4 (LTS), based on the website-skeleton project provided by Symfony itself. This one is more complete to start a real project.
 
-It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and other stuffs (such as a Makefile, fixtures with Faker, Unit and Functional tests, Behat, Guard, Events, Entity traits, Q&A tools, translations, commands...) **following the recommended SensioLabs best practices**.
+It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and other stuffs (such as a Makefile, fixtures, Unit and Functional tests, Behat, Bootstrap (Sass/JQuery), Stimulus, Guard, Events, Entity traits, Q&A tools, translations, commands...) **following the recommended SensioLabs best practices**.
 
-![Software License](https://img.shields.io/badge/php-7.4-brightgreen.svg)
+![Software License](https://img.shields.io/badge/php-8.0-brightgreen.svg)
 
 [![Author](https://img.shields.io/badge/author-gaetan.role%40gmail.com-blue.svg)](https://github.com/gaetanrole)
 
@@ -17,7 +17,7 @@ It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and o
 
 ### Project requirements
 
-- [PHP ^7.2.5 or higher](http://php.net/manual/fr/install.php)
+- [PHP >=7.2.5 or higher](http://php.net/manual/fr/install.php)
 - [Symfony CLI](https://symfony.com/download)
 - [Composer](https://getcomposer.org/download)
 - [Yarn](https://yarnpkg.com/lang/en/)
@@ -31,7 +31,7 @@ It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and o
 
 1 . Clone the current repository:
 ```bash
-$ git clone 'https://github.com/GaetanRole/sf4.4-website-skeleton-starter'
+$ git clone 'https://github.com/GaetanRole/symfony-lts-website-skeleton-starter'
 ```
 
 2 . Move in and create few `.env.{environment}.local` files, according to your environments with your default configuration
@@ -46,7 +46,7 @@ $ yarn run dev
 $ bin/console doctrine:database:create # (d:d:c)
 $ bin/console doctrine:migration:migrate # (d:m:m)
 $ bin/console doctrine:fixtures:load # (d:f:l)
-$ bin/console doctrine:migration:secure # (d:m:s)
+$ bin/console doctrine:migration:status # (d:m:st)
 ```
 
 3.b . Or just set your DATABASE_URL and call the Makefile's install rule:
@@ -54,15 +54,15 @@ $ bin/console doctrine:migration:secure # (d:m:s)
 $ make install
 ```
 
-> The project's Makefile has few rules which could be very useful. 
+> The project's Makefile has few rules which could be very useful.
 > In fact, you have some rules for Q&A tools and unit/functional tests.
 > Take a look on it !
 
 ## Usage
 
 ```bash
-$ cd sf4.4-website-skeleton-starter
-$ symfony serve --no-tls
+$ cd symfony-lts-website-skeleton-starter
+$ symfony server:start --no-tls
 ```
 
 > The web server bundle is no longer used anymore. Use the Symfony [binary][6] now.
@@ -102,7 +102,7 @@ $ bin/console debug:container
 ## User
 
 Current [User][10] entity has some fields that are required or not.
-Feel free to change it according to your logic, such as adding canonical fields, salt and others: 
+Feel free to change it according to your logic, such as adding canonical fields, salt and others:
 
 ```bash
 $ bin/console make:entity User
