@@ -11,6 +11,8 @@ It shows how to use [WebpackEncore][1], [TimeContinuum][2], [User Auth][3] and o
 
 ![Software License](https://img.shields.io/badge/php-8.0-brightgreen.svg)
 
+[![CodeFactor](https://www.codefactor.io/repository/github/gaetanrole/symfony-lts-website-skeleton-starter/badge)](https://www.codefactor.io/repository/github/gaetanrole/symfony-lts-website-skeleton-starter)
+
 [![Author](https://img.shields.io/badge/author-gaetan.role%40gmail.com-blue.svg)](https://github.com/gaetanrole)
 
 ## Installation instructions
